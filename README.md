@@ -1,6 +1,6 @@
-#Welcome to the ChickTech kickoff!
+# Welcome to the ChickTech kickoff!
 
-##Icebreaker
+## Icebreaker
 To get to know each other, lets quickly go around the room.  When it is your turn state:
 
 - Your name
@@ -51,7 +51,7 @@ Red Hats core product is a version of Linux.  Linux is an Operating System simil
 
 Red Hat is a GREAT company to work for.  It is full of passonate and diverse people with all kinds of skillsets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heiarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
 
-##Objective
+## Objective
 Have you ever been to a concert or a sporting event where they put tweets on the jumbotron(big screen)?
 
 What about watched the news or a TV show where they are displaying a facebook post and are discussing it?
@@ -61,102 +61,99 @@ Over the next two days we will be building something similar!
 With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be able to post to your blog and see it on your screen.
 
 
-##Building the stack
+## Building the stack
 TODO
 
-SysAdmin work
-What is a Pi? (10 minutes)
-Baby computer
-1GB SRAM,  Quad core 64-bit processor clocked at 1.4GHz (ARM is different), Ethernet, Wifi, SD card
-Your phones are similar infra and likely more powerful
-Cheap, ubiquitous, open and standard 
-$35 or kit full kit for  $80ish.  Freedom to explore without worry. 
-Share and jointly improve upon common ideas.  
-Exposed hardware points and standard protocols allows unprecedented level of access to do physical things with the device 
-Microcontroller vs general purpose computer
-Realtime 
-You can’t live patch your microwave (yet)
-Install updates
-Install Linux, Apache, MySQL PHP.   (2 minutes)
-LAMP.  Huge community 
-Unzip a file (5 mins)
-Use a script to setup a database
-What is a database?
-Looking inside the database
-SORT LIKE query
-Enabling services so they start at boot (15 minutes)
-Basic network tests
-Ping
-Curl
-Netstat
-Netcat
-Hostnames
-dig
-Security  
-Users / groups
-Sudo
-Iptables
-Create a static webpage (5 minutes)
-Static content like pics and resumes.   HTML markup. Light weight. 
-Dynamic like reddit.   Users interact.  Languages instead of markup and 
-PHP (5 minutes)
-Heavier than static
-Phpinfo
-Install wordpress (20 minutes)
-about 40% of the web is wordpress
-A personal blog. A CMS
-Widely customizable way to easily build a webpage. 
-Show how to create and edit an entry 
-Show some basic how to change appearance stuff
-Show plugin system 
+- SysAdmin work
+- What is a Pi? (10 minutes)
+- Baby computer
+- 1GB SRAM,  Quad core 64-bit processor clocked at 1.4GHz (ARM is different), Ethernet, Wifi, SD card
+- Your phones are similar infra and likely more powerful
+- Cheap, ubiquitous, open and standard 
+- $35 or kit full kit for  $80ish.  Freedom to explore without worry. 
+- Share and jointly improve upon common ideas.  
+- Exposed hardware points and standard protocols allows unprecedented level of access to do physical things with the device 
+- Microcontroller vs general purpose computer
+- Realtime 
+- You can’t live patch your microwave (yet)
+- Install updates
+- Install Linux, Apache, MySQL PHP.   (2 minutes)
+- LAMP.  Huge community 
+- Unzip a file (5 mins)
+- Use a script to setup a database
+- What is a database?
+- Looking inside the database
+- SORT LIKE query
+- Enabling services so they start at boot (15 minutes)
+- Basic network tests
+- Ping
+- Curl
+- Netstat
+- Netcat
+- Hostnames
+- dig
+- Security  
+- Users / groups
+- Sudo
+- Iptables
+- Create a static webpage (5 minutes)
+- Static content like pics and resumes.   HTML markup. Light weight. 
+- Dynamic like reddit.   Users interact.  Languages instead of markup and 
+- PHP (5 minutes)
+- Heavier than static
+- Phpinfo
+- Install wordpress (20 minutes)
+- about 40% of the web is wordpress
+- A personal blog. A CMS
+- Widely customizable way to easily build a webpage. 
+- Show how to create and edit an entry 
+- Show some basic how to change appearance stuff
+- Show plugin system 
 
 Sysadmin bonuses
-Cron an rsync job that copies a file from one dir to another
-Simulating backups.  
-Edit the original file and watch the destination file change
-Write a script that looks at the last line of a file for ERROR
-Simulating monitoring
-When found restart a service and notes that it did so in another file
+- Cron an rsync job that copies a file from one dir to another
+- Simulating backups.  
+- Edit the original file and watch the destination file change
+- Write a script that looks at the last line of a file for ERROR
+- Simulating monitoring
+- When found restart a service and notes that it did so in another file
 
 
 
-##Writing the code
+## Writing the code
 TODO
-Customize wordpress
-themes and plugins
+
+- Customize wordpress
+- themes and plugins
+- Review IDE and python basics (45 minutes)
+- https://thonny.org/
+- Hello World program run and debug
+- Statements
+- Debugging (step through multiple statements)
+- Variables
+- Functions
+- Classes
+- Coding/Debugging (1.5-2 hours) - python + requests to pull data from wordpress
+- API: What is an API? Why use APIs? (5 minutes)
+- Examples: SmartTV apps, "liking" on a page links to Facebook
+- Packages: What are packages? Download requests (5 minutes)
+- Program script to talk to wordpress API and display latest post title to console (15 minutes)
+- Step through
+- Add timestamp to output
+- Add blog post, rerun
+- Repeat for more additions:
+- Iterate through all posts by date
+- Sort by oldest first
+- Methods for organizing code (put below into own methods for reuse tomorrow)
+- Summarize number of comments for whole blog
+- Summarize number of comments per post
+- Summarize number of comments per person
+- Query all blogs in classroom for most posts
+- Query all blogs in classroom for most comments
+- Bonus material
 
 
-Review IDE and python basics (45 minutes)
-https://thonny.org/
-Hello World program run and debug
-Statements
-Debugging (step through multiple statements)
-Variables
-Functions
-Classes
-Coding/Debugging (1.5-2 hours) - python + requests to pull data from wordpress
-API: What is an API? Why use APIs? (5 minutes)
-Examples: SmartTV apps, "liking" on a page links to Facebook
-Packages: What are packages? Download requests (5 minutes)
-Program script to talk to wordpress API and display latest post title to console (15 minutes)
-Step through
-Add timestamp to output
-Add blog post, rerun
-Repeat for more additions:
-Iterate through all posts by date
-Sort by oldest first
-Methods for organizing code (put below into own methods for reuse tomorrow)
-Summarize number of comments for whole blog
-Summarize number of comments per post
-Summarize number of comments per person
-Query all blogs in classroom for most posts
-Query all blogs in classroom for most comments
-
-
-Bonus material
-
-
-##Quick recap
+## Quick recap
 Yesterday we covered:
 
 - What various types of people in IT do
@@ -169,7 +166,7 @@ Yesterday we covered:
 - Running loops and processing data structures
 - How to do step through debugging
 
-##Adding the hardware
+## Adding the hardware
 
 The prolilferation of technology, Moore's law and the golablization of the labor force over the last few decades has changed things in interesting ways. Things used to be expensive and mechnical.  Now they are cheap and electronic.
 
@@ -208,6 +205,8 @@ The Raspberry Pi 3 B+ has 40 GPIO (general purpose input/output pins). The pinou
 ![pinout](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/pi-pinout-diagram-01.png)
 
 And the pins are counted like this
+
+
 ![pincount](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/RPi-Pinout.jpg)
 
 Your phone knows how to work with your Bluetooth earpods and your laptop knows how to work with your USB mouse because of standardized protocols.  I2C, SPI and UART are also standardized protocols.
@@ -238,9 +237,10 @@ Enough talk, lets hook up that LCD screen
 
 Now lets print `hello world` on that screen
 TODO
-install package
-write script
-execute script
+
+- install package
+- write script
+- execute script
 
 Raise your hand if this didn't work for you and a volunteer will come around and help you out.
 
@@ -250,10 +250,11 @@ TODO
 
 Adding some sparkle:
 TODO
-Polling so keeps updating when new post
-Random positioning of title
-Scroll title to fit
-Use font that's more readable, supports emojis (UTF-8)
+
+- Polling so keeps updating when new post
+- Random positioning of title
+- Scroll title to fit
+- Use font that's more readable, supports emojis (UTF-8)
 
 References:
 
@@ -268,17 +269,18 @@ References:
 
 
 
-##Doing more
+## Doing more
 TODO
-Stalking bot
-Update screen with notification when someone comments on your posts
-Update blog title based on number of comments
-Weather API
-Post comments on X random blogs
-Game on the LCD screen
+
+- Stalking bot
+- Update screen with notification when someone comments on your posts
+- Update blog title based on number of comments
+- Weather API
+- Post comments on X random blogs
+- Game on the LCD screen
 
 
-##Presentation preperation
+## Presentation preperation
 The ability to articulate and defend your ideas is an important skill to have no matter what field you go into.  A piece of general life advice: learn how to patiently communicate and be assertive.  Truth be told, people don't like making decisions or doing research on their own.  The more you bring to them, the more organized you are in your approach, the more passoinate you are -- the more likely they are to support your position/give you a raise/etc.
 
 When giving a presentation:
@@ -308,7 +310,7 @@ We need TODO volunteers.  These girls will:
 
 Please raise your hand if you are interested.
 
-##Conclusion
+## Conclusion
 Over the past two days we've covered:
 
 - What various types of people in IT do
