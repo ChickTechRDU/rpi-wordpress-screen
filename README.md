@@ -62,62 +62,107 @@ With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be a
 
 
 ## Building the stack
-TODO
 
-- SysAdmin work
-- What is a Pi? (10 minutes)
-- Baby computer
-- 1GB SRAM,  Quad core 64-bit processor clocked at 1.4GHz (ARM is different), Ethernet, Wifi, SD card
-- Your phones are similar infra and likely more powerful
-- Cheap, ubiquitous, open and standard 
-- $35 or kit full kit for  $80ish.  Freedom to explore without worry. 
-- Share and jointly improve upon common ideas.  
-- Exposed hardware points and standard protocols allows unprecedented level of access to do physical things with the device 
-- Microcontroller vs general purpose computer
-- Realtime 
-- You can’t live patch your microwave (yet)
-- Install updates
-- Install Linux, Apache, MySQL PHP.   (2 minutes)
-- LAMP.  Huge community 
-- Unzip a file (5 mins)
-- Use a script to setup a database
-- What is a database?
-- Looking inside the database
-- SORT LIKE query
-- Enabling services so they start at boot (15 minutes)
-- Basic network tests
-- Ping
-- Curl
-- Netstat
-- Netcat
-- Hostnames
-- dig
-- Security  
-- Users / groups
-- Sudo
-- Iptables
-- Create a static webpage (5 minutes)
-- Static content like pics and resumes.   HTML markup. Light weight. 
-- Dynamic like reddit.   Users interact.  Languages instead of markup and 
-- PHP (5 minutes)
-- Heavier than static
-- Phpinfo
-- Install wordpress (20 minutes)
-- about 40% of the web is wordpress
-- A personal blog. A CMS
-- Widely customizable way to easily build a webpage. 
-- Show how to create and edit an entry 
-- Show some basic how to change appearance stuff
-- Show plugin system 
+#### What is a Raspberry Pi?
+The Raspberry Pi Foundation is a dream a come true for people interested in technology. For very little money, they will sell you a 'disposable' baby computer that runs standard hardware and is extendable by all kinds of open source software.
 
-Sysadmin bonuses
-- Cron an rsync job that copies a file from one dir to another
-- Simulating backups.  
-- Edit the original file and watch the destination file change
-- Write a script that looks at the last line of a file for ERROR
-- Simulating monitoring
-- When found restart a service and notes that it did so in another file
+Each part of that last sentence is important.
 
+With a standalone Pi costing $35 and a kit costing $80, not only are they accessible to people who couldn't afford computers in the past -- they encourage more well off people to do bold things.  You may be scared to take apart your new iPhone or afraid to load Linux or other custom software on the laptop you use for homework.  The Pi is built to be tinkered with.  It is easy to start over from a software standpoint and if your Pi is in a bad state it impacts only your hobby.  If you do something that kills the hardware, you will have to spend another $35, which sucks, but is way easier to swallow than killing your phone or laptop.
+
+The Raspberry Pi 3 B+ that we are using in this class has the following specs:
+
+- Quad Core A53 1.4GHz ARM Processor
+- 1GB DDR2 RAM
+- Ethernet, Wifi, Bluetooth
+- Mirco SD card slot
+- 40 Pin GPIO header
+
+To put in perspective how low power that is, while it isn't an apples to apples comparison, even the Samsung Galaxy S3 released in 2012 had higher specs.  Outside of needing to keep costs low, uniformity is actually more important than horsepower in the hobby market.  The fact that you can build something once and know it will behave the exact same on all devices of that type is huge.  It also allows you to focus on your work and only learn how to troubleshoot one platform.  In contrast, imagine having to write a game that supports running on AMD and Intel process, Windows 7 and Windows 10, AMD and Nvidia grahpics cards, maybe even Xbox and PS4 as well as PC, etc.  Yes APIs, frameworks and libraries abstract away some/most of the pain, but nothing is as nices as having a fleet of all the exact same hardware to build on top of.
+
+Open Source software is about having the freedom to reuse and improve the applications that run on your devices.  Has Apple or Google ever pushed a software update that changed something on your phone in a way you didn't like?  Ever thought this instagram app would be better if it could also do X?  With open source software people write code to meet their needs and then put it out on the internet for anybody to use for free.  This means you can pick it up and use it as-is or if it doesn't quite meet your needs you can alter it and then even put it back out on the internet for other folks to use for free.  This culture has helped the Pi hobby scene flourish.  If you can think of something you'd like your Pi to do, chances are somebody somewhere has already done something similar and you can use their work as a launching off point to accomplish your goal.
+
+
+#### What is LAMP?
+Linux Operating System + Apache Web Server + Maria Datbase Server + the PHP programming language make up the `LAMP` web services stack.  Together they allow a computer to serve up dynamic and interactive webpages.  According to [netcraft](https://news.netcraft.com/archives/2019/06/17/june-2019-web-server-survey.html) 30% of the internet is ran off of Apache and according to [zdnet](https://www.zdnet.com/article/can-the-internet-exist-without-linux/) 96% of the internet is ran on top of Linux.  Those statistics coupled with the widespread useage of things like Wordpress blogs, Drupal CMS systems, Vanilla Foums, ownCloud collaboration servers and MediaWiki systems indicate that the LAMP stack has widespread adoption on the internet.  It is also worth noting that it is one of the oldest stacks.  What these things mean to you is that as you begin to learn this stack, there will be plenty of open source code for you to sample from and plenty of places to look for and ask for help when you need it.
+
+
+##### Linux
+Your Pi is already running an optimized version of Linux called Raspbian.  Raspbian is based on one of the largest distributions of Linux called [Debian](https://www.debian.org/).  If you haven't heard of either of those and have happened to heard of Ubuntu, know that Ubuntu is also based on Debian to some degree.  Backing up a bit, in case all of that was greek to you -- an Operating System is the low level software that runs on your device that determines how you intearct with it via various interfaces (touch screen, mouse, keyboard) and an operating system allows you to install other software on top of it.  Windows is an Operating System, so is iOS on your phone.  The Linux operating system is open source and flexible.  Groups of people package it in different ways (called distributions) to meet different needs.  These different distributions allow linux to power android phones, smart TVs, your Pi, and most of the servers on the internet despite the fact that they are all very different devices filling different needs.
+
+The linux operating system is very tweakable, secure and privacy oriented...
+So if I know I'm not going to ever use a webcam I can remove the hardware support for it from the kernel to save on resources.  I can also install a different Desktop Manager (think complex theme) and run stuff on older systems easier.
+
+When you login to a linux system you are a user who can't make changes to the system.  This is what plagued Windows back in the day. Viruses would install and take over the system without every needing to escalate privileges.
+
+Since there is no central linux group and since a lot of people develop it as a hobby there isn't anybody trying to collect data about you to then market things to you, which is great if you care about your privacy.
+
+It also generally features a package manager and treats everything like a file...
+When you want to install a piece of software in linux you can run a command or click a couple things and then you have it and it will be easy to keep up to date.  Contrast this to MacOS or Windows where you have to go each vendors website and download and install each piece of software like that.
+
+The fact that linux treats everything as a file allows linux users to easily string together commands for automation and scripting purposes.
+
+
+##### Apache
+Apache is a flexible, well established, powerful and popular web server.  When you open up Chrome and type in `reddit.com`, Chrome is the client and the web server is what Reddit's linux servers use to send you back your memes and cat videos.
+
+Apache on its own can only serve up static content.  You can think of static content as non-interactive sites.  So if you wanted to serve up a copy of your resume and a brief page about yourself, that you write in HTML yourself, Apache alone would be enough.  If you instead wanted a site with an admin front-end that made making changes easy and allowed people to comment on articles and things like that, then you would need a dynamic language and an apache module or proxy to a server that spoke that language.  You would also likely need a datastore.  That is where Maria DB and PHP will come in later.  For the time being, lets install Apache and serve up some static content.
+
+
+	TODO
+
+
+##### Maria DB
+
+Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also allows creates a useful centralization point.  If all of your sites real content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database whereas each of them all having the same files at the same time is a much harder problem to sovle.
+
+Lets install Maria DB and create a datbase and a table with some sample data
+
+	TODO
+
+
+##### PHP
+
+PHP is a well established programming language that runs on many operating systems.  It is most commonly used by web developers where it acts as an interpeted language that complies and executes on the server when called.  One of the core features of PHP is that you can easily mix PHP, Javascript and HTML in the same file.  This makes developing simple web applications easy to do as you don't have to learn or be restricted by frameworks or MVC practices.  Some of these same features are also its cons, by the way :).
+
+Lets make a basic PHP page
+
+	TODO
+
+
+#### What is Wordpress?
+
+Wordpress is a personal and easy to use blogging plaform that runs on top of a LAMP stack.  It features an extensive plugin and template system and is backed by a large open source community.  [w3techs](https://w3techs.com/technologies/details/cm-wordpress/all/all) estimates that 34% of the internet runs on top of wordpress!
+
+Now that you've seen what its like to create your own HTML and PHP pages, lets install Wordpress and let it do the hard stuff for us.
+
+	TODO
+
+Now that Wordpress is installed.  Watch as I demo a few things:
+
+- Logging in
+- Creating a blog post
+- Viewing the blog post
+- Navigating to the plugin and theme screens
+
+
+#### Bonuses
+
+All of the stuff we've done above are part of a system administrators job.  We built a stack and installed an application. A developer will now pick up from here and start writing custom code or changing things to meet their needs.  While they focus on that stuff the system administrators need to think about things like disaster recovery and uptime.  In the time before the next session feel free to explore simulations of those two objectives using the guidance below.
+
+**#1 Backups**
+Using [rsync](https://linux.die.net/man/1/rsync) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that copies new and changed files `/opt/rsync_source` and `/opt/rsync_destination`.  The script `/opt/bin/new_rsync_file` and `ls -lhart` can be used to see if you got it working right.
+
+A solution can be found in `/opt/bin/rsync_solution`.
+
+NOTE: In the real world you'd use some dedicated backup software instead of rsync.  You'd also make sure the destination wasn't on the same machine and you'd schedule regular backups.
+
+**#2 Monitoring**
+Using [pgrep](https://linux.die.net/man/1/pgrep) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that prints "ALERT" if the process `atestprocess` isn't running.  The script `/opt/bin/atestprocess start|stop` and `ps aux` can be used to see if you got it right.
+
+A solution can be found in `/opt/bin/monitoring_solution`.
+
+NOTE: In the real world a monitoring tool would have mechanisms to do this for you and would bubble up the alert to something that would email/text somebody instead of printing ALERT to the console.
 
 
 ## Writing the code
