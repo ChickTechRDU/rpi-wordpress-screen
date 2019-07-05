@@ -108,33 +108,187 @@ Apache is a flexible, well established, powerful and popular web server.  When y
 
 Apache on its own can only serve up static content.  You can think of static content as non-interactive sites.  So if you wanted to serve up a copy of your resume and a brief page about yourself, that you write in HTML yourself, Apache alone would be enough.  If you instead wanted a site with an admin front-end that made making changes easy and allowed people to comment on articles and things like that, then you would need a dynamic language and an apache module or proxy to a server that spoke that language.  You would also likely need a datastore.  That is where Maria DB and PHP will come in later.  For the time being, lets install Apache and serve up some static content.
 
+Install Apache
 
-	TODO
+    sudo su -
+    apt-get install apache2
+
+Start it and tell it to startup when you Pi boots up
+
+	systemctl restart apache2
+    systemctl enable apache2
+
+When accessing websites your brower makes what is called a DNS lookup.  This converts google.com to an IP address/number that the computers actually pay attention to, the words are for our simple human brains.  To simulate that we will be creating what is called a hosts file entry.
+
+Get the IP of your interface
+
+	root@raspberrypi:~/2019-chicktech/files/bin# ip a
+	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link 
+       valid_lft forever preferred_lft forever
+
+You are looking for the non `lo` interface that has something on the `inet` line.  Above our IP is `192.168.122.18`. Now lets add that IP address to our hosts file along with a DNS name.  For the name use first letter of your first name and your whole last name. For example
+
+	/opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
+
+Verify it got added
+
+	root@raspberrypi:~/2019-chicktech/files/bin# tail -n1 /etc/hosts
+	192.168.122.18    dminnich.example.com
+
+What this means is now whenever my Pi tries to go to `dminnich.example.com` the content for that website will be served by the Pi itself.
+
+Lets add some static content
+
+	echo "hi chicktech" > /var/www/html/index.html
+
+View it by pulling up the browser on your Pi and going to $username.example.com.
+
+If you wanted to create a real webpage you would need to start writing HTML, CSS and javascript. [w3schools](https://www.w3schools.com/html/default.asp) have good tutorials that teach you those languages. Just keep in mind that you won't be able to create terribly interactive webpages until you start doing some of the stuff below as well.
 
 
 ##### Maria DB
 
 Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also allows creates a useful centralization point.  If all of your sites real content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database whereas each of them all having the same files at the same time is a much harder problem to sovle.
 
-Lets install Maria DB and create a datbase and a table with some sample data
+Lets explore Maria DB.
 
-	TODO
+Install it
 
+	sudo su -
+    apt-get install mariadb-server
+
+Start it and tell it to startup when you Pi boots up
+
+	systemctl restart mariadb
+    systemctl enable mariadb
+
+Login and create a database
+
+	root@raspberrypi:~/2019-chicktech/files/bin# mysql -uroot 
+	Welcome to the MariaDB monitor.  Commands end with ; or \g.
+	Your MariaDB connection id is 2
+	Server version: 10.1.38-MariaDB-0+deb9u1 Debian 9.8
+
+	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+	MariaDB [(none)]> create database chicktech_test;
+	Query OK, 1 row affected (0.00 sec)
+
+Create a table
+
+	use chicktech_test;
+    Database changed
+    MariaDB [chicktech_test]> create table people(id INT NOT NULL AUTO_INCREMENT,name VARCHAR(100) NOT NULL,age int NOT NULL,PRIMARY KEY ( id ));
+	Query OK, 0 rows affected (0.00 sec)
+
+Add some people to the table
+
+	MariaDB [chicktech_test]> insert into people (name, age) VALUES ("bill", 10), ("bobby", 11), ("samantha", 15), ("kathy", 21);
+	Query OK, 4 rows affected (0.01 sec)
+	Records: 4  Duplicates: 0  Warnings: 0
+
+
+Show all people
+
+	MariaDB [chicktech_test]> select * from people;
+	+----+----------+-----+
+	| id | name     | age |
+	+----+----------+-----+
+	|  1 | bill     |  10 |
+	|  2 | bobby    |  11 |
+	|  3 | samantha |  15 |
+	|  4 | kathy    |  21 |
+	+----+----------+-----+
+	4 rows in set (0.00 sec)
+
+Show people whose name starts with a b and is less than 11 years old
+
+	MariaDB [chicktech_test]> select name from people WHERE name LIKE 'b%' AND age<11;
+	+------+
+	| name |
+	+------+
+	| bill |
+	+------+
+	1 row in set (0.00 sec)
+
+Create a user that can use this database
+
+	CREATE USER 'chicktech'@'localhost' IDENTIFIED BY 'chicktech';
+    GRANT ALL PRIVILEGES ON chicktech_test.* TO 'chicktech'@'localhost';
+    FLUSH PRIVILEGES;
+
+Exit Maria DB
+
+	MariaDB [chicktech_test]> exit
+	Bye
+
+[tutorialspoint](https://www.tutorialspoint.com/mysql/index.htm) has a good introductory Maria DB tutorial.  If you enjoy databases lots of companies hire DBAs that do nothing but database work.
 
 ##### PHP
 
 PHP is a well established programming language that runs on many operating systems.  It is most commonly used by web developers where it acts as an interpeted language that complies and executes on the server when called.  One of the core features of PHP is that you can easily mix PHP, Javascript and HTML in the same file.  This makes developing simple web applications easy to do as you don't have to learn or be restricted by frameworks or MVC practices.  Some of these same features are also its cons, by the way :).
 
-Lets make a basic PHP page
+Lets install PHP
 
-	TODO
+	sudo su -
+    apt-get install php-mysql php libapache2-mod-php
+
+Tell Apache to use PHP
+
+	a2enmod php7.0
+    systemctl restart apache2
+
+Create a PHP diagnostics page
+
+	echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+
+See if the page works.
+
+- In the browser on your Pi go to $username.example.com/info.php
+- You should see a purple page with a bunch of information on it
+
+Lets quickly look at a page that will show the results of the that query we did in the Maria DB section.
+
+	cat /var/www/html/query.php
+    <?php
+	$conn = new mysqli('localhost', 'chicktech', 'chicktech', 'chicktech_test');
+	if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+	}
+	$sql = "select name from people WHERE name LIKE 'b%' AND age<11";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_assoc()) {
+	echo $row["name"]. "<br>"; 
+	}
+	$conn->close();
+	?>
+
+Now go to $username.example.com/query.php in your browser. Notice how:
+
+- It prints just `bill` like the previous Maria DB query
+- You can see how the code connects using the user we create, runs a query then prints a line for each result found.
+
+
+[w3schools](https://www.w3schools.com/php7/) has a good introductory PHP tutorial if you are interested in learning more about PHP.
 
 
 #### What is Wordpress?
 
 Wordpress is a personal and easy to use blogging plaform that runs on top of a LAMP stack.  It features an extensive plugin and template system and is backed by a large open source community.  [w3techs](https://w3techs.com/technologies/details/cm-wordpress/all/all) estimates that 34% of the internet runs on top of wordpress!
 
-Now that you've seen what its like to create your own HTML and PHP pages, lets install Wordpress and let it do the hard stuff for us.
+Now that you've seen what its like to create your own web pages and databases, lets install Wordpress and let it do the hard stuff for us.
 
 	TODO
 
@@ -151,16 +305,16 @@ Now that Wordpress is installed.  Watch as I demo a few things:
 All of the stuff we've done above are part of a system administrators job.  We built a stack and installed an application. A developer will now pick up from here and start writing custom code or changing things to meet their needs.  While they focus on that stuff the system administrators need to think about things like disaster recovery and uptime.  In the time before the next session feel free to explore simulations of those two objectives using the guidance below.
 
 **#1 Backups**
-Using [rsync](https://linux.die.net/man/1/rsync) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that copies new and changed files `/opt/rsync_source` and `/opt/rsync_destination`.  The script `/opt/bin/new_rsync_file` and `ls -lhart` can be used to see if you got it working right.
+Using [rsync](https://linux.die.net/man/1/rsync) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that copies new and changed files `/opt/rsync_source` and `/opt/rsync_destination`.  The script `/opt/bin/new_rsync_file.sh` and `ls -lhart /opt/rsync_*` can be used to see if you got it working right.
 
-A solution can be found in `/opt/bin/rsync_solution`.
+A solution can be found in `/opt/bin/rsync_solution.sh`.
 
 NOTE: In the real world you'd use some dedicated backup software instead of rsync.  You'd also make sure the destination wasn't on the same machine and you'd schedule regular backups.
 
 **#2 Monitoring**
-Using [pgrep](https://linux.die.net/man/1/pgrep) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that prints "ALERT" if the process `atestprocess` isn't running.  The script `/opt/bin/atestprocess start|stop` and `ps aux` can be used to see if you got it right.
+Using [pgrep](https://linux.die.net/man/1/pgrep) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that prints "ALERT" if the process `atestprocess` isn't running.  The script `/opt/bin/atestprocess.sh start|stop` and `ps aux` can be used to see if you got it right.
 
-A solution can be found in `/opt/bin/monitoring_solution`.
+A solution can be found in `/opt/bin/monitoring_solution.sh`.
 
 NOTE: In the real world a monitoring tool would have mechanisms to do this for you and would bubble up the alert to something that would email/text somebody instead of printing ALERT to the console.
 
