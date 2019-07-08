@@ -7,8 +7,8 @@ sed -i 's/PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_co
 systemctl enable ssh
 systemctl restart ssh
 apt-get update
-apt-get upgrade
-apt-get install wordpress curl apache2 mariadb-server i2c-tools vim lsof python-bs4
+apt-get -y upgrade
+apt-get -y install wordpress curl apache2 mariadb-server i2c-tools vim lsof python-bs4 php php-mysql libapache2-mod-php sendmail
 mkdir -p /opt/bin /opt/rsync_source /opt/rsync_destination
 cp -Rf /root/2019-chicktech/files/bin/* /opt/bin/
 cp -Rf /root/2019-chicktech/files/html/* /var/www/html/

@@ -288,9 +288,88 @@ Now go to $username.example.com/query.php in your browser. Notice how:
 
 Wordpress is a personal and easy to use blogging plaform that runs on top of a LAMP stack.  It features an extensive plugin and template system and is backed by a large open source community.  [w3techs](https://w3techs.com/technologies/details/cm-wordpress/all/all) estimates that 34% of the internet runs on top of wordpress!
 
-Now that you've seen what its like to create your own web pages and databases, lets install Wordpress and let it do the hard stuff for us.
+Now that you've seen what its like to create your own web pages and databases, lets have Wordpress do the heavy lifting for us.
 
-	TODO
+Install Wordpress
+
+	sudo su -
+    apt-get install wordpress
+
+Wordpress will need a database to store its content.  The install of wordpress in the previous step also installed a script that makes creating that database easier than what we did a few sections ago.
+
+Extract and use the database creation script
+
+	gzip -d /usr/share/doc/wordpress/examples/setup-mysql.gz
+    chmod +x /usr/share/doc/wordpress/examples/setup-mysql
+    /usr/share/doc/wordpress/examples/setup-mysql -n wordpress $username.example.com
+
+	PING dminnich.example.com (192.168.122.18) 56(84) bytes of data.
+	64 bytes from dminnich.example.com (192.168.122.18): icmp_seq=1 ttl=64 time=0.013 ms
+
+	--- dminnich.example.com ping statistics ---
+	1 packets transmitted, 1 received, 0% packet loss, time 0ms
+	rtt min/avg/max/mdev = 0.013/0.013/0.013/0.000 ms
+	/etc/wordpress/config-dminnich.example.com.php written
+	Goto http://dminnich.example.com to setup Wordpress
+
+Wordpress likes to create pretty URLs and to serve content outside of /var/www/html.  For Apache to do that we need enable a couple Apache modules
+
+	a2enmod rewrite
+    a2enmod vhost_alias
+
+A single Apache install is capable of serving multiple websites.  This is called Virtual Hosting. A fresh install of Apache, however, is only configured to serve one default site.  The script we will run in a bit will create a new wordpress Apache site, enable it, and disable the default Apache site.  It will also make a couple Wordpress tweaks that will allow you to install plugins later.
+
+Before we run the script lets learn about what it is doing.  Here is what an Apache site config looks like
+
+	root@raspberrypi:~/2019-chicktech/files/apache2# cat /root/2019-chicktech/files/apache2/wordpress.conf 
+	<VirtualHost *:80>
+        ServerName REPLACEME.example.com
+
+        ServerAdmin webmaster@example.com
+        DocumentRoot /usr/share/wordpress
+
+        Alias /wp-content /var/lib/wordpress/wp-content
+        <Directory /usr/share/wordpress>
+            Options FollowSymLinks
+            AllowOverride Limit Options FileInfo
+            DirectoryIndex index.php
+            Require all granted
+        </Directory>
+        <Directory /var/lib/wordpress/wp-content>
+            Options FollowSymLinks
+            Require all granted
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	</VirtualHost>
+
+
+`ServerName` determines what hostname to answer on and `DocumentRoot` determines what content to serve for that site.
+
+
+The script itself contains some commands that disable and enable sites.
+
+	cat /opt/bin/wordpress_apache.sh
+    ...
+    a2dissite 000-default
+    a2dissite default-ssl
+    #remove the static page we created earlier
+    rm /var/www/html/index.html
+    a2ensite wordpress.conf
+    ...
+    #restart apache to pickup the changes
+    systemctl restart apache2
+
+The other stuff in that script tweaks a few Wordpress settings that are specific for our teaching environment.  Lets run the script.
+
+	/opt/bin/wordpress_apache.sh $username
+
+You complete the Wordpress install in your browser.  Go to $username.example.com in your browser and answer the questions the same way I demo now.
+
+
+
 
 Now that Wordpress is installed.  Watch as I demo a few things:
 
