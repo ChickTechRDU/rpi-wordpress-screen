@@ -1,9 +1,8 @@
 # Getting started with programming
 
-Programming can be thought of as giving instructions and remembering results of instructions for 
-use in later instructions. The words and grammar of those instructions is defined by the 
-**programming language** you write them in, just like different languages we may use to communicate
-between people.
+Programming can be thought of as giving instructions, called **code**, to a computer to carry out on
+its own. The words and grammar of those instructions is defined by the **programming language** you 
+write them in, just like different languages we may use to communicate between people.
 
 For example, using the Python programming language, we can instruct the computer to display "Hello 
 Chicktech!" to our screen with the following code.
@@ -13,7 +12,8 @@ print("Hello Chicktech!")
 ``` 
 
 This is an instruction that tells the computer to "print" the text "Hello Chicktech!" to the 
-screen.
+screen. Python is a simple but powerful programming language that is famously easy to learn but 
+still powerful enough to --insert some cool statistic about how widely python is used--.
 
 Let's try it out!
 
@@ -64,5 +64,48 @@ the current line.
 
 Now you see "Hello Chicktech!" output on the bottom pane. Press it again to see "Hello World!".
 
-## Statements, expressions, and variables, oh my!
+## Functions and variables
+
+In our program, `print` is a function. Functions group many instructions together so than can
+be reused simply by referencing the function's name. When we reuse a function, we say we're 
+**calling** that function. 
+
+We can write our own functions, too. Try this program for example:
+
+```python
+def greet(who):
+    print("Hello {}!".format(who))
+
+greet("Chicktech")    
+greet("World")
+```
+
+If you run this program, you'll see it prints the same as our previous version. Let's break this
+down a little bit.
+
+Defining a function works like this:
+
+1. First write the `def` **keyword**. This tells python we're about to define a function.
+2. Then write the function's name next to `def` separated by a space.
+3. Then we have a **parameter list**, surrounded by parenthesis. Parameters allow us to reuse a 
+function with different values. In our `greet` function, the `who` parameter allowed us to print 
+several greetings with the same function.
+
+Let's write another function that adds two numbers.
+
+```python
+def add(x, y):
+    return x + y
+
+print(add(2, 2))
+```
+
+```python
+def add(x, y):
+    return x + y
+
+firstNumber = add(2, 2)
+anotherNumber = add(5, 10)
+print(add(firstNumber, anotherNumber))
+```
 
