@@ -4,7 +4,7 @@
 import requests
 response = requests.get('http://demo.wp-api.org/wp-json/wp/v2/posts?per_page=1')
 post = response.json()[0]
-print('{0}: {1}'.format(post['date'], post['title']['rendered'])
+print('{0}: {1}'.format(post['date'], post['title']['rendered']))
 ```
 
 On localhost will be something like http://blog.example.com/index.php/wp-json/wp/v2/posts?per_page=1
