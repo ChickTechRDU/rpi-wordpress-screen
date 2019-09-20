@@ -156,12 +156,22 @@ print(add(firstNumber, anotherNumber))
 
 ### 2.1 Using packages to interact with your blog
 
+--blurb about packages--
+
 ```python
 import requests
 response = requests.get('http://blog.example.com/wp-json/wp/v2/posts?per_page=1')
 post = response.json()[0]
 print('{0}: {1}'.format(post['date'], post['title']['rendered']))
 ```
+
+--talk about APIs--
+
+Wordpress API documentation: https://developer.wordpress.org/rest-api/
+
+--another example using API--
+
+
 
 
 
