@@ -158,7 +158,7 @@ If you wanted to create a real webpage you would need to start writing HTML, CSS
 
 ##### Maria DB
 
-Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also allows creates a useful centralization point.  If all of your sites real content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database whereas each of them all having the same files at the same time is a much harder problem to sovle.
+Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also creates a useful centralization point.  If all of your sites real content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database whereas each of them all having the same files at the same time is a much harder problem to sovle.
 
 Lets explore Maria DB.
 
@@ -384,7 +384,7 @@ Now that Wordpress is installed.  Watch as I demo a few things:
 All of the stuff we've done above are part of a system administrators job.  We built a stack and installed an application. A developer will now pick up from here and start writing custom code or changing things to meet their needs.  While they focus on that stuff the system administrators need to think about things like disaster recovery and uptime.  In the time before the next session feel free to explore simulations of those two objectives using the guidance below.
 
 **#1 Backups**
-Using [rsync](https://linux.die.net/man/1/rsync) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that copies new and changed files `/opt/rsync_source` and `/opt/rsync_destination`.  The script `/opt/bin/new_rsync_file.sh` and `ls -lhart /opt/rsync_*` can be used to see if you got it working right.
+Using [rsync](https://linux.die.net/man/1/rsync) and [bash](https://ryanstutorials.net/bash-scripting-tutorial/) write a script that copies new and changed files from `/opt/rsync_source` to `/opt/rsync_destination`.  The script `/opt/bin/new_rsync_file.sh` and `ls -lhart /opt/rsync_*` can be used to see if you got it working right.
 
 A solution can be found in `/opt/bin/rsync_solution.sh`.
 
@@ -436,7 +436,6 @@ Yesterday we covered:
 
 - What various types of people in IT do
 - What a Raspberry Pi is
-- Basic security, network and database skills
 - Installing a LAMP web server stack
 - Installing and customizing the WordPress blog platform
 - What an IDE, API, a package and JSON are
@@ -495,7 +494,7 @@ SPI or Serial Peripheral Interface is simple serial protocol that uses four wire
 
 I2C (pronounced I squared C) is an advanced serial protocol that uses two wires plus possible ground and power lines to connect several devices that are a short distance apart and don't require rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The master calls out to a slave via a specific hard coded 7bit device address.  Communications happen one direction at a time and there can be up to 127 slaves hooked up in parrallel on one I2C bus.  Each device is interconnected via a serial data (SDA) and serial clock(SCL) wires.
 
-In addition to supporting the protocols above, the Raspberry Pi also offers GPIO pins.  When working with those signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
+In addition to supporting the protocols above, the Raspberry Pi also offers GPIO pins.  When working with those, signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
 
 Digital is either on or off.  Think of a light switch.
 Analog is more like what the ocean looks like or what a song looks like in some editing software if you've ever seen that.  Very fluid.
@@ -567,7 +566,7 @@ When giving a presentation:
 - Don't use a script
 - Focus on one narrowish topic the whole time
 - Avoid "um", "hmm" and similar filler words when possible
-- Practice.  Make sure you cover all the high level while finishing in your allocated time
+- Practice.  Make sure you cover all the high level topics while finishing in your allocated time
 - Keep your slides full of figures, pictures and memes and not walls of text
 - Make eye contact
 - Focus in on a specific person and look for feedback in their body language
@@ -593,7 +592,6 @@ Over the past two days we've covered:
 
 - What various types of people in IT do
 - What a Raspberry Pi is
-- Basic security, network and database skills
 - Installing a LAMP web server stack
 - Installing and customizing the WordPress blog platform
 - What an IDE, API, a package and JSON are
