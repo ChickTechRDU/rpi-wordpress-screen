@@ -152,24 +152,72 @@ anotherNumber = add(5, 10)
 print(add(firstNumber, anotherNumber))
 ```
 
-## 2. Blog program
+## 2. Writes scripts to interact with your blog
 
-### 2.1 Using packages to interact with your blog
+### 2.1 The amazing world of open source
 
---blurb about packages--
+So far we've written some small, simple programs. Writing something like a multiplayer game or a 
+blog website at this rate would take a really long time! Fortunately, the cool thing about code is
+that it can be easily shared and reused. By collaborating with others, we can build incredibly 
+powerful programs in a fraction of the time it would take any one person alone to do it from 
+scratch. Amazingly, there is a global community of sharing "open source" code: code that is freely 
+available to be used, and free for you to modify and share your contributions back. This code is
+bundled up into **packages** that can be downloaded and imported into your programs.
+
+Let's use one of those packages, called "requests", that allows us to communicate with other 
+websites, like the blog you're running, in our code. In this way, we can write programs that 
+interact with our blog: automating tasks, summarizing posts, even displaying posts screens hooked up
+to our Raspberry Pis. The sky is the limit!
+
+> For full documentation of the "requests" package, see: https://2.python-requests.org/en/master/
 
 ```python
+# Program 2.1.1
 import requests
-response = requests.get('http://blog.example.com/wp-json/wp/v2/posts?per_page=1')
-post = response.json()[0]
-print('{0}: {1}'.format(post['date'], post['title']['rendered']))
+response = requests.get('http://blog.example.com/wp-json/wp/v2/posts', params={'per_page': 1})
+posts = response.json()
+if not posts:
+    print("No posts found!")
+else:
+    post = posts[0]
+    print('{0}: {1}'.format(post['date'], post['title']['rendered']))
 ```
 
---talk about APIs--
+Copy the above program into your IDE and run it. If you've written any posts in your blog, you 
+should see the latest post and it's title. In a few lines of code, we've constructed a request 
+from our program, sent it to the blog server, and parsed its response. Cool!
 
-Wordpress API documentation: https://developer.wordpress.org/rest-api/
+### 2.2 The World Wide Web and APIs
 
---another example using API--
+In the above example, we not only pulled code from another package, but we also used code from an
+entirely separate program: your blog server. We asked the "requests" package to make a request to 
+your blog for us, and we asked the blog server for the latest blog post title. We didn't have to 
+write any of the code to store, manage, or retrieve that information. And similarly, those packages
+then use other packages, too, and so on. That blog post script you have written above easily spans 
+millions of lines of code if you think about all of the layers of packages that get used, all the 
+way down to your operating system and your computers device drivers.
+
+We can do this because of something called **application programming interfaces**, or **APIs** for 
+short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or 
+weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or
+other servers, all we need are their APIs. Then, the rest of the implementation is hidden us, and 
+can change and improve without us. We don't need to know or learn all of that code. APIs make us 
+incredibly productive and allow us to create amazing things relatively quickly.
+
+--TODO: insert diagram about APIs--
+
+Different APIs come in different flavors. When talking to a website server, like the Wordpress blog 
+from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for
+different parties to communicate or accomplish some task together. Think of snail mail: when you 
+send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way,
+we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what 
+serves websites over the internet.
+
+--TODO: insert diagram about web service communication--
+
+> For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
+
+The Wordpress API can do just about anything we want with our blog. Let's explore!
 
 
 
