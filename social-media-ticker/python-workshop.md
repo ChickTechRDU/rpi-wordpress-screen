@@ -317,7 +317,60 @@ else:
     print("No blog posts found. You should post something on your blog first!")
 ```
 
+Try commenting on your post and rerun the program. You should your count go up!
+
+### 2.3 Using your friends blogs
+
+```python
+# Program 2.3.1
+import requests
+
+class Blog:
+    def __init__(self, url):
+        self.url = url
+
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+    def total_comments(self):
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+        return int(response.headers['X-WP-Total'])
 
 
+blog_urls = {
+    "Alec's blog": "http://demo.wp-api.org/wp-json/wp/v2",
+    "Dustin's blog": "http://demo.wp-api.org/wp-json/wp/v2"
+}
 
+top_blogs = []
+top_blog_total_comments = 0
 
+for blog_name, blog_url in blog_urls.items():
+    blog = Blog(blog_url)
+    total_comments = blog.total_comments()
+
+    if total_comments == 0:
+        print("{0} doesn't have any comments yet. Go comment on their blog!".format(blog_name))
+    else:
+        print("{0} has {1} comments!".format(blog_name, total_comments))
+
+    if total_comments == top_blog_total_comments:
+        # Tie for top blog!
+        top_blogs.append(blog_name)
+        continue
+
+    if total_comments > top_blog_total_comments:
+        top_blogs = [blog_name]
+        top_blog_total_comments = total_comments
+
+if len(top_blogs) > 1:
+    print("There is a tie for the top blog! {0} all have {1} comments.".format(
+          " and ".join(top_blogs), top_blog_total_comments))
+else:
+    print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
+```
