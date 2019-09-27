@@ -110,7 +110,7 @@ We can write our own functions, too. Try this program for example:
 ```python
 # Program 1.3.1
 def greet(who):
-    print("Hello {}!".format(who))
+    print("😎 Hello {}! 😎".format(who))
 
 greet("Chicktech")    
 greet("World")
@@ -198,9 +198,10 @@ posts = response.json()
 # How do we know it's a list? We'll come back to this. 
 
 # Check if the list is empty by using the "len" (for "length") function, which returns how many 
-# elements are in a list.
+# elements are in a list. This makes sure we don't try to examine a post if there isn't one to 
+# examine!
 if len(posts) == 0:
-    print("No posts found!")
+    print("No blog posts found. You should post something on your blog first!")
 else:
     # We can refer to the elements of a list by the index of that element using the [0] syntax,
     # where 0 is the first element in the list. Computers usually start counting from 0.
@@ -227,6 +228,11 @@ else:
 Copy the above program into your IDE and run it. If you've written any posts in your blog, you 
 should see the latest post and it's title. In a few lines of code (ignoring comments), we've 
 constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
+
+Try debugging your program to watch and inspect the instructions and variables.
+
+--TODO: Take screenshots of debugging. Consider moving commentary to be alongside debugging 
+screenshots--
 
 ### 2.2 The World Wide Web and APIs
 
@@ -260,10 +266,56 @@ serves websites over the internet.
 
 The Wordpress API can do just about anything we want with our blog. Let's explore!
 
+```python
+# Program 2.2.1
+import requests
 
+# In this program, we're going to make requests to the Wordpress API multiple times. We can start to
+# see some patterns in how we make calls to the API. Also, we want our program to easily read in
+# instructions we understand. Instead of saying "make a request to this URL with these 
+# parameters and parse it as JSON" multiple times, which is too detailed to repeat so often, we'd
+# like to say more clearly what we're trying to do: "list the latest blog posts". Just like if you
+# ask for a ride to school, you don't say "please let me sit in your car, put the car into gear,
+# press the gas until the end of the driveway, then turn left, then stop at the stop sign, ..." and
+# so on. That is painstakingly detailed, and it would be really hard for the person you're asking to
+# understand what you were really asking for. Instead we simply say "may I have a ride to school?"
+# Once we do something once, we can refer to it more quickly. The same is true with programs.
+# Programs need to be clearly understood by humans, too, not just computers.
 
+# To accomplish this, we're going to create a **class** to help organize our code. A class is a
+# collection of functions and variables that we can reuse.
 
+# Start defining a class similar to how you define a function, but instead of the "def" keyword,
+# use the "class" keyword, followed by the class's name. Just like with a function, defining the 
+# class alone doesn't use it. It creates a template that we can reuse later.
+class Blog:
+    # Now we can define functions inside the class.
+    # Classes start with a special "__init__" function which is used to create a new instance of the
+    # class based on zero or more parameters. Here we have a "url" variable that remembers the URL 
+    # of your blog for reuse in other functions.
+    def __init__(self, url):
+        self.url = url
 
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+blog_api_url="http://blog.example.com/wp-json/wp/v2"
+
+blog = Blog(blog_api_url)
+latest_posts = blog.list_latest_posts(at_most=1)
+
+if len(latest_posts) > 0: 
+    latest_post = latest_posts[0]
+    comments = blog.list_comments_on_post(post_id=latest_post['id'], at_most=10)
+    print("Your latest post has {0} comments! 😀".format(len(comments)))
+else:
+    print("No blog posts found. You should post something on your blog first!")
+```
 
 
 

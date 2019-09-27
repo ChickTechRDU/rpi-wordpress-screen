@@ -1,11 +1,6 @@
 import requests
 
 
-# response = requests.get("http://demo.wp-api.org/wp-json/wp/v2/posts", params={'per_page': 4})
-# post = response.json()[0]
-# print('{0}: {1}'.format(post['date'], post['title']['rendered']))
-
-
 class Blog:
     """
     Simple Wordpress blog client.
@@ -30,6 +25,7 @@ class Blog:
 blog = Blog('http://demo.wp-api.org/wp-json/wp/v2')
 posts = blog.list_posts(per_page=5)
 print([post['title']['rendered'] for post in posts])
+print("😀")
 print(
-    *[blog.list_comments_on_post(post_id=post['id'], per_page=5)['author_name'] for post in posts],
+    *[blog.list_comments_on_post(post_id=post['id'], per_page=5) for post in posts],
     sep='\n')
