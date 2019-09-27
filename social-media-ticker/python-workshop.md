@@ -276,6 +276,7 @@ The Wordpress API can do just about anything we want with our blog. Let's explor
 ```python
 # Program 2.2.1
 import requests
+import bs4
 
 # In this program, we're going to make requests to the Wordpress API multiple times. We can start to
 # see some patterns in how we make calls to the API. Also, we want our program to easily read in
@@ -307,19 +308,41 @@ class Blog:
         response = requests.get(self.url + "/posts", params={"per_page": at_most})
         return response.json()
 
-    def list_comments_on_post(self, post_id, at_most):
+    def list_latest_comments_on_post(self, post_id, at_most):
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
 blog_api_url="http://blog.example.com/wp-json/wp/v2"
 
+# Now, we can use our class, and our tasks are easier to write and understand.
+# First, create an instance of our blog by calling our class like we would call a function.
+# This in turn calls our special initialization function we defined above. That function required
+# a url parameter, so we pass that as well. The "self" parameter of class functions is special:
+# we don't need to provide it ourselves when we call class functions.
 blog = Blog(blog_api_url)
+
+# Now that we have an instance of our blog, we can call "list_latest_posts" on it. This does what 
+# it says: lists that latest posts. We can also pass a named parameter to the function, "at_most".
+# This means we are listing "at most 1" post. We could pass other values here like 50 to get all of
+# the posts, up to 50 posts (if there are 50 or more, we won't get those). Since we only want the
+# latest post, we'll just set at_most to 1. It's possible we might still get zero posts, if there
+# are no posts in your blog yet.
 latest_posts = blog.list_latest_posts(at_most=1)
 
 if len(latest_posts) > 0: 
     latest_post = latest_posts[0]
-    comments = blog.list_comments_on_post(post_id=latest_post['id'], at_most=10)
-    print("Your latest post has {0} comments! 😀".format(len(comments)))
+    
+    # Now that we have that the latest post, let's get some of its comments. To do this, we use 
+    # our class functions again, this time "list_latest_comments_on_post" by providing a post ID
+    # and again some max number of comments we want to get back.
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
+    
+    for comment in latest_comments:
+        author = comment['author_name']
+        date = comment['date']
+        comment_text = bs4.BeautifulSoup((comment['content']['rendered']), 'html.parser').get_text()
+        words = len(comment_text.split())
+        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
@@ -381,3 +404,4 @@ if len(top_blogs) > 1:
 else:
     print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
 ```
+
