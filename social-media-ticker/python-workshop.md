@@ -14,8 +14,7 @@ print("Hello Chicktech!")
 ```
 
 This is an instruction that tells the computer to "print" the text "Hello Chicktech!" to the 
-screen. Python is a simple but powerful programming language that is famously easy to learn but 
-still powerful enough to --TODO: insert some cool statistic about how widely python is used--.
+screen. According to [Tiobe](https://www.infoworld.com/article/3331603/pythons-popularity-surges-as-a-mainstay-language.html), which ranks languages based on numbers of engineers in the field and search trends across search engines, python is currently the third most popular language.  Python will likely continue to gain marketshare since it is easy to learn and use and still powerful enough to be used by some of the most visited sites on the internet like [pintrest](https://www.pinterest.com/) and [reddit](https://www.reddit.com).
 
 Let's try it out!
 
@@ -24,7 +23,7 @@ Let's try it out!
 Writing programs, like playing music or building a house, requires tools. A common tool is an 
 "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
 
-> TODO: Insert pictures of directions to open Thonny here
+![thonny.png](thonny.png)
 
 In Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
@@ -61,7 +60,7 @@ line's line number on the left ("1"). Then click the green debug button above.
 
 ![debugging.png](debugging.png)
 
-When you click debug, notice you do not immediate see "Hello Chicktech!". Instead, execution is
+When you click debug, notice you do not immediately see "Hello Chicktech!". Instead, execution is
 paused at the first line (where you added a breakpoint), which is also highlighted in yellow. To 
 execute this first line, press the "step over" button above, which "steps over" and executes 
 the current line.
@@ -170,7 +169,7 @@ bundled up into **packages** that can be downloaded and imported into your progr
 
 Let's use one of those packages, called "requests", that allows us to communicate with other 
 websites, like the blog you're running, in our code. In this way, we can write programs that 
-interact with our blog: automating tasks, summarizing posts, even displaying posts screens hooked up
+interact with our blog: automating tasks, summarizing posts, even displaying posts on screens hooked up
 to our Raspberry Pis. The sky is the limit!
 
 > For full documentation of the "requests" package, see: https://2.python-requests.org/en/master/
@@ -181,10 +180,10 @@ to our Raspberry Pis. The sky is the limit!
 import requests
 
 # Named things like packages and variables can have functions and other variables within them that
-# we can reuse. We can refer to them use the package name and a . character like so:
+# we can reuse. To refer to them use the package name and a . character like so:
 response = requests.get("http://blog.example.com/wp-json/wp/v2/posts", params={"per_page": 1})
 
-# We've just made requested the latest blog post from our blog server. We've stored the response to 
+# We've just requested the latest blog post from our blog server. We've stored the response to 
 # that request in a variable named "response" above.
 
 # Requests and responses are like letters we can send or get in the mail. They have an envelope, 
@@ -231,8 +230,16 @@ constructed a request from our program, sent it to the blog server, and parsed i
 
 Try debugging your program to watch and inspect the instructions and variables.
 
---TODO: Take screenshots of debugging. Consider moving commentary to be alongside debugging 
-screenshots--
+Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this
+![211-posts-list.png](211-posts-list.png)
+The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+
+The dictionary from above is actually the JSON representatoin of the blog post.  Lets look at it.
+![211-post.png](211-post.png)
+
+You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
+
+
 
 ### 2.2 The World Wide Web and APIs
 
@@ -247,11 +254,11 @@ way down to your operating system and your computers device drivers.
 We can do this because of something called **application programming interfaces**, or **APIs** for 
 short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or 
 weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or
-other servers, all we need are their APIs. Then, the rest of the implementation is hidden us, and 
-can change and improve without us. We don't need to know or learn all of that code. APIs make us 
+other servers, all we need are their APIs. Then, the rest of the implementation is hidden to us, and 
+can change and improve without us knowing. We don't need to know or learn all of that code. APIs make us 
 incredibly productive and allow us to create amazing things relatively quickly.
 
---TODO: insert diagram about APIs--
+![iot.jpg](iot.jpg)
 
 Different APIs come in different flavors. When talking to a website server, like the Wordpress blog 
 from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for
@@ -260,7 +267,7 @@ send a letter, we have a protocol that says we use envelopes, we write our addre
 we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what 
 serves websites over the internet.
 
---TODO: insert diagram about web service communication--
+![HTTP_Steps.png](HTTP_Steps.png)
 
 > For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
 
