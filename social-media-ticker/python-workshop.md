@@ -24,7 +24,7 @@ Let's try it out!
 Writing programs, like playing music or building a house, requires tools. A common tool is an 
 "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
 
-> Insert pictures of directions to open Thonny here
+> TODO: Insert pictures of directions to open Thonny here
 
 In Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
@@ -151,9 +151,9 @@ remembers those results, and then adds those results.
 def add(x, y):
     return x + y
 
-firstNumber = add(2, 2)
-anotherNumber = add(5, 10)
-print(add(firstNumber, anotherNumber))
+first_number = add(2, 2)
+another_number = add(5, 10)
+print(add(first_number, another_number))
 ```
 
 ## 2. Writes scripts to interact with your blog
@@ -177,35 +177,56 @@ to our Raspberry Pis. The sky is the limit!
 
 ```python
 # Program 2.1.1
-# Load the package named 'requests'
+# Load the package named "requests"
 import requests
 
 # Named things like packages and variables can have functions and other variables within them that
 # we can reuse. We can refer to them use the package name and a . character like so:
-response = requests.get('http://blog.example.com/wp-json/wp/v2/posts', params={'per_page': 1})
+response = requests.get("http://blog.example.com/wp-json/wp/v2/posts", params={"per_page": 1})
 
 # We've just made requested the latest blog post from our blog server. We've stored the response to 
-# that request in a variable named 'response' above.
+# that request in a variable named "response" above.
 
 # Requests and responses are like letters we can send or get in the mail. They have an envelope, 
 # mailing and return addresses, and contents inside. 
-# To get to the content inside our response–the blog post–, we use the 'json()' function to 
+# To get to the content inside our response–the blog post–, we use the "json()" function to 
 # structure that content in a usable way. 
 posts = response.json()
 
-# We've stored the content in a variable called 'posts' so we can refer to it more easily.
-# 'posts' is a **list**
+# We've stored the content in a variable called "posts" so we can refer to it more easily.
+# "posts" is a **list**. Lists are ordered sequences of values.
+# How do we know it's a list? We'll come back to this. 
 
-if not posts:
+# Check if the list is empty by using the "len" (for "length") function, which returns how many 
+# elements are in a list.
+if len(posts) == 0:
     print("No posts found!")
 else:
+    # We can refer to the elements of a list by the index of that element using the [0] syntax,
+    # where 0 is the first element in the list. Computers usually start counting from 0.
     post = posts[0]
-    print('{0}: {1}'.format(post['date'], post['title']['rendered']))
+    
+    # We've stored the first post from our response in a variable named "post". This variable is
+    # a **dictionary**. This means it has any number of values within it we can refer to by name,
+    # similar to looking up definitions in a dictionary by the word.
+    
+    # Wordpress posts have a complicated structure with lots of values within them, and even nested
+    # values within those. Below we'll navigate that structure to pull out the date of our post and
+    # it's title using the ["word"] syntax – this refers to a value by it's name inside the 
+    # quotations. In turn, that value can be anything, maybe even another dictionary.
+    # How do we know which value is what? Similar to how we knew "posts" was a list. We'll come back
+    # to this shortly.
+    date_posted = post["date"]
+    title = post["title"]["rendered"]
+    
+    # Print out the date and title. The "format" function here replaces symbols inside text with 
+    # values from the variables we just defined above.
+    print("{0}: {1}".format(date_posted, title))
 ```
 
 Copy the above program into your IDE and run it. If you've written any posts in your blog, you 
-should see the latest post and it's title. In a few lines of code, we've constructed a request 
-from our program, sent it to the blog server, and parsed its response. Cool!
+should see the latest post and it's title. In a few lines of code (ignoring comments), we've 
+constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
 
 ### 2.2 The World Wide Web and APIs
 
