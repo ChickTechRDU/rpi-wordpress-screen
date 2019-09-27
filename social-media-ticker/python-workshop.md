@@ -15,7 +15,7 @@ print("Hello Chicktech!")
 
 This is an instruction that tells the computer to "print" the text "Hello Chicktech!" to the 
 screen. Python is a simple but powerful programming language that is famously easy to learn but 
-still powerful enough to --insert some cool statistic about how widely python is used--.
+still powerful enough to --TODO: insert some cool statistic about how widely python is used--.
 
 Let's try it out!
 
@@ -123,10 +123,14 @@ bit.
 Defining a function works like this:
 
 1. First write the `def` **keyword**. This tells python we're about to define a function.
-2. Then write the function's name next to `def` separated by a space.
+2. Then write the function's name next to `def` separated by a space. Names are the words of our
+program. Just like words in languages, we use them to communicate and express ideas and work we 
+need to do, but for the computer to understand in addition to other people. We'll use the function 
+name to refer to it later.
 3. Then we have a **parameter list**, surrounded by parenthesis. Parameters allow us to reuse a 
 function with different values. In our `greet` function, the `who` parameter allowed us to print 
-several greetings with the same function. We can refer to that parameter's value by its name.
+several different greetings reusing the same function. We can refer to that parameter's value by its
+name.
 
 Let's write another function that adds two numbers.
 
@@ -173,9 +177,25 @@ to our Raspberry Pis. The sky is the limit!
 
 ```python
 # Program 2.1.1
+# Load the package named 'requests'
 import requests
+
+# Named things like packages and variables can have functions and other variables within them that
+# we can reuse. We can refer to them use the package name and a . character like so:
 response = requests.get('http://blog.example.com/wp-json/wp/v2/posts', params={'per_page': 1})
+
+# We've just made requested the latest blog post from our blog server. We've stored the response to 
+# that request in a variable named 'response' above.
+
+# Requests and responses are like letters we can send or get in the mail. They have an envelope, 
+# mailing and return addresses, and contents inside. 
+# To get to the content inside our response–the blog post–, we use the 'json()' function to 
+# structure that content in a usable way. 
 posts = response.json()
+
+# We've stored the content in a variable called 'posts' so we can refer to it more easily.
+# 'posts' is a **list**
+
 if not posts:
     print("No posts found!")
 else:
