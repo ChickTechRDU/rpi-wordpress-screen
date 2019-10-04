@@ -31,5 +31,13 @@ cp -f /usr/share/wordpress/wp-config.php /usr/share/wordpress/wp-config.php.orig
 sed -i 's^?>^define('FS_METHOD','direct');\n?>^g' /usr/share/wordpress/wp-config.php
 fi
 
+#allow anon comments via the API
+COUNT=$(grep -c "chicktech_hack" /usr/share/wordpress/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php)
+if [ "${COUNT}" -lt 1 ]; then
+cp -f /usr/share/wordpress/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php /usr/share/wordpress/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php.bak
+sed -i 's^if ( ! $allow_anonymous ) {^if ( ! $allow_anonymous ) {\n return true; \n chicktech_hack;^g' /usr/share/wordpress/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php
+sed -i -e '/chicktech_hack/,+1 s%^%//%' /usr/share/wordpress/wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php
+fi
+
 #restart apache to pickup the changes
 systemctl restart apache2
