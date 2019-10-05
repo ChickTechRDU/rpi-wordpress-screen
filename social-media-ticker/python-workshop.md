@@ -239,8 +239,6 @@ The dictionary from above is actually the JSON representatoin of the blog post. 
 
 You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
-
-
 ### 2.2 The World Wide Web and APIs
 
 In the above example, we not only pulled code from another package, but we also used code from an
@@ -303,15 +301,26 @@ class Blog:
     # of your blog for reuse in other functions.
     def __init__(self, url):
         self.url = url
-
+    
+    # In our last program, we made a request to the Wordpress API to list the latest post. Here 
+    # we're defining a function inside the class, similar to the functions inside a package, that
+    # will list the latest posts, so we can reuse it and more easily understand our code.
     def list_latest_posts(self, at_most):
         response = requests.get(self.url + "/posts", params={"per_page": at_most})
         return response.json()
 
+    # We're going to add a function for another request: get the latest comments on a post. We can
+    # use the same class to then list posts and list comments on those posts.
     def list_latest_comments_on_post(self, post_id, at_most):
+        # Notice the URL are parameters of the request are different for comments.
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+# We'll use this later to display comment text.
+def html_to_text(html):
+    return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
+
+# This is the API of your blog.
 blog_api_url="http://blog.example.com/wp-json/wp/v2"
 
 # Now, we can use our class, and our tasks are easier to write and understand.
@@ -335,25 +344,51 @@ if len(latest_posts) > 0:
     # Now that we have that the latest post, let's get some of its comments. To do this, we use 
     # our class functions again, this time "list_latest_comments_on_post" by providing a post ID
     # and again some max number of comments we want to get back.
-    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
-    
-    for comment in latest_comments:
-        author = comment['author_name']
-        date = comment['date']
-        comment_text = bs4.BeautifulSoup((comment['content']['rendered']), 'html.parser').get_text()
-        words = len(comment_text.split())
-        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=1)
+    latest_comment = latest_comments[0]
+    author = latest_comment['author_name']
+    date = latest_comment['date']
+    comment_text = html_to_text(latest_comment['content']['rendered'])
+    words = len(comment_text.split())
+    print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
 
-Try commenting on your post and rerun the program. You should your count go up!
+Try commenting on your latest post and rerun your program. Each time the program runs it'll reflect
+the latest comment.
 
-### 2.3 Using your friends blogs
+Can you modify the program to summarize the most recent 5 comments instead of just the most recent
+comment?
+
+Here's a hint:
+
+```python
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
+    
+    # Rather than manually going through all of the comments, we can use a **for loop** to loop 
+    # through whatever comments there are for us:
+    for comment in latest_comments:
+        author = comment['author_name']
+        date = comment['date']
+        comment_text = html_to_text(latest_comment['content']['rendered'])
+        words = len(comment_text.split())
+        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+```
+
+### 2.3 Using your friends' blogs
+
+We can use our newfound API interaction abilities to talk not just to our own blog server, but also
+our friends' blog servers!
+
+To interact with our friends' blogs, we'll need to get their blogs' IP addresses.
+
+--TODO: insert instructions for getting ips and editing host file--
 
 ```python
 # Program 2.3.1
 import requests
+
 
 class Blog:
     def __init__(self, url):
@@ -367,11 +402,18 @@ class Blog:
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+    # We added another function to our Blog class: get the total comments for a blog.
     def total_comments(self):
+        # Here, we make a request for "comments", but instead of looking at the content, we'll look
+        # at a **header** in the response.
         response = requests.get(self.url + "/comments", params={"per_page": 1})
+        
+        # Headers can add extra information. The Wordpress API includes a header named 'X-WP-Total'
+        # that tells us the total amount there is of a certain resource, in this case comments.
+        # We return that here, after converting the header's value to an integer type.
         return int(response.headers['X-WP-Total'])
 
-
+# Add all of the blog URLs here for the blogs in your group.
 blog_urls = {
     "Alec's blog": "http://demo.wp-api.org/wp-json/wp/v2",
     "Dustin's blog": "http://demo.wp-api.org/wp-json/wp/v2"
@@ -405,3 +447,63 @@ else:
     print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
 ```
 
+```python
+#!/usr/bin/env python3
+import time
+import random
+import requests
+from luma.core.interface.serial import i2c
+from luma.core.render import canvas 
+from luma.oled.device import ssd1306
+from PIL import ImageFont, ImageDraw
+
+class Blog:
+    def __init__(self, url):
+        self.url = url
+
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+    def total_comments(self):
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+        return int(response.headers['X-WP-Total'])
+
+
+class Screen:
+    def __init__(self):
+        serial = i2c(port=1, address=0x3c)
+        self.device = ssd1306(serial, rotate=0)
+        self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+    
+    def draw_text_at_random_location(self, text, size=10):
+        font = self.font.font_variant(size=size)
+        with canvas(self.device) as draw:
+            x = random.randint(0,100 + (len(text) * size / 2)) - (len(text) * size / 2)
+            y = random.randint(0,60) - size / 2
+            draw.text((x, y), text, font=font, fill="white")
+
+blog = Blog("http://blog.example.com/wp-json/wp/v2")
+screen = Screen()
+
+def emoji_for_comment_total(total):
+    if total < 5:
+        return "😊"
+
+    if total < 10:
+        return "😃" 
+    
+    return "😎"
+
+while True:
+    total_comments = blog.total_comments()
+    size = (total_comments + 3) * 4
+    emoji = emoji_for_comment_total(total_comments)
+    text = "{0} {1} {2}".format(emoji, total_comments, emoji)
+    screen.draw_text_at_random_location(text, size=size)
+    time.sleep(1)
+```
