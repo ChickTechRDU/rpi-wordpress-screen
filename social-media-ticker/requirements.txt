@@ -1,2 +1,6 @@
 requests
 RPi.GPIO
+beautifulsoup4
+Pillow
+luma.core
+luma.oled

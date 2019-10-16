@@ -23,27 +23,28 @@ My name is Dustin Minnich and I'm a Principal Systems Administrator.  As a sysad
 - Automating day to day tasks and writing basic scripts and applications
 - Rolling out new versions of custom code to systems
 - Working closely with developers to ensure that they make good security and performance decisions
-- Offering consultation and mentoring services
-- Staying abreast of industry trends
-- Presenting and conferences and doing outreach
 
 
 My name is Michael White and I'm a Lead Application Integration Engineer.  As a Lead Application Integration Engineer I'm responsible for:
 
 - Making sure people don't do dumb shit or recreate the sins of their fathers.
-- TODO
+- TODO - miwhite
 
 
 My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a Sofware Engineer I'm responsible for:
 
 - Choosing techonolgy paths that will directly make or break a 34 billion dollar company on a daily basis.
-- TODO
+- TODO - ahenning
 
+My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a Software Engineer, I:
+- TODO - sgunta
 
 My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsible for:
 
 - Herding cats and attempting to add stability to a chaotic world.
-- TODO
+- TODO - cvanvalk
+
+
 
 We all work at a company named Red Hat.  Red Hat is an open source software company.  This means the software we develop is free for anybody to use and improve.  We believe that when people work together, instead of in competition with against one another, great things happen.
 
@@ -78,7 +79,7 @@ The Raspberry Pi 3 B+ that we are using in this class has the following specs:
 - Mirco SD card slot
 - 40 Pin GPIO header
 
-To put in perspective how low power that is, while it isn't an apples to apples comparison, even the Samsung Galaxy S3 released in 2012 had higher specs.  Outside of needing to keep costs low, uniformity is actually more important than horsepower in the hobby market.  The fact that you can build something once and know it will behave the exact same on all devices of that type is huge.  It also allows you to focus on your work and only learn how to troubleshoot one platform.  In contrast, imagine having to write a game that supports running on AMD and Intel process, Windows 7 and Windows 10, AMD and Nvidia grahpics cards, maybe even Xbox and PS4 as well as PC, etc.  Yes APIs, frameworks and libraries abstract away some/most of the pain, but nothing is as nices as having a fleet of all the exact same hardware to build on top of.
+To put in perspective how low power that is, while it isn't an apples to apples comparison, even the Samsung Galaxy S3 released in 2012 had higher specs.  Outside of needing to keep costs low, uniformity is actually more important than horsepower in the hobby market.  The fact that you can build something once and know it will behave the exact same on all devices of that type is huge.  It also allows you to focus on your work and only learn how to troubleshoot one platform.  In contrast, imagine having to write a game that supports running on AMD and Intel process, Windows 7 and Windows 10, AMD and Nvidia grahpics cards, maybe even Xbox and PS4 as well as PC, etc.  Yes APIs, frameworks and libraries abstract away some/most of the pain, but nothing is as nice as having a fleet of all the exact same hardware to build on top of.
 
 Open Source software is about having the freedom to reuse and improve the applications that run on your devices.  Has Apple or Google ever pushed a software update that changed something on your phone in a way you didn't like?  Ever thought this instagram app would be better if it could also do X?  With open source software people write code to meet their needs and then put it out on the internet for anybody to use for free.  This means you can pick it up and use it as-is or if it doesn't quite meet your needs you can alter it and then even put it back out on the internet for other folks to use for free.  This culture has helped the Pi hobby scene flourish.  If you can think of something you'd like your Pi to do, chances are somebody somewhere has already done something similar and you can use their work as a launching off point to accomplish your goal.
 
@@ -158,7 +159,7 @@ If you wanted to create a real webpage you would need to start writing HTML, CSS
 
 ##### Maria DB
 
-Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also creates a useful centralization point.  If all of your sites real content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database whereas each of them all having the same files at the same time is a much harder problem to sovle.
+Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also creates a useful centralization point.  If all of your content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database, whereas each of them all having the same files at the same time is a much harder problem to sovle.
 
 Lets explore Maria DB.
 
@@ -317,7 +318,7 @@ Wordpress likes to create pretty URLs and to serve content outside of /var/www/h
 	a2enmod rewrite
     a2enmod vhost_alias
 
-A single Apache install is capable of serving multiple websites.  This is called Virtual Hosting. A fresh install of Apache, however, is only configured to serve one default site.  The script we will run in a bit will create a new wordpress Apache site, enable it, and disable the default Apache site.  It will also make a couple Wordpress tweaks that will allow you to install plugins later.
+A single Apache install is capable of serving multiple websites.  This is called Virtual Hosting. A fresh install of Apache, however, is only configured to serve one default site.  The script we will run in a bit will create a new wordpress Apache site, enable it, and disable the default Apache site.
 
 Before we run the script lets learn about what it is doing.  Here is what an Apache site config looks like
 
@@ -397,38 +398,414 @@ A solution can be found in `/opt/bin/monitoring_solution.sh`.
 
 NOTE: In the real world a monitoring tool would have mechanisms to do this for you and would bubble up the alert to something that would email/text somebody instead of printing ALERT to the console.
 
+**#3 Wordpress Customization**
+Bored with sysadmin work?
 
-## Writing the code
-TODO
+Remember the themes and plugins sections of Wordpress I showed you earlier?  Go exploring.  Make your blog beautiful and unique!
 
-- Customize wordpress
-- themes and plugins
-- Review IDE and python basics (45 minutes)
-- https://thonny.org/
-- Hello World program run and debug
-- Statements
-- Debugging (step through multiple statements)
-- Variables
-- Functions
-- Classes
-- Coding/Debugging (1.5-2 hours) - python + requests to pull data from wordpress
-- API: What is an API? Why use APIs? (5 minutes)
-- Examples: SmartTV apps, "liking" on a page links to Facebook
-- Packages: What are packages? Download requests (5 minutes)
-- Program script to talk to wordpress API and display latest post title to console (15 minutes)
-- Step through
-- Add timestamp to output
-- Add blog post, rerun
-- Repeat for more additions:
-- Iterate through all posts by date
-- Sort by oldest first
-- Methods for organizing code (put below into own methods for reuse tomorrow)
-- Summarize number of comments for whole blog
-- Summarize number of comments per post
-- Summarize number of comments per person
-- Query all blogs in classroom for most posts
-- Query all blogs in classroom for most comments
-- Bonus material
+## Programming Basics
+
+Programming can be thought of as giving instructions, called **code**, to a computer to carry out on its own. The words and grammar of those instructions is defined by the **programming language** you write them in, just like different languages we may use to communicate between people.
+
+For example, using the Python programming language, we can instruct the computer to display "Hello Chicktech!" to our screen with the following code.
+
+```python
+print("Hello Chicktech!")
+```
+
+This is an instruction that tells the computer to "print" the text "Hello Chicktech!" to the screen. According to [Tiobe](https://www.infoworld.com/article/3331603/pythons-popularity-surges-as-a-mainstay-language.html), which ranks languages based on numbers of engineers in the field and search trends across search engines, python is currently the third most popular language.  Python will likely continue to gain marketshare since it is easy to learn and use and still powerful enough to be used by some of the most visited sites on the internet like [pintrest](https://www.pinterest.com/) and [reddit](https://www.reddit.com).
+
+Let's try it out!
+
+##### Development environments
+
+Writing programs, like playing music or building a house, requires tools. A common tool is an "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
+
+![thonny.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/thonny.png)
+
+In Thonny, type `print("Hello Chicktech!")` into the top window pane.
+
+![first-statement.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/first-statement.png)
+
+Now click the green run button above.
+
+![run-program.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/run-program.png)
+
+Congrats! You've got a working program!
+
+##### Debugging and expressions
+
+Instructions in Python programs (sometimes also called "scripts") are run line-by-line, one at a time. Let's add another and see. Edit your code to look like the following by adding an additional line.
+
+```python
+print("Hello Chicktech!")
+print("Hello World!") # Programming is great!
+```
+
+Now if we run this, we should see both "Hello Chicktech!" and "Hello World!" displayed in that order.
+
+Our second line also included a **comment**, which started with the `#`. Comments can contain any text you want, and are ignored by the computer. They're just for people to communicate and understand their code better.
+
+One neat feature of IDEs is that they have **debuggers**. These are tools which allow us to watch a program run, pause it mid-execution, and inspect what its doing as it does it. We can trigger pauses by adding **breakpoints** on the lines that we want to pause on. Add breakpoints by double clicking on the first line's line number on the left ("1"). Then click the green debug button above.
+
+![debugging.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/debugging.png)
+
+When you click debug, notice you do not immediately see "Hello Chicktech!". Instead, execution is paused at the first line (where you added a breakpoint), which is also highlighted in yellow. To execute this first line, press the "step over" button above, which "steps over" and executes the current line.
+
+![step.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step.png)
+
+Now you see "Hello Chicktech!" output on the bottom pane. Press it again to see "Hello World!".
+
+To remove a breakpoint, double click the breakpoint icon (the red circle next to the line number) again. Try that now. If we start debugging now, our IDE will start stepping immediately from the first line, as if we set a breakpoint there. Click debug now, but don't step forward yet.
+
+This time, let's use the "step into" button, instead of "step over". "Step into" allows us to see more deeply into what our program is doing, which is useful when we start to define more complex programs. "Step over" is useful when we want an overview, and don't want to get bogged down with the details.
+
+1. Click "Step into" **once**.
+   ![step-debug-before-step-in.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/start-debug-before-step-in.png)
+2. Notice that our IDE has popped out the current line and highlighted it, executing it and moving to the next line.
+   ![step-in-1](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-1.png)
+3. Click "Step into" **two** more times.
+4. Now notice the text `"Hello Chicktech!"` changed color. The IDE **evaluated** our **expression** and is showing the result. Our expression, `"Hello Chicktech!"` was very simple, so it evaluated to the same thing, but all kinds of expressions exist in python as a way to compute more interesting values.
+   ![step-in-3-string-expression.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-3-string-expression.png)
+5. Click "Step into" **two** more times.
+6. Now notice `print` has turned into a green `None`. The `print` instruction itself is an expression, but it doesn't evaluate to anything. `None` is python's value that represents nothing.
+   ![step-in-5-print-expression.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-5-print-expression.png)
+7. Click "Step into" **one** more time and the debugger will jump to the next line.
+
+
+##### Functions and variables
+
+In our program, `print` is a function. Functions group many instructions together so that they can be reused simply by referencing the function's name. When we reuse a function, we say we're **calling** that function.
+
+We can write our own functions, too. Try this program for example:
+
+```python
+# Program 1.3.1
+def greet(who):
+    print("😎 Hello {}! 😎".format(who))
+
+greet("Chicktech")    
+greet("World")
+```
+
+If you run this program, you'll see it prints the same as our previous version, but now we can change how say hello in one place and have all greetings be uniform. Let's break this down a little bit.
+
+Defining a function works like this:
+
+1. First write the `def` **keyword**. This tells python we're about to define a function.
+2. Then write the function's name next to `def` separated by a space. We'll use the functions name to call it later.
+3. Then we have a **parameter list**, surrounded by parenthesis. Parameters allow us to reuse a function with different values. In our `greet` function, the `who` parameter allowed us to print several different greetings reusing the same function. We can refer to that parameter's value by its name inside of the function.
+
+Let's write another function that adds two numbers.
+
+```python
+# Program 1.3.2
+def add(x, y):
+    return x + y
+
+print(add(2, 2))
+```
+
+Parameters are very similar to **variables**. You're probably already familiar with variables from algebra. Variables remember a value for later reuse. For example, the below program adds numbers, remembers those results, and then adds those results.
+
+```python
+# Program 1.3.3
+def add(x, y):
+    return x + y
+
+first_number = add(2, 2)
+another_number = add(5, 10)
+print(add(first_number, another_number))
+```
+
+## Interacting with Wordpress via code
+
+So far we've written some small, simple programs. Writing something like a multiplayer game at this rate would take a really long time! Fortunately, when somebody solves a generic problem and is feeling generous they will round up all of their code and let others download it via what are called **packages**.
+
+Let's use one of those packages.  The "requests" package will allow us to communicate with websites, like the blog you're running on your Pi.
+
+> For full documentation of the "requests" package, see: https://2.python-requests.org/en/master/
+
+```python
+# Program 2.1.1
+# Load the package named "requests"
+import requests
+
+# Named things like packages and variables can have functions and other variables within them that
+# we can reuse. To refer to them use the package name and a . character like so:
+response = requests.get("http://$username.example.com/wp-json/wp/v2/posts", params={"per_page": 1})
+
+# We've just requested the latest blog post from our blog server. We've stored the response to 
+# that request in a variable named "response" above.
+
+# Requests and responses are like letters we can send or get in the mail. They have an envelope, 
+# mailing and return addresses, and contents inside. 
+# To get to the content inside our response–the blog post–, we use the "json()" function to 
+# structure that content in a usable way. 
+posts = response.json()
+
+# We've stored the content in a variable called "posts" so we can refer to it more easily.
+# "posts" is a **list**. Lists are ordered sequences of values.
+# How do we know it's a list? We'll come back to this. 
+
+# Check if the list is empty by using the "len" (for "length") function, which returns how many 
+# elements are in a list. This makes sure we don't try to examine a post if there isn't one to 
+# examine!
+if len(posts) == 0:
+    print("No blog posts found. You should post something on your blog first!")
+else:
+    # We can refer to the elements of a list by the index of that element using the [0] syntax,
+    # where 0 is the first element in the list. Computers usually start counting from 0.
+    post = posts[0]
+    
+    # We've stored the first post from our response in a variable named "post". This variable is
+    # a dictionary. This means it can have any number of values in it. We can refer to the values
+    # using a name, similar to looking up definitions in a dictionary by the word.
+    
+    # Wordpress posts have a complicated structure with lots of values within them, and even nested
+    # values within those. Below we'll navigate that structure to pull out the date of our post and
+    # it's title using the ["word"] syntax – this refers to a value by it's name inside the 
+    # quotations. In turn, that value can be anything, maybe even another dictionary.
+    # How do we know which value is what? Similar to how we knew "posts" was a list. We'll come back
+    # to this shortly.
+    date_posted = post["date"]
+    title = post["title"]["rendered"]
+    
+    # Print out the date and title. The "format" function here replaces symbols inside text with 
+    # values from the variables we just defined above.
+    print("{0}: {1}".format(date_posted, title))
+```
+
+Copy the above program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
+
+Try debugging your program to watch and inspect the instructions and variables.
+
+Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this
+![211-posts-list.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-posts-list.png).  Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+
+Dictionaries in python are encompassed inside of curly braces.  The dictionary from above comes from the JSON representatoin of the blog post.  Lets look at it.
+![211-post.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-post.png)
+
+You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
+
+#### The World Wide Web and APIs
+
+In the above example, we not only pulled code from another package, we also used code from an entirely separate program: your blog server. We asked the "requests" package to make a request to your blog for us, and we asked the blog server for the latest blog post title. We didn't have to write any of the code to store, manage, or retrieve that information. And similarly, those packages then use other packages, too, and so on. That blog post script you have written above easily spans millions of lines of code if you think about all of the layers of packages that get used, all the way down to your operating system and your computers device drivers.
+
+We can do this because of something called **application programming interfaces**, or **APIs** for short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or other servers, all we need are their APIs. Then, the rest of the implementation is hidden to us, and can change and improve without us knowing. We don't need to know or learn all of that code. APIs make us incredibly productive and allow us to create amazing things relatively quickly.
+
+![iot.jpg](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/iot.jpg)
+
+Different APIs come in different flavors. When talking to a website server, like the Wordpress blog from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for different parties to communicate or accomplish some task together. Think of snail mail: when you send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way,we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what serves websites over the internet.
+
+![HTTP_Steps.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/HTTP_Steps.png)
+
+> For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
+
+The Wordpress API can do just about anything we want with our blog. Let's explore!
+
+```python
+# Program 2.2.1
+import requests
+import bs4
+
+# In this program, we're going to make requests to the Wordpress API multiple times. We can start to
+# see some patterns in how we make calls to the API. Also, we want our program to easily read in
+# instructions we understand. Instead of saying "make a request to this URL with these 
+# parameters and parse it as JSON" multiple times, which is too detailed to repeat so often, we'd
+# like to say more clearly what we're trying to do: "list the latest blog posts". Just like if you
+# ask for a ride to school, you don't say "please let me sit in your car, put the car into gear,
+# press the gas until the end of the driveway, then turn left, then stop at the stop sign, ..." and
+# so on. That is painstakingly detailed, and it would be really hard for the person you're asking to
+# understand what you were really asking for. Instead we simply say "may I have a ride to school?"
+# Once we do something once, we can refer to it more quickly. The same is true with programs.
+# Programs need to be clearly understood by humans, too, not just computers.
+
+# To accomplish this, we're going to create a **class** to help organize our code. A class is a
+# collection of functions and variables that we can reuse.
+
+# Start defining a class similar to how you define a function, but instead of the "def" keyword,
+# use the "class" keyword, followed by the class's name. Just like with a function, defining the 
+# class alone doesn't use it. It creates a template that we can reuse later.
+class Blog:
+    # Now we can define functions inside the class.
+    # Classes start with a special "__init__" function which is used to create a new instance of the
+    # class based on zero or more parameters. Here we have a "url" variable that remembers the URL 
+    # of your blog for reuse in other functions.
+    def __init__(self, url):
+        self.url = url
+    
+    # In our last program, we made a request to the Wordpress API to list the latest post. Here 
+    # we're defining a function inside the class, similar to the functions inside a package, that
+    # will list the latest posts, so we can reuse it and more easily understand our code.
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    # We're going to add a function for another request: get the latest comments on a post. We can
+    # use the same class to then list posts and list comments on those posts.
+    def list_latest_comments_on_post(self, post_id, at_most):
+        # Notice the URL are parameters of the request are different for comments.
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+# We'll use this later to display comment text.
+def html_to_text(html):
+    return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
+
+# This is the API of your blog.
+blog_api_url="http://$username.example.com/wp-json/wp/v2"
+
+# Now, we can use our class, and our tasks are easier to write and understand.
+# First, create an instance of our blog by calling our class like we would call a function.
+# This in turn calls our special initialization function we defined above. That function required
+# a url parameter, so we pass that as well. The "self" parameter of class functions is special:
+# we don't need to provide it ourselves when we call class functions.
+blog = Blog(blog_api_url)
+
+# Now that we have an instance of our blog, we can call "list_latest_posts" on it. This does what 
+# it says: lists that latest posts. We can also pass a named parameter to the function, "at_most".
+# This means we are listing "at most 1" post. We could pass other values here, like 50, 
+# to get up to 50 posts. Since we only want the latest post, we'll just set at_most to 1.
+
+latest_posts = blog.list_latest_posts(at_most=1)
+
+if len(latest_posts) > 0: 
+    latest_post = latest_posts[0]
+    
+    # Now that we have that the latest post, let's get some of its comments. To do this, we use 
+    # our class functions again, this time "list_latest_comments_on_post" by providing a post ID
+    # and again some max number of comments we want to get back.
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=1)
+    latest_comment = latest_comments[0]
+    author = latest_comment['author_name']
+    date = latest_comment['date']
+    comment_text = html_to_text(latest_comment['content']['rendered'])
+    words = len(comment_text.split())
+    print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+else:
+    print("No blog posts found. You should post something on your blog first!")
+```
+
+Try commenting on your latest post and rerun your program. Each time the program runs it'll reflect the latest comment.
+
+Can you modify the program to summarize the most recent 5 comments instead of just the most recent comment?
+
+Here's a hint:
+
+```python
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
+    
+    # Rather than manually going through all of the comments, we can use a for loop to loop 
+    # through whatever comments there are for us:
+    for comment in latest_comments:
+        author = comment['author_name']
+        date = comment['date']
+        comment_text = html_to_text(latest_comment['content']['rendered'])
+        words = len(comment_text.split())
+        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+```
+
+#### Using your friends' blogs
+
+We can use our newfound API interaction abilities to talk not just to our own blog server, but also our friends' blog servers!
+
+To interact with our friends' blogs, we'll need to get their blogs' IP addresses.
+
+Ask your friends to get the IP of their interfaces by typing `ip a` in a terminal
+
+	root@raspberrypi:~/2019-chicktech/files/bin# ip a
+	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link 
+       valid_lft forever preferred_lft forever
+
+They are looking for the non `lo` interface that has something on the `inet` line.  Above their IP is `192.168.122.18`. Now you will add their IP address to your hosts file along with a DNS name.  For the username use first letter of their first name and their whole last name. For example
+
+	/opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
+
+
+
+```python
+# Program 2.3.1
+import requests
+
+
+class Blog:
+    def __init__(self, url):
+        self.url = url
+
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+    # We added another function to our Blog class: get the total comments for a blog.
+    def total_comments(self):
+        # Here, we make a request for "comments", but instead of looking at the content, we'll look
+        # at a header in the response.
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+
+        # Headers can add extra information. The Wordpress API includes a header named 'X-WP-Total'
+        # that tells us the total amount there is of a certain resource, in this case comments.
+        # We return that here, after converting the header's value to an integer type.
+        return int(response.headers['X-WP-Total'])
+
+# Add all of the blog URLs here for the blogs in your group.
+blog_urls = {
+    "username1's blog": "http://$username1.example.com/wp-json/wp/v2",
+    "username2's blog": "http://$username2.example.com/wp-json/wp/v2"
+}
+
+# Create an empty list that will be populated later
+top_blogs = []
+# Create an empty varible that will be overwritten later
+top_blog_total_comments = 0
+
+# call class methods for each item in the blog_urls dictionary
+for blog_name, blog_url in blog_urls.items():
+    blog = Blog(blog_url)
+    total_comments = blog.total_comments()
+
+    if total_comments == 0:
+        print("{0} doesn't have any comments yet. Go comment on their blog!".format(blog_name))
+    else:
+        print("{0} has {1} comments!".format(blog_name, total_comments))
+
+    if total_comments == top_blog_total_comments:
+        # Tie for top blog!.  Add the tied blog to the list.
+        top_blogs.append(blog_name)
+        continue
+
+    if total_comments > top_blog_total_comments:
+    	# replace the top_blogs list with just this blog since it has the most comments
+        top_blogs = [blog_name]
+        # replace the top_blog_total_comments with how many comments this blog has
+        top_blog_total_comments = total_comments
+
+if len(top_blogs) > 1:
+	# sepearte each blog title in a tied list with an "and" when printing it out
+    print("There is a tie for the top blog! {0} all have {1} comments.".format(
+          " and ".join(top_blogs), top_blog_total_comments))
+else:
+    print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
+```
+
+
+Take some time to play with this a bit.
+
+
 
 
 ## Quick recap
@@ -437,15 +814,18 @@ Yesterday we covered:
 - What various types of people in IT do
 - What a Raspberry Pi is
 - Installing a LAMP web server stack
-- Installing and customizing the WordPress blog platform
-- What an IDE, API, a package and JSON are
-- Using python and the requests module to get data from web pages
-- Running loops and processing data structures
+- Installing the WordPress blog platform
+- What an IDE, API, and a package are
 - How to do step through debugging
+- Using functions, variables, classes, dictionaries, lists, loops and conditional statements in python
+- Using the python requests module to interact with our wordpress blog and do things like print blog titles and comment counts
 
-## Adding the hardware
 
-The prolilferation of technology, Moore's law and the golablization of the labor force over the last few decades has changed things in interesting ways. Things used to be expensive and mechnical.  Now they are cheap and electronic.
+## Working with hardware
+
+#### History and premise
+
+The prolilferation of technology, Moore's law and the golablization of the labor force over the last few decades has changed things in interesting ways. Devices used to be expensive and mechnical.  Now they are cheap and electronic.
 
 Below is a contrived example that will help drive home the point I'm trying to make.
 
@@ -474,19 +854,14 @@ A water heater today:
 - A mechanic/hacker/enthusiast just sees a bunch of chips when the open up the water heater.  They don't know how it works.  Calling a repair person isn't worth the money because replacing the whole device will likely be cheaper.
 
 
-As devices have gotten "SMART"er more and more electronic components have been needed.  In the past a TV factory would partner with a microcontroller or processor manufacturer and something custom would be fabricated for their use case. This took a long time and cost a considerable amount of money.  And while that still happens, now days exteremly common electronic componets are mass produced and sold on the open market for cheap.  Component vendors now compete to document their components and make them as generic and easy to get and use as possible.
+As devices have gotten "SMART"er more and more electronic components have been needed.  In the past a TV brand would partner with a microcontroller or processor manufacturer and something custom would be fabricated for their use case. This took a long time and cost a considerable amount of money.  And while that still happens, now days exteremly common electronic componets are mass produced and sold on the open market for cheap.  Component vendors now compete to document their components and make them as generic and easy to get and use as possible.
 
 This commoditization of electronic compontes has opened up a new door for hackers.  They can now build their own simplistic SMART devices using off the shelf parts and open source IDEs.  Today we will be hooking up a $8 LCD screen to our Raspberry Pi's and using open source libraries to play with it.
 
-The Raspberry Pi 3 B+ has 40 GPIO (general purpose input/output pins). The pinout looks like
-![pinout](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/pi-pinout-diagram-01.png)
 
-And the pins are counted like this
+#### A word on protocols
 
-
-![pincount](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/RPi-Pinout.jpg)
-
-Your phone knows how to work with your Bluetooth earpods and your laptop knows how to work with your USB mouse because of standardized protocols.  I2C, SPI and UART are also standardized protocols.
+Your phone knows how to work with your Bluetooth airpods and your laptop knows how to work with your USB mouse because Bluetooth and USB are standardized protocols.  I2C, SPI and UART are also standardized protocols.
 
 UART or Universal Asynchronous Reciver/Transmitter is a simple protocol for transferring data back and forth between two devices at the same time.  It uses two wires plus possible ground and power lines.  RX/TX are crossed on each side. Meaning RX on sideA goes to TX on sideB. Clocking is set in software via start/stop bits and baud rates.  In microcontroller applications UART is often used by humans for debugging purposes as they have the microcontroller print break points in the code its running to a serial console.
 
@@ -494,67 +869,108 @@ SPI or Serial Peripheral Interface is simple serial protocol that uses four wire
 
 I2C (pronounced I squared C) is an advanced serial protocol that uses two wires plus possible ground and power lines to connect several devices that are a short distance apart and don't require rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The master calls out to a slave via a specific hard coded 7bit device address.  Communications happen one direction at a time and there can be up to 127 slaves hooked up in parrallel on one I2C bus.  Each device is interconnected via a serial data (SDA) and serial clock(SCL) wires.
 
-In addition to supporting the protocols above, the Raspberry Pi also offers GPIO pins.  When working with those, signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
+The Raspberry Pi can interact with devices that speak these protocols by using special sets of externally exposed pins.
+
+The Raspberry Pi 3 B+ has 40 GPIO (general purpose input/output pins). The pinout looks like
+![pinout](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/pi-pinout-diagram-01.png)
+
+And the pins are counted like this
+
+
+![pincount](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/RPi-Pinout.jpg)
+
+
+
+Additionally, the Pi can interact with devices in generic ways using any of its exposed pins. When working in generic mode, signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
 
 Digital is either on or off.  Think of a light switch.
 Analog is more like what the ocean looks like or what a song looks like in some editing software if you've ever seen that.  Very fluid.
 
-For example, you could build a clap switch.  You could get a sound sensor. It is an digital input to the Raspberry Pi.  When it hears a noise it sends a HIGH signal to the Pi and at that point the Pi has a program written to send a HIGH to a digital output to an LED.  Noise made, light on.  Noise made, light off.
+For example, you could build a clap switch.  You could get a sound sensor and use it as a digital input to the Raspberry Pi.  When it hears a noise it sends a HIGH/ON signal to the Pi and at that point the Pi has a program written to send a TOGGLE to a digital output to an LED.  Noise made, light on.  Noise made, light off.
 
-With analaog in and out you use a photoresistor(light sensor) as an input to detect the ambient light in your room and then alter the brightness of an LED via a PWM/analog output on the Pi in proportion to ambient light.
+With analaog in and out you could use a photoresistor(light sensor) as an input to detect the ambient light in your room and then alter the brightness of an LED via a PWM/analog output on the Pi in proportion to ambient light.
 
 
-If this kind of stuff interests you, you may want to explore `embedded` engineering.  The type of problems these types of engineers solve and the devices they work with are often quite different from your standard softwared engineer.
+If this kind of stuff interests you, you may want to explore `embedded` engineering.  The type of problems these  engineers solve and the devices they work with are often quite different from your standard software engineer.
+
+#### Using the screen
 
 Enough talk, lets hook up that LCD screen
 
 - Shutdown your Pi
-- Wire the screen like [this](TODO)
+- Wire the screen like [this](TODO pic) - ahenning
 - Boot the Pi back up
 
 Now lets print `hello world` on that screen
-TODO
-
-- install package
-- write script
-- execute script
+TODO - ahenning
 
 Raise your hand if this didn't work for you and a volunteer will come around and help you out.
 
 
-Now lets edit the code we wrote yesterday so the title of your blog entry appears on the screen
-TODO
+Now lets do something really cool!
+Lets have the screen print a different emoji based on how many comments your blog has.
+TODO - ahenning comment the code
+```python
+#!/usr/bin/env python3
+import time
+import random
+import requests
+from luma.core.interface.serial import i2c
+from luma.core.render import canvas 
+from luma.oled.device import ssd1306
+from PIL import ImageFont, ImageDraw
 
-Adding some sparkle:
-TODO
+class Blog:
+    def __init__(self, url):
+        self.url = url
 
-- Polling so keeps updating when new post
-- Random positioning of title
-- Scroll title to fit
-- Use font that's more readable, supports emojis (UTF-8)
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
 
-References:
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
 
-- [pinout](https://docs.particle.io/datasheets/discontinued/raspberrypi-datasheet/)
-- [other pinout](https://randomnerdtutorials.com/getting-started-with-raspberry-pi/)
-- [UART](https://www.allaboutcircuits.com/technical-articles/back-to-basics-the-universal-asynchronous-receiver-transmitter-uart/)
-- [I2C](https://robot-electronics.co.uk/i2c-tutorial)
-- [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/all)
-- [I2C/SPI](https://www.byteparadigm.com/applications/introduction-to-i2c-and-spi-protocols/)
-- [I2C/SPI](https://aticleworld.com/difference-between-i2c-and-spi/)
+    def total_comments(self):
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+        return int(response.headers['X-WP-Total'])
 
 
+class Screen:
+    def __init__(self):
+        serial = i2c(port=1, address=0x3c)
+        self.device = ssd1306(serial, rotate=0)
+        self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+    
+    def draw_text_at_random_location(self, text, size=10):
+        font = self.font.font_variant(size=size)
+        with canvas(self.device) as draw:
+            x = random.randint(0,100 + (len(text) * size / 2)) - (len(text) * size / 2)
+            y = random.randint(0,60) - size / 2
+            draw.text((x, y), text, font=font, fill="white")
 
+blog = Blog("http://blog.example.com/wp-json/wp/v2")
+screen = Screen()
 
-## Doing more
-TODO
+def emoji_for_comment_total(total):
+    if total < 5:
+        return "😊"
 
-- Stalking bot
-- Update screen with notification when someone comments on your posts
-- Update blog title based on number of comments
-- Weather API
-- Post comments on X random blogs
-- Game on the LCD screen
+    if total < 10:
+        return "😃" 
+    
+    return "😎"
+
+while True:
+    total_comments = blog.total_comments()
+    size = (total_comments + 3) * 4
+    emoji = emoji_for_comment_total(total_comments)
+    text = "{0} {1} {2}".format(emoji, total_comments, emoji)
+    screen.draw_text_at_random_location(text, size=size)
+    time.sleep(1)
+```
+
 
 
 ## Presentation preperation
@@ -575,9 +991,9 @@ When giving a presentation:
 - Do a practice run amongst peers and ask for feedback
 - Try not to stress it.  A lot of people will completly tune you out.  Others will have no idea what you are talking about.  People that want to challenge you may opt to do so one-on-one after the talk.
 
-We've pre-created a slide deck for use during our upcoming presentations.
+We've pre-created a slide deck for use during our upcoming presentations. It is [here](https://docs.google.com/presentation/d/1r0o8KSgATN6PC5dZ99OmBf6LwJnJ0wWyZS2qvsABIOM/edit#slide=id.p)
 
-We need TODO volunteers.  These girls will:
+We need 3 volunteers.  These girls will:
 
 - Edit the slide deck to their liking
 - Practice amongst themselves and one of the volunteers
@@ -587,25 +1003,54 @@ We need TODO volunteers.  These girls will:
 
 Please raise your hand if you are interested.
 
+
+## Exploring on your own
+
+Please use any remaining free time to be creative with anything you've leared so far.  Also feel free to ask us any questions you may have.
+
+Need some ideas?  Here are some code samples you can play with.
+
+- Friend bot - TODO - sgunta
+- Posting a blog entry via code - TODO - sgunta
+- Polling for new blog posts - TODO - miwhite
+
+
+#### Pulling weather data from the internet
+```python
+#!/usr/bin/env python3
+import requests
+import json
+#raleigh
+LAT = "35.7877"
+LONG = "-78.6442"
+#https://www.weather.gov/documentation/services-web-api#/
+#https://rapidapi.com/theapiguy/api/national-weather-service/details
+url = "https://api.weather.gov/points/{0},{1}/forecast".format(LAT,LONG)
+response = requests.get(url)
+j = json.loads(response.text)
+tf = (j["properties"]["periods"][0]["temperature"])
+print('It is currently {0} °F'.format(tf))
+```
+
 ## Conclusion
 Over the past two days we've covered:
 
 - What various types of people in IT do
 - What a Raspberry Pi is
 - Installing a LAMP web server stack
-- Installing and customizing the WordPress blog platform
-- What an IDE, API, a package and JSON are
-- Using python and the requests module to get data from web pages
-- Running loops and processing data structures
+- Installing the WordPress blog platform
+- What an IDE, API, and a package are
 - How to do step through debugging
-- Hardware protocols and the re-birth of the hobbyist
-- Hooking up a screen to a Raspberry Pi and printing text on it
-- How the technical stuff we covered can be altered to meet other use cases (weather).
-- Some presentation skills
+- Using functions, variables, classes, dictionaries, lists, loops and conditional statements in python
+- Using the python requests module to interact with our wordpress blog and do things like print blog titles and comment counts
+- Hardware protocols and what an embedded engineer does
+- Hooking up a screen to a Raspberry Pi
+- Extending our python requests code to print blog titles or interactive comment counts to the screen
+- Some tips and tricks for giving a good presentation
+
+Towards the end of the class we also spent some time preparing for our presentation and allowing you to explore the concepts you've learned on your own.
 
 This concludes our lab.  We've had a blast teaching and getting to know all of you.  You get to take the Raspberry Pi and LCD screen home to play with them more.
-
-If you have any questions about anything at all, feel free to ask now.  All the volunteers will be around until the end of todays events so feel free to talk to us individually as well.
 
 Have a great rest of the year and we hope to see you at interviews or as interns in a few years!
 

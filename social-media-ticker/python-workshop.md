@@ -14,8 +14,7 @@ print("Hello Chicktech!")
 ```
 
 This is an instruction that tells the computer to "print" the text "Hello Chicktech!" to the 
-screen. Python is a simple but powerful programming language that is famously easy to learn but 
-still powerful enough to --TODO: insert some cool statistic about how widely python is used--.
+screen. According to [Tiobe](https://www.infoworld.com/article/3331603/pythons-popularity-surges-as-a-mainstay-language.html), which ranks languages based on numbers of engineers in the field and search trends across search engines, python is currently the third most popular language.  Python will likely continue to gain marketshare since it is easy to learn and use and still powerful enough to be used by some of the most visited sites on the internet like [pintrest](https://www.pinterest.com/) and [reddit](https://www.reddit.com).
 
 Let's try it out!
 
@@ -24,7 +23,7 @@ Let's try it out!
 Writing programs, like playing music or building a house, requires tools. A common tool is an 
 "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
 
-> TODO: Insert pictures of directions to open Thonny here
+![thonny.png](thonny.png)
 
 In Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
@@ -61,7 +60,7 @@ line's line number on the left ("1"). Then click the green debug button above.
 
 ![debugging.png](debugging.png)
 
-When you click debug, notice you do not immediate see "Hello Chicktech!". Instead, execution is
+When you click debug, notice you do not immediately see "Hello Chicktech!". Instead, execution is
 paused at the first line (where you added a breakpoint), which is also highlighted in yellow. To 
 execute this first line, press the "step over" button above, which "steps over" and executes 
 the current line.
@@ -170,7 +169,7 @@ bundled up into **packages** that can be downloaded and imported into your progr
 
 Let's use one of those packages, called "requests", that allows us to communicate with other 
 websites, like the blog you're running, in our code. In this way, we can write programs that 
-interact with our blog: automating tasks, summarizing posts, even displaying posts screens hooked up
+interact with our blog: automating tasks, summarizing posts, even displaying posts on screens hooked up
 to our Raspberry Pis. The sky is the limit!
 
 > For full documentation of the "requests" package, see: https://2.python-requests.org/en/master/
@@ -181,10 +180,10 @@ to our Raspberry Pis. The sky is the limit!
 import requests
 
 # Named things like packages and variables can have functions and other variables within them that
-# we can reuse. We can refer to them use the package name and a . character like so:
+# we can reuse. To refer to them use the package name and a . character like so:
 response = requests.get("http://blog.example.com/wp-json/wp/v2/posts", params={"per_page": 1})
 
-# We've just made requested the latest blog post from our blog server. We've stored the response to 
+# We've just requested the latest blog post from our blog server. We've stored the response to 
 # that request in a variable named "response" above.
 
 # Requests and responses are like letters we can send or get in the mail. They have an envelope, 
@@ -231,8 +230,14 @@ constructed a request from our program, sent it to the blog server, and parsed i
 
 Try debugging your program to watch and inspect the instructions and variables.
 
---TODO: Take screenshots of debugging. Consider moving commentary to be alongside debugging 
-screenshots--
+Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this
+![211-posts-list.png](211-posts-list.png)
+The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+
+The dictionary from above is actually the JSON representatoin of the blog post.  Lets look at it.
+![211-post.png](211-post.png)
+
+You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
 ### 2.2 The World Wide Web and APIs
 
@@ -247,11 +252,11 @@ way down to your operating system and your computers device drivers.
 We can do this because of something called **application programming interfaces**, or **APIs** for 
 short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or 
 weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or
-other servers, all we need are their APIs. Then, the rest of the implementation is hidden us, and 
-can change and improve without us. We don't need to know or learn all of that code. APIs make us 
+other servers, all we need are their APIs. Then, the rest of the implementation is hidden to us, and 
+can change and improve without us knowing. We don't need to know or learn all of that code. APIs make us 
 incredibly productive and allow us to create amazing things relatively quickly.
 
---TODO: insert diagram about APIs--
+![iot.jpg](iot.jpg)
 
 Different APIs come in different flavors. When talking to a website server, like the Wordpress blog 
 from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for
@@ -260,7 +265,7 @@ send a letter, we have a protocol that says we use envelopes, we write our addre
 we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what 
 serves websites over the internet.
 
---TODO: insert diagram about web service communication--
+![HTTP_Steps.png](HTTP_Steps.png)
 
 > For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
 
@@ -269,6 +274,7 @@ The Wordpress API can do just about anything we want with our blog. Let's explor
 ```python
 # Program 2.2.1
 import requests
+import bs4
 
 # In this program, we're going to make requests to the Wordpress API multiple times. We can start to
 # see some patterns in how we make calls to the API. Also, we want our program to easily read in
@@ -295,35 +301,94 @@ class Blog:
     # of your blog for reuse in other functions.
     def __init__(self, url):
         self.url = url
-
+    
+    # In our last program, we made a request to the Wordpress API to list the latest post. Here 
+    # we're defining a function inside the class, similar to the functions inside a package, that
+    # will list the latest posts, so we can reuse it and more easily understand our code.
     def list_latest_posts(self, at_most):
         response = requests.get(self.url + "/posts", params={"per_page": at_most})
         return response.json()
 
-    def list_comments_on_post(self, post_id, at_most):
+    # We're going to add a function for another request: get the latest comments on a post. We can
+    # use the same class to then list posts and list comments on those posts.
+    def list_latest_comments_on_post(self, post_id, at_most):
+        # Notice the URL are parameters of the request are different for comments.
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+# We'll use this later to display comment text.
+def html_to_text(html):
+    return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
+
+# This is the API of your blog.
 blog_api_url="http://blog.example.com/wp-json/wp/v2"
 
+# Now, we can use our class, and our tasks are easier to write and understand.
+# First, create an instance of our blog by calling our class like we would call a function.
+# This in turn calls our special initialization function we defined above. That function required
+# a url parameter, so we pass that as well. The "self" parameter of class functions is special:
+# we don't need to provide it ourselves when we call class functions.
 blog = Blog(blog_api_url)
+
+# Now that we have an instance of our blog, we can call "list_latest_posts" on it. This does what 
+# it says: lists that latest posts. We can also pass a named parameter to the function, "at_most".
+# This means we are listing "at most 1" post. We could pass other values here like 50 to get all of
+# the posts, up to 50 posts (if there are 50 or more, we won't get those). Since we only want the
+# latest post, we'll just set at_most to 1. It's possible we might still get zero posts, if there
+# are no posts in your blog yet.
 latest_posts = blog.list_latest_posts(at_most=1)
 
 if len(latest_posts) > 0: 
     latest_post = latest_posts[0]
-    comments = blog.list_comments_on_post(post_id=latest_post['id'], at_most=10)
-    print("Your latest post has {0} comments! 😀".format(len(comments)))
+    
+    # Now that we have that the latest post, let's get some of its comments. To do this, we use 
+    # our class functions again, this time "list_latest_comments_on_post" by providing a post ID
+    # and again some max number of comments we want to get back.
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=1)
+    latest_comment = latest_comments[0]
+    author = latest_comment['author_name']
+    date = latest_comment['date']
+    comment_text = html_to_text(latest_comment['content']['rendered'])
+    words = len(comment_text.split())
+    print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
 
-Try commenting on your post and rerun the program. You should your count go up!
+Try commenting on your latest post and rerun your program. Each time the program runs it'll reflect
+the latest comment.
 
-### 2.3 Using your friends blogs
+Can you modify the program to summarize the most recent 5 comments instead of just the most recent
+comment?
+
+Here's a hint:
+
+```python
+    latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
+    
+    # Rather than manually going through all of the comments, we can use a **for loop** to loop 
+    # through whatever comments there are for us:
+    for comment in latest_comments:
+        author = comment['author_name']
+        date = comment['date']
+        comment_text = html_to_text(latest_comment['content']['rendered'])
+        words = len(comment_text.split())
+        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+```
+
+### 2.3 Using your friends' blogs
+
+We can use our newfound API interaction abilities to talk not just to our own blog server, but also
+our friends' blog servers!
+
+To interact with our friends' blogs, we'll need to get their blogs' IP addresses.
+
+--TODO: insert instructions for getting ips and editing host file--
 
 ```python
 # Program 2.3.1
 import requests
+
 
 class Blog:
     def __init__(self, url):
@@ -337,11 +402,18 @@ class Blog:
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+    # We added another function to our Blog class: get the total comments for a blog.
     def total_comments(self):
+        # Here, we make a request for "comments", but instead of looking at the content, we'll look
+        # at a **header** in the response.
         response = requests.get(self.url + "/comments", params={"per_page": 1})
+        
+        # Headers can add extra information. The Wordpress API includes a header named 'X-WP-Total'
+        # that tells us the total amount there is of a certain resource, in this case comments.
+        # We return that here, after converting the header's value to an integer type.
         return int(response.headers['X-WP-Total'])
 
-
+# Add all of the blog URLs here for the blogs in your group.
 blog_urls = {
     "Alec's blog": "http://demo.wp-api.org/wp-json/wp/v2",
     "Dustin's blog": "http://demo.wp-api.org/wp-json/wp/v2"
@@ -373,4 +445,65 @@ if len(top_blogs) > 1:
           " and ".join(top_blogs), top_blog_total_comments))
 else:
     print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
+```
+
+```python
+#!/usr/bin/env python3
+import time
+import random
+import requests
+from luma.core.interface.serial import i2c
+from luma.core.render import canvas 
+from luma.oled.device import ssd1306
+from PIL import ImageFont, ImageDraw
+
+class Blog:
+    def __init__(self, url):
+        self.url = url
+
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
+
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
+
+    def total_comments(self):
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+        return int(response.headers['X-WP-Total'])
+
+
+class Screen:
+    def __init__(self):
+        serial = i2c(port=1, address=0x3c)
+        self.device = ssd1306(serial, rotate=0)
+        self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+    
+    def draw_text_at_random_location(self, text, size=10):
+        font = self.font.font_variant(size=size)
+        with canvas(self.device) as draw:
+            x = random.randint(0,100 + (len(text) * size / 2)) - (len(text) * size / 2)
+            y = random.randint(0,60) - size / 2
+            draw.text((x, y), text, font=font, fill="white")
+
+blog = Blog("http://blog.example.com/wp-json/wp/v2")
+screen = Screen()
+
+def emoji_for_comment_total(total):
+    if total < 5:
+        return "😊"
+
+    if total < 10:
+        return "😃" 
+    
+    return "😎"
+
+while True:
+    total_comments = blog.total_comments()
+    size = (total_comments + 3) * 4
+    emoji = emoji_for_comment_total(total_comments)
+    text = "{0} {1} {2}".format(emoji, total_comments, emoji)
+    screen.draw_text_at_random_location(text, size=size)
+    time.sleep(1)
 ```

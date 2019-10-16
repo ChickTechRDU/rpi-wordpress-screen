@@ -63,7 +63,7 @@ from PIL import ImageFont, ImageDraw
 # Snip....
 
 with canvas(device) as draw:
-    font = ImageFont.truetype('./ssd1306/fonts/Volter__28Goldfish_29.ttf',20)
+    font = ImageFont.truetype('/usr/share/fonts/opentype/linux-libertine/LinLibertine_M.otf',20)
     draw.text((0, 0), "Hello World", font=font, fill=255)
 ```
 
