@@ -732,7 +732,9 @@ They are looking for the non `lo` interface that has something on the `inet` lin
 
 	/opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
 
+The hosts file maps hostnames in urls (like "www.google.com") to IP addresses. This means we can use those hostnames to refer to your friends' blog servers.
 
+Let's use those hosts in the program below to look at the comments from all of our friends blogs and see who has the most. For fun you can try commenting on each other's blogs to see the results change.
 
 ```python
 # Program 2.3.1
@@ -762,18 +764,22 @@ class Blog:
         # We return that here, after converting the header's value to an integer type.
         return int(response.headers['X-WP-Total'])
 
-# Add all of the blog URLs here for the blogs in your group.
+# Add all of the blog URLs here for the blogs in your group in what's called a **dictionary**. 
+# This allows us to refer to the blogs later by a readable name like "Jenn's Blog".
 blog_urls = {
     "username1's blog": "http://$username1.example.com/wp-json/wp/v2",
     "username2's blog": "http://$username2.example.com/wp-json/wp/v2"
 }
 
-# Create an empty list that will be populated later
+# As we go through the blogs, we need to track which ones have the most comments. We store the
+# top blogs in a variable that we'll overwrite each time we find a new blog that matches or exceeds
+# our current top blog.
 top_blogs = []
-# Create an empty varible that will be overwritten later
+# For each of the blogs with the most comments, we'll track the number of comments that is with
+# another variable.
 top_blog_total_comments = 0
 
-# call class methods for each item in the blog_urls dictionary
+# Again we'll use a for loop to get the total comments for each blog in the blog_urls dictionary.
 for blog_name, blog_url in blog_urls.items():
     blog = Blog(blog_url)
     total_comments = blog.total_comments()
@@ -786,27 +792,38 @@ for blog_name, blog_url in blog_urls.items():
     if total_comments == top_blog_total_comments:
         # Tie for top blog!.  Add the tied blog to the list.
         top_blogs.append(blog_name)
+        # We don't need to adjust the top_blog_total_comments because this blog has the same number,
+        # so it doesn't change.
+        
+        # The 'continue' keyword makes us skip to the next iteration of the for loop without running
+        # any other code below.
         continue
-
+    
     if total_comments > top_blog_total_comments:
-    	# replace the top_blogs list with just this blog since it has the most comments
+        # We found a new top blog! 
+        # Replace the top_blogs list with just this blog since it has the most comments.
         top_blogs = [blog_name]
-        # replace the top_blog_total_comments with how many comments this blog has
+        # Replace the top_blog_total_comments with how many comments this blog has.
         top_blog_total_comments = total_comments
 
+# Now print out the winner. But first we have to check if there is a tie, so we print out all of the
+# winners.
 if len(top_blogs) > 1:
-	# sepearte each blog title in a tied list with an "and" when printing it out
+    # Since we've got a tie, separate each blog title the list of top blogs with an "and" when 
+    # printing it out.
     print("There is a tie for the top blog! {0} all have {1} comments.".format(
           " and ".join(top_blogs), top_blog_total_comments))
 else:
+    # No tie. Just print out the single winner.
     print("{0} is the top blog with {1} comments".format(top_blogs[0], top_blog_total_comments))
 ```
 
+Take some time to play with this a bit:
 
-Take some time to play with this a bit.
-
-
-
+- Try commenting on each other's blogs by browsing to the URLs we added to your hosts file and commenting on them. Then, rerun your program so you can watch each others counts go up.
+- What happens if you don't put any blog urls in the `blog_urls` dictionary and then run the program?
+- Try counting comments on just the latest post. How would our blog request change? Can you add a new method to the class to help? 
+- Try counting blog posts instead of comments. How would our blog request change? Can you add a new method to the class to help?
 
 ## Quick recap
 Yesterday we covered:
@@ -945,7 +962,7 @@ Raise your hand if this didn't work for you and a volunteer will come around and
 
 Now lets do something really cool!
 Lets have the screen print a different emoji based on how many comments your blog has.
-TODO - ahenning this is yours
+
 ```python
 #!/usr/bin/env python3
 import time
