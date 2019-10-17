@@ -945,7 +945,7 @@ Raise your hand if this didn't work for you and a volunteer will come around and
 
 Now lets do something really cool!
 Lets have the screen print a different emoji based on how many comments your blog has.
-TODO - miwhite comment the code
+TODO - ahenning this is yours
 ```python
 #!/usr/bin/env python3
 import time
@@ -1047,7 +1047,7 @@ Please use any remaining free time to be creative with anything you've leared so
 Need some ideas?  Here are some code samples you can play with.
 
 - Friend bot - TODO - sgunta post the complete commented code
-- Posting a comment via code - TODO - miwhite comment code.
+- Posting a comment via code - TODO - miwhite doing this one (comment code)
 
 ```python
 import requests
@@ -1107,7 +1107,7 @@ print(
     sep='\n')
 ```
 
-- Polling for new blog posts - TODO miwhite comment code
+- Polling for new blog posts - TODO miwhite doing this one (comment code)
 
 ```python
 import requests
