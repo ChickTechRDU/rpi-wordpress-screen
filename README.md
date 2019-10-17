@@ -1082,17 +1082,13 @@ class Blog:
     def __init__(self, url):
         self.url = url
 
-    def get(self, path_template, *args, **kwargs):
-        url = (self.url + path_template).format(*args)
-        response = requests.get(url, params=kwargs)
-        print("Making a GET request to URL: {}".format(response.url))
-        return response
+    def list_latest_posts(self, at_most):
+        response = requests.get(self.url + "/posts", params={"per_page": at_most})
+        return response.json()
 
-    def list_posts(self, per_page=3):
-        return self.get("/posts", per_page=per_page).json()
-
-    def list_comments_on_post(self, post_id, per_page=3):
-        return self.get("/comments", post=post_id, per_page=per_page).json()
+    def list_comments_on_post(self, post_id, at_most):
+        response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
+        return response.json()
 
     def total_comments(self):
         response = requests.get(self.url + "/comments", params={"per_page": 1})
@@ -1111,21 +1107,18 @@ class Blog:
         return response.content
 
 
-
-blog = Blog('http://$username1.example.com/wp-json/wp/v2')
-posts = blog.list_posts(per_page=1)
-print([post['title']['rendered'] for post in posts])
-print("😀")
-print(
-    *[blog.list_comments_on_post(post_id=post['id'], per_page=5) for post in posts],
-  sep='\n')
+blog = Blog('http://blog.example.com/wp-json/wp/v2')
 
 print('Enter your comment')
 comment_to_post = input()
+
 print('Posting your comment')
-print(
-    *[blog.comment_on_post(post_id=post['id'], comment_to_post=comment_to_post) for post in posts],
-    sep='\n')
+posts = blog.list_latest_posts(at_most=1)
+
+if len(posts) > 0:
+    latest_post = posts[0]
+    posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post)
+    print(posted)
 ```
 
 - Polling for new blog posts - TODO miwhite doing this one (comment code)
