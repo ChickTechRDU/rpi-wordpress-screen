@@ -425,11 +425,11 @@ Writing programs, like playing music or building a house, requires tools. A comm
 
 In Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
-![first-statement.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/first-statement.png)
+![first-statement.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/first-statement.png)
 
 Now click the green run button above.
 
-![run-program.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/run-program.png)
+![run-program.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/run-program.png)
 
 Congrats! You've got a working program!
 
@@ -448,11 +448,11 @@ Our second line also included a **comment**, which started with the `#`. Comment
 
 One neat feature of IDEs is that they have **debuggers**. These are tools which allow us to watch a program run, pause it mid-execution, and inspect what its doing as it does it. We can trigger pauses by adding **breakpoints** on the lines that we want to pause on. Add breakpoints by double clicking on the first line's line number on the left ("1"). Then click the green debug button above.
 
-![debugging.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/debugging.png)
+![debugging.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/debugging.png)
 
 When you click debug, notice you do not immediately see "Hello Chicktech!". Instead, execution is paused at the first line (where you added a breakpoint), which is also highlighted in yellow. To execute this first line, press the "step over" button above, which "steps over" and executes the current line.
 
-![step.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step.png)
+![step.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step.png)
 
 Now you see "Hello Chicktech!" output on the bottom pane. Press it again to see "Hello World!".
 
@@ -461,15 +461,15 @@ To remove a breakpoint, double click the breakpoint icon (the red circle next to
 This time, let's use the "step into" button, instead of "step over". "Step into" allows us to see more deeply into what our program is doing, which is useful when we start to define more complex programs. "Step over" is useful when we want an overview, and don't want to get bogged down with the details.
 
 1. Click "Step into" **once**.
-   ![step-debug-before-step-in.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/start-debug-before-step-in.png)
+   ![step-debug-before-step-in.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/start-debug-before-step-in.png)
 2. Notice that our IDE has popped out the current line and highlighted it, executing it and moving to the next line.
-   ![step-in-1](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-1.png)
+   ![step-in-1]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-1.png)
 3. Click "Step into" **two** more times.
 4. Now notice the text `"Hello Chicktech!"` changed color. The IDE **evaluated** our **expression** and is showing the result. Our expression, `"Hello Chicktech!"` was very simple, so it evaluated to the same thing, but all kinds of expressions exist in python as a way to compute more interesting values.
-   ![step-in-3-string-expression.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-3-string-expression.png)
+   ![step-in-3-string-expression.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-3-string-expression.png)
 5. Click "Step into" **two** more times.
 6. Now notice `print` has turned into a green `None`. The `print` instruction itself is an expression, but it doesn't evaluate to anything. `None` is python's value that represents nothing.
-   ![step-in-5-print-expression.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-5-print-expression.png)
+   ![step-in-5-print-expression.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/step-in-5-print-expression.png)
 7. Click "Step into" **one** more time and the debugger will jump to the next line.
 
 
@@ -581,10 +581,10 @@ Copy the above program into your IDE and run it. If you've written any posts in 
 Try debugging your program to watch and inspect the instructions and variables.
 
 Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this
-![211-posts-list.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-posts-list.png).  Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+![211-posts-list.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-posts-list.png).  Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
 
 Dictionaries in python are encompassed inside of curly braces.  The dictionary from above comes from the JSON representatoin of the blog post.  Lets look at it.
-![211-post.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-post.png)
+![211-post.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/211-post.png)
 
 You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
@@ -594,11 +594,11 @@ In the above example, we not only pulled code from another package, we also used
 
 We can do this because of something called **application programming interfaces**, or **APIs** for short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or other servers, all we need are their APIs. Then, the rest of the implementation is hidden to us, and can change and improve without us knowing. We don't need to know or learn all of that code. APIs make us incredibly productive and allow us to create amazing things relatively quickly.
 
-![iot.jpg](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/iot.jpg)
+![iot.jpg]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/iot.jpg)
 
 Different APIs come in different flavors. When talking to a website server, like the Wordpress blog from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for different parties to communicate or accomplish some task together. Think of snail mail: when you send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way,we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what serves websites over the internet.
 
-![HTTP_Steps.png](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/HTTP_Steps.png)
+![HTTP_Steps.png]((https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/HTTP_Steps.png)
 
 > For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
 
@@ -897,19 +897,55 @@ If this kind of stuff interests you, you may want to explore `embedded` engineer
 
 Enough talk, lets hook up that LCD screen
 
-- Shutdown your Pi
-- Wire the screen like [this](TODO pic) - ahenning
+- Shutdown your Pi and remove its case
+- Wire the screen like this...
+
+With the USB ports facing towards you and HDMI port on the left, look at the left column of GPIO pins. You will only use this column.  You will start at the top of the column and count down its pins increasing by an odd number each time.  The top left pin is `1`, the pin below it is, `3`, and so on. Notice that pin `7` is not in use.
+
+The pins on the screen are labelled.
+
+| Screen Pin | Pi Pin |
+|--------|--------|
+| VCC    | Pin 1 / 3.3V       |
+| GND    | Pin 9 / GND |
+| SCL    | Pin 5 / SCL |
+| SDA    | Pin 3 / SDA |
+
+![hookup1](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/hookup1.jpg)
+
+![hookup2](https://gitlab.corp.redhat.com/dminnich/2019-chicktech/raw/master/docs/hookup2.jpg)
+
+
 - Boot the Pi back up
 
 Now lets print `hello world` on that screen
-TODO - ahenning
+
+```python
+#!/usr/bin/env python3
+#the screen uses the I2C protocol.  Import a package that makes talking that protocol easy.
+from luma.core.interface.serial import i2c
+#import a package that allows for easy drawing on screens
+from luma.core.render import canvas
+#our screen has a ssd1306 chip in it
+from luma.oled.device import ssd1306
+
+#I2C communicates with devices on defined addresses.  The address the ssd1306 uses is 0x3C. Connect to it.
+serial = i2c(port=1, address=0x3C)
+device = ssd1306(serial, rotate=0)
+with canvas(device) as draw:
+	#draw on the screen
+    draw.text((10, 40), "Hello World", fill="white")
+#keep this program running so the text stays on the screen
+while True:
+    pass
+```
 
 Raise your hand if this didn't work for you and a volunteer will come around and help you out.
 
 
 Now lets do something really cool!
 Lets have the screen print a different emoji based on how many comments your blog has.
-TODO - ahenning comment the code
+TODO - miwhite comment the code
 ```python
 #!/usr/bin/env python3
 import time
@@ -950,7 +986,7 @@ class Screen:
             y = random.randint(0,60) - size / 2
             draw.text((x, y), text, font=font, fill="white")
 
-blog = Blog("http://blog.example.com/wp-json/wp/v2")
+blog = Blog("http://$username.example.com/wp-json/wp/v2")
 screen = Screen()
 
 def emoji_for_comment_total(total):
@@ -1010,9 +1046,102 @@ Please use any remaining free time to be creative with anything you've leared so
 
 Need some ideas?  Here are some code samples you can play with.
 
-- Friend bot - TODO - sgunta
-- Posting a blog entry via code - TODO - sgunta
-- Polling for new blog posts - TODO - miwhite
+- Friend bot - TODO - sgunta post the complete commented code
+- Posting a comment via code - TODO - miwhite comment code.
+
+```python
+import requests
+
+
+class Blog:
+    """
+    Simple Wordpress blog client.
+    """
+
+    def __init__(self, url):
+        self.url = url
+
+    def get(self, path_template, *args, **kwargs):
+        url = (self.url + path_template).format(*args)
+        response = requests.get(url, params=kwargs)
+        print("Making a GET request to URL: {}".format(response.url))
+        return response
+
+    def list_posts(self, per_page=3):
+        return self.get("/posts", per_page=per_page).json()
+
+    def list_comments_on_post(self, post_id, per_page=3):
+        return self.get("/comments", post=post_id, per_page=per_page).json()
+
+    def total_comments(self):
+        response = requests.get(self.url + "/comments", params={"per_page": 1})
+        return int(response.headers['X-WP-Total'])
+
+    def comment_on_post(self, post_id, comment_to_post):
+        url = (self.url + '/comments')
+        data = {
+            'post':post_id,
+            'author_name':'Your name',
+            'author_email':'YourEmail@gmail.com',
+            'content':comment_to_post
+        }
+        print("Making a POST request to URL: {}".format(url))
+        response = requests.post(url, data)
+        return response.content
+
+
+
+blog = Blog('http://$username1.example.com/wp-json/wp/v2')
+posts = blog.list_posts(per_page=1)
+print([post['title']['rendered'] for post in posts])
+print("😀")
+print(
+    *[blog.list_comments_on_post(post_id=post['id'], per_page=5) for post in posts],
+  sep='\n')
+
+print('Enter your comment')
+comment_to_post = input()
+print('Posting your comment')
+print(
+    *[blog.comment_on_post(post_id=post['id'], comment_to_post=comment_to_post) for post in posts],
+    sep='\n')
+```
+
+- Polling for new blog posts - TODO miwhite comment code
+
+```python
+import requests
+import datetime
+import time
+
+class Blog:
+
+   def __init__(self, url):
+        self.url = url
+
+   def has_anything_new_been_posted_yet(self):
+       polling = True
+       while polling:
+        response = requests.get(self.url + "/comments", params={"post": 1, "per_page": 1})
+        current_timestamp = datetime.datetime.fromtimestamp(0)
+        print("current timestamp before ",current_timestamp)
+        most_recent_post = datetime.datetime.fromisoformat(response.json()[0]['date'])
+        if most_recent_post > current_timestamp:
+           current_timestamp =  most_recent_post
+           print("a new post just came up on ",self.url, "at ",current_timestamp)
+           polling = False
+        else:
+            polling = True
+        time.sleep(3)
+
+blog_urls = {
+    "username1's blog": "http://$username1.example.com/wp-json/wp/v2",
+    "username2's blog": "http://$username2.example.com/wp-json/wp/v2"
+    }
+
+blog = Blog(blog_urls.get("Alec's blog"));
+blog.has_anything_new_been_posted_yet()
+```
 
 
 #### Pulling weather data from the internet
