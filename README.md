@@ -19,7 +19,7 @@ Now that the icebreaker is done, we want to tell you a bit more about ourselves 
 My name is Dustin Minnich and I'm a Principal Systems Administrator.  As a sysadmin I'm responsible for:
 
 - Designing, building, documenting and supporting full stack solutions to business problems
-- Making sure systems are always reachable by planning and implementing high avalibility and disaster recovery strategies
+- Making sure systems are always reachable by planning and implementing high availability and disaster recovery strategies
 - Automating day to day tasks and writing basic scripts and applications
 - Rolling out new versions of custom code to systems
 - Working closely with developers to ensure that they make good security and performance decisions
@@ -31,7 +31,7 @@ My name is Michael White and I'm a Lead Application Integration Engineer.  As a 
 - TODO - miwhite
 
 
-My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a Sofware Engineer I'm responsible for:
+My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a Software Engineer I'm responsible for:
 
 - Choosing techonolgy paths that will directly make or break a 34 billion dollar company on a daily basis.
 - TODO - ahenning
@@ -580,13 +580,17 @@ Copy the above program into your IDE and run it. If you've written any posts in 
 
 Try debugging your program to watch and inspect the instructions and variables.
 
-Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this
-![211-posts-list.png](/docs/211-posts-list.png).  Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this:
 
-Dictionaries in python are encompassed inside of curly braces.  The dictionary from above comes from the JSON representatoin of the blog post.  Lets look at it.
+![211-posts-list.png](/docs/211-posts-list.png)
+
+Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
+
+Dictionaries in python are encompassed inside of curly braces.  The dictionary from above comes from the JSON representation of the blog post.  Lets look at it:
+
 ![211-post.png](/docs/211-post.png)
 
-You use the "word" sytnax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
+You use the "word" syntax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
 #### The World Wide Web and APIs
 
