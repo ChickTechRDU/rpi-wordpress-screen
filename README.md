@@ -417,7 +417,7 @@ This is an instruction that tells the computer to "print" the text "Hello Chickt
 
 Let's try it out!
 
-##### Development environments
+### Development environments
 
 Writing programs, like playing music or building a house, requires tools. A common tool is an "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
 
@@ -433,7 +433,7 @@ Now click the green run button above.
 
 Congrats! You've got a working program!
 
-##### Debugging and expressions
+### Debugging and expressions
 
 Instructions in Python programs (sometimes also called "scripts") are run line-by-line, one at a time. Let's add another and see. Edit your code to look like the following by adding an additional line.
 
@@ -473,7 +473,7 @@ This time, let's use the "step into" button, instead of "step over". "Step into"
 7. Click "Step into" **one** more time and the debugger will jump to the next line.
 
 
-##### Functions and variables
+### Functions and variables
 
 In our program, `print` is a function. Functions group many instructions together so that they can be reused simply by referencing the function's name. When we reuse a function, we say we're **calling** that function.
 
@@ -592,7 +592,7 @@ Dictionaries in python are encompassed inside of curly braces.  The dictionary f
 
 You use the "word" syntax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
-#### The World Wide Web and APIs
+### The World Wide Web and APIs
 
 In the above example, we not only pulled code from another package, we also used code from an entirely separate program: your blog server. We asked the "requests" package to make a request to your blog for us, and we asked the blog server for the latest blog post title. We didn't have to write any of the code to store, manage, or retrieve that information. And similarly, those packages then use other packages, too, and so on. That blog post script you have written above easily spans millions of lines of code if you think about all of the layers of packages that get used, all the way down to your operating system and your computers device drivers.
 
@@ -710,7 +710,7 @@ Here's a hint:
         print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 ```
 
-#### Using your friends' blogs
+### Using your friends' blogs
 
 We can use our newfound API interaction abilities to talk not just to our own blog server, but also our friends' blog servers!
 
@@ -844,7 +844,7 @@ Yesterday we covered:
 
 ## Working with hardware
 
-#### History and premise
+### History and premise
 
 The prolilferation of technology, Moore's law and the golablization of the labor force over the last few decades has changed things in interesting ways. Devices used to be expensive and mechnical.  Now they are cheap and electronic.
 
@@ -868,19 +868,19 @@ A water heater 15 years ago:
 A water heater today:
 
 - Can use a calendar schedule
-- Can use enviromental presets
+- Can use environmental presets
 - Can react based on gallons dispersed to encourage flat rate bills
 - Can email you if there is a problem
 - Cost $300
 - A mechanic/hacker/enthusiast just sees a bunch of chips when the open up the water heater.  They don't know how it works.  Calling a repair person isn't worth the money because replacing the whole device will likely be cheaper.
 
 
-As devices have gotten "SMART"er more and more electronic components have been needed.  In the past a TV brand would partner with a microcontroller or processor manufacturer and something custom would be fabricated for their use case. This took a long time and cost a considerable amount of money.  And while that still happens, now days exteremly common electronic componets are mass produced and sold on the open market for cheap.  Component vendors now compete to document their components and make them as generic and easy to get and use as possible.
+As devices have gotten "SMART"er more and more electronic components have been needed.  In the past a TV brand would partner with a microcontroller or processor manufacturer and something custom would be fabricated for their use case. This took a long time and cost a considerable amount of money.  And while that still happens, now days extremely common electronic components are mass produced and sold on the open market for cheap.  Component vendors now compete to document their components and make them as generic and easy to get and use as possible.
 
-This commoditization of electronic compontes has opened up a new door for hackers.  They can now build their own simplistic SMART devices using off the shelf parts and open source IDEs.  Today we will be hooking up a $8 LCD screen to our Raspberry Pi's and using open source libraries to play with it.
+This commoditization of electronic components has opened up a new door for hackers.  They can now build their own simplistic SMART devices using off the shelf parts and open source IDEs.  Today we will be hooking up a $8 LCD screen to our Raspberry Pi's and using open source libraries to play with it.
 
 
-#### A word on protocols
+### A word on protocols
 
 Your phone knows how to work with your Bluetooth airpods and your laptop knows how to work with your USB mouse because Bluetooth and USB are standardized protocols.  I2C, SPI and UART are also standardized protocols.
 
@@ -888,19 +888,17 @@ UART or Universal Asynchronous Reciver/Transmitter is a simple protocol for tran
 
 SPI or Serial Peripheral Interface is simple serial protocol that uses four wires plus possible ground and power lines to connect several devices that are a short distance apart together and need rapid data transfer.  Generally one device is condered the master and the rest are considered slaves.  The clock is set with the clock wire and a slave is chosen using the SS wire.  All devices are hooked up in parrallel but require their own SS wire from the master.  MOSI(master out slave in) and MISO(master in slave out) allow data to travel both directions between two devices at the same time. An SPI bus can generally support as many devices as SS pins the microcontroller has.
 
-I2C (pronounced I squared C) is an advanced serial protocol that uses two wires plus possible ground and power lines to connect several devices that are a short distance apart and don't require rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The master calls out to a slave via a specific hard coded 7bit device address.  Communications happen one direction at a time and there can be up to 127 slaves hooked up in parrallel on one I2C bus.  Each device is interconnected via a serial data (SDA) and serial clock(SCL) wires.
+I2C (pronounced I squared C) is an advanced serial protocol that uses two wires plus possible ground and power lines to connect several devices that are a short distance apart and don't require rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The master calls out to a slave via a specific hard coded 7bit device address.  Communications happen one direction at a time and there can be up to 127 slaves hooked up in parallel on one I2C bus.  Each device is interconnected via a serial data (SDA) and serial clock(SCL) wires.
 
 The Raspberry Pi can interact with devices that speak these protocols by using special sets of externally exposed pins.
 
 The Raspberry Pi 3 B+ has 40 GPIO (general purpose input/output pins). The pinout looks like
+
 ![pinout](/docs/pi-pinout-diagram-01.png)
 
 And the pins are counted like this
 
-
 ![pincount](/docs/RPi-Pinout.jpg)
-
-
 
 Additionally, the Pi can interact with devices in generic ways using any of its exposed pins. When working in generic mode, signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
 
@@ -914,7 +912,7 @@ With analaog in and out you could use a photoresistor(light sensor) as an input 
 
 If this kind of stuff interests you, you may want to explore `embedded` engineering.  The type of problems these  engineers solve and the devices they work with are often quite different from your standard software engineer.
 
-#### Using the screen
+### Using the screen
 
 Enough talk, lets hook up that LCD screen
 
@@ -939,35 +937,38 @@ The pins on the screen are labelled.
 
 - Boot the Pi back up
 
-Now lets print `hello world` on that screen
+Now lets print `"Hello World"` on that screen
 
 ```python
+# Program 3.1.1
 #!/usr/bin/env python3
-#the screen uses the I2C protocol.  Import a package that makes talking that protocol easy.
+# The screen uses the I2C protocol.  Import a package that makes talking that protocol easy.
 from luma.core.interface.serial import i2c
-#import a package that allows for easy drawing on screens
+# Import a package that allows for easy drawing on screens
 from luma.core.render import canvas
-#our screen has a ssd1306 chip in it
+# Our screen has a ssd1306 chip in it
 from luma.oled.device import ssd1306
 
-#I2C communicates with devices on defined addresses.  The address the ssd1306 uses is 0x3C. Connect to it.
+# I2C communicates with devices on defined addresses.  The address the ssd1306 uses is 0x3C. Connect to it.
 serial = i2c(port=1, address=0x3C)
 device = ssd1306(serial, rotate=0)
 with canvas(device) as draw:
-	#draw on the screen
+    # Draw on the screen
     draw.text((10, 40), "Hello World", fill="white")
-#keep this program running so the text stays on the screen
+
+# Keep this program running so the text stays on the screen
 while True:
     pass
 ```
 
 Raise your hand if this didn't work for you and a volunteer will come around and help you out.
 
+Now lets do something really cool! Lets have the screen print a different emoji based on how many comments your blog has.
 
-Now lets do something really cool!
-Lets have the screen print a different emoji based on how many comments your blog has.
+TODO: Walk through set up of these packages / necessary drivers
 
 ```python
+# Program 3.1.2
 #!/usr/bin/env python3
 import time
 import random
@@ -976,6 +977,7 @@ from luma.core.interface.serial import i2c
 from luma.core.render import canvas 
 from luma.oled.device import ssd1306
 from PIL import ImageFont, ImageDraw
+
 
 class Blog:
     def __init__(self, url):
@@ -994,22 +996,26 @@ class Blog:
         return int(response.headers['X-WP-Total'])
 
 
+# In this program we add a Screen class. Using a device like a screen is complex, and so this class 
+# models our OLED screen so we can do more advanced interactions in a readable way.
 class Screen:
     def __init__(self):
+        # Initialize the screen like we did before.
         serial = i2c(port=1, address=0x3c)
         self.device = ssd1306(serial, rotate=0)
+        # This time we'll also use a real font so we can write emojis on the screen
         self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
     
+    # This function does what it says!
     def draw_text_at_random_location(self, text, size=10):
+        length = len(text)
         font = self.font.font_variant(size=size)
         with canvas(self.device) as draw:
-            x = random.randint(0,100 + (len(text) * size / 2)) - (len(text) * size / 2)
+            x = random.randint(0,100 + (length * size / 2)) - (length * size / 2)
             y = random.randint(0,60) - size / 2
             draw.text((x, y), text, font=font, fill="white")
 
-blog = Blog("http://$username.example.com/wp-json/wp/v2")
-screen = Screen()
-
+# 
 def emoji_for_comment_total(total):
     if total < 5:
         return "😊"
@@ -1019,9 +1025,15 @@ def emoji_for_comment_total(total):
     
     return "😎"
 
+def font_size_for_comment_total(total):
+    return (total + 3) * 4
+
+blog = Blog("http://$username.example.com/wp-json/wp/v2")
+screen = Screen()
+
 while True:
     total_comments = blog.total_comments()
-    size = (total_comments + 3) * 4
+    size = font_size_for_comment_total(total_comments)
     emoji = emoji_for_comment_total(total_comments)
     text = "{0} {1} {2}".format(emoji, total_comments, emoji)
     screen.draw_text_at_random_location(text, size=size)
