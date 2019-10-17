@@ -524,7 +524,7 @@ So far we've written some small, simple programs. Writing something like a multi
 
 Let's use one of those packages.  The "requests" package will allow us to communicate with websites, like the blog you're running on your Pi.
 
-> For full documentation of the "requests" package, see: https://2.python-requests.org/en/master/
+> For full documentation of the "requests" package, see: https://requests.readthedocs.io/en/master/
 
 ```python
 # Program 2.1.1
