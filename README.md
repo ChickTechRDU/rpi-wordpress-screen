@@ -1079,12 +1079,15 @@ Please use any remaining free time to be creative with anything you've leared so
 
 Need some ideas?  Here are some code samples you can play with.
 
-- Posting a comment via code - TODO - miwhite doing this one (comment code)
+- Posting a comment via code
 
 ```python
+# we are going to use the requests package again!
 import requests
 
-
+# Give the class a useful, obvious name!
+# As before, we are going to interact with our blogs using the APIs that our blog
+# software makes available as part of just running.
 class Blog:
     """
     Simple Wordpress blog client.
@@ -1093,48 +1096,71 @@ class Blog:
     def __init__(self, url):
         self.url = url
 
+    # This method name is descriptive, which is good. It clearly calls out what
+    # it returns (posts) and what kind (latest).
+    #
+    # If you make lots and lots of methods on a class like this, it might be good
+    # to come up with a pattern you follow so that it becomes really easy to guess
+    # what something should be named. This sort of consistency is important when you
+    # want somebody else to start using your code.
     def list_latest_posts(self, at_most):
         response = requests.get(self.url + "/posts", params={"per_page": at_most})
         return response.json()
 
+    # again, a good, descriptive name: what are getting? comments. From where?
+    # the post we pass as an argument.
     def list_comments_on_post(self, post_id, at_most):
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+    # this might sound like it totals up the comments, but we actually return the
+    # value of the header that is already populated with the value we're looking for.
     def total_comments(self):
         response = requests.get(self.url + "/comments", params={"per_page": 1})
         return int(response.headers['X-WP-Total'])
 
+    # This is a very descriptive action-centric API name. You can guess that calling it
+    # will actually go ahead and leave a comment on the post you pass as a parameter.
+    # Our parameter name, comment_to_post, also makes the intention really clear.
     def comment_on_post(self, post_id, comment_to_post):
-        url = (self.url + '/comments')
+        url = (self.url + '/comments') # build the request URL
+
+        # construct the request body, which is filling in a form.
         data = {
             'post':post_id,
             'author_name':'Your name',
             'author_email':'YourEmail@gmail.com',
             'content':comment_to_post
         }
+        # logging that you are making a request is a good way to track if a particular
+        # command was done at all, just once, or many times.
         print("Making a POST request to URL: {}".format(url))
         response = requests.post(url, data)
-        return response.content
+        return response.content # note, we just assume it succeeded.
 
 
 blog = Blog('http://blog.example.com/wp-json/wp/v2')
 
-print('Enter your comment')
+print('Enter your comment') # this serves both as a useful log message and a user prompt
 comment_to_post = input()
 
-print('Posting your comment')
-posts = blog.list_latest_posts(at_most=1)
+print('Posting your comment') # announce what we're going to do
+posts = blog.list_latest_posts(at_most=1) # look up posts
 
-if len(posts) > 0:
-    latest_post = posts[0]
-    posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post)
-    print(posted)
+if len(posts) > 0: # if there's any posts at all . . .
+    latest_post = posts[0] # get the latest post . . .
+    posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post) # comment on it
+    print(posted) # return the response from our attempt to leave a comment.
+
+# Some food for thought:
+# - how do you detect if the comment failed to be posted?
+# - what should you print if there are no posts to comment on?
 ```
 
-- The Friend Bot - TODO miwhite doing this one (comment code)
+- The Friend Bot
 
 ```python
+# We have a few more dependencies this time, one for dates and times, and one for just time.
 from datetime import datetime
 import time
 import requests
@@ -1170,19 +1196,26 @@ class Blog:
 
 
 blog = Blog("http://demo.wp-api.org/wp-json/wp/v2")
+# This is a weird programming trick that is pretty handy. It turns out that most
+# machines increment time forward from a 0-point, and that 0-point is not too far
+# in the past, by and large.
+#
+# So here, we're asking for the timestamp for 0, which happens to be:
+# datetime.datetime(1969, 12, 31, 19, 0) - that's right, 7PM on December 31st, 1969.
 last_commented_date = datetime.fromtimestamp(0)
 
-while True:
-    posts = blog.list_latest_posts(at_most=1)
+while True: # run forever until we kill the program
+    posts = blog.list_latest_posts(at_most=1) # get the latest post
     if len(posts) > 0:
-        latest_post = posts[0]
+        latest_post = posts[0] # if there is a post, store it
 
-        post_date = datetime.fromisoformat(latest_post['date'])
+        post_date = datetime.fromisoformat(latest_post['date']) # get the date from the post
         if post_date > last_commented_date:
-            last_commented_date = post_date
+            last_commented_date = post_date # store the post's date as the time we've last commented
             print("a new post just came up on ", blog.url, "at ", last_commented_date)
+            # comment on the post for real
             blog.comment_on_post(latest_post['id'])
-    time.sleep(3)
+    time.sleep(3) # wait 3s before doing anything else.
 ```
 
 
