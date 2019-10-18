@@ -118,7 +118,7 @@ Start it and tell it to startup when you Pi boots up
     systemctl restart apache2
     systemctl enable apache2
 
-When accessing websites your brower makes what is called a DNS lookup.  This converts google.com to an IP address/number that the computers actually pay attention to, the words are for our simple human brains.  To simulate that we will be creating what is called a hosts file entry.
+When accessing websites your browser makes what is called a DNS lookup.  This converts google.com to an IP address/number that the computers actually pay attention to, the words are for our simple human brains.  To simulate that we will be creating what is called a hosts file entry.
 
 Get the IP of your interface
 
@@ -709,9 +709,9 @@ Here's a hint:
 
 We can use our newfound API interaction abilities to talk not just to our own blog server, but also our friends' blog servers!
 
-To interact with our friends' blogs, we'll need to get their blogs' IP addresses.
+To interact with our friends' blogs, we'll need to get their blogs' IP addresses. Earlier we edited our hosts file so we could access our own blog with a nice url like "$username.example.com". We're going to do the same thing here except using your **friends'** IP addresses so we can also access **their** blogs. 
 
-Ask your friends to get the IP of their interfaces by typing `ip a` in a terminal
+Ask your friends to get the IP of their interfaces by typing `ip a` in their terminal, just like before:
 
     root@raspberrypi:~/2019-chicktech/files/bin# ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
@@ -731,7 +731,7 @@ They are looking for the non `lo` interface that has something on the `inet` lin
 
     /opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
 
-The hosts file maps hostnames in urls (like "www.google.com") to IP addresses. This means we can use those hostnames to refer to your friends' blog servers.
+Now we can access their blogs by their usernames just like our own.
 
 Let's use those hosts in the program below to look at the comments from all of our friends blogs and see who has the most. For fun you can try commenting on each other's blogs to see the results change.
 
