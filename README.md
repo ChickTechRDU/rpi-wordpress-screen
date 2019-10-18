@@ -23,7 +23,7 @@ My name is Dustin Minnich and I'm a Principal Systems Administrator.  As a sysad
 - Rolling out new versions of custom code to systems
 - Working closely with developers to ensure that they make good security and performance decisions
 
-My name is Michael White and I'm a Lead Application Integration Engineer.  As a Lead Application Integration Engineer I'm responsible for:
+My name is Michael White and I'm a Lead Application Integration Engineer, which is just a fancy way to say Senior Software Engineer.  As a Lead Application Integration Engineer I'm responsible for:
 
 - Making sure people don't do dumb shit or recreate the sins of their fathers.
 - TODO - miwhite
@@ -33,7 +33,7 @@ My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a
 - Choosing technology paths that will directly make or break a 34 billion dollar company on a daily basis.
 - Designing tools to help other teams build web servers and applications that power redhat.com and some of the world's largest organizations
 - Making these servers resilient to bugs or hardware failures so they keep running no matter what happens
-- Triaging and fixing outages at any time of day and making sure we learn from failures to always get better 
+- Triaging and fixing outages at any time of day and making sure we learn from failures to always get better
 
 My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a Software Engineer, I:
 - TODO - sgunta
@@ -127,13 +127,13 @@ Get the IP of your interface
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
     2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
     inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link 
+    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link
        valid_lft forever preferred_lft forever
 
 You are looking for the non `lo` interface that has something on the `inet` line.  Above our IP is `192.168.122.18`. Now lets add that IP address to our hosts file along with a DNS name.  For the name use first letter of your first name and your whole last name. For example
@@ -174,7 +174,7 @@ Start it and tell it to startup when you Pi boots up
 
 Login and create a database
 
-    root@raspberrypi:~/2019-chicktech/files/bin# mysql -uroot 
+    root@raspberrypi:~/2019-chicktech/files/bin# mysql -uroot
     Welcome to the MariaDB monitor.  Commands end with ; or \g.
     Your MariaDB connection id is 2
     Server version: 10.1.38-MariaDB-0+deb9u1 Debian 9.8
@@ -270,7 +270,7 @@ Lets quickly look at a page that will show the results of the that query we did 
     $sql = "select name from people WHERE name LIKE 'b%' AND age<11";
     $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) {
-    echo $row["name"]. "<br>"; 
+    echo $row["name"]. "<br>";
     }
     $conn->close();
     ?>
@@ -321,7 +321,7 @@ A single Apache install is capable of serving multiple websites.  This is called
 
 Before we run the script lets learn about what it is doing.  Here is what an Apache site config looks like
 
-    root@raspberrypi:~/2019-chicktech/files/apache2# cat /root/2019-chicktech/files/apache2/wordpress.conf 
+    root@raspberrypi:~/2019-chicktech/files/apache2# cat /root/2019-chicktech/files/apache2/wordpress.conf
     <VirtualHost *:80>
         ServerName REPLACEME.example.com
 
@@ -530,21 +530,21 @@ import requests
 # we can reuse. To refer to them use the package name and a . character like so:
 response = requests.get("http://$username.example.com/wp-json/wp/v2/posts", params={"per_page": 1})
 
-# We've just requested the latest blog post from our blog server. We've stored the response to 
+# We've just requested the latest blog post from our blog server. We've stored the response to
 # that request in a variable named "response" above.
 
-# Requests and responses are like letters we can send or get in the mail. They have an envelope, 
-# mailing and return addresses, and contents inside. 
-# To get to the content inside our response–the blog post–, we use the "json()" function to 
-# structure that content in a usable way. 
+# Requests and responses are like letters we can send or get in the mail. They have an envelope,
+# mailing and return addresses, and contents inside.
+# To get to the content inside our response–the blog post–, we use the "json()" function to
+# structure that content in a usable way.
 posts = response.json()
 
 # We've stored the content in a variable called "posts" so we can refer to it more easily.
 # "posts" is a **list**. Lists are ordered sequences of values.
-# How do we know it's a list? We'll come back to this. 
+# How do we know it's a list? We'll come back to this.
 
-# Check if the list is empty by using the "len" (for "length") function, which returns how many 
-# elements are in a list. This makes sure we don't try to examine a post if there isn't one to 
+# Check if the list is empty by using the "len" (for "length") function, which returns how many
+# elements are in a list. This makes sure we don't try to examine a post if there isn't one to
 # examine!
 if len(posts) == 0:
     print("No blog posts found. You should post something on your blog first!")
@@ -552,21 +552,21 @@ else:
     # We can refer to the elements of a list by the index of that element using the [0] syntax,
     # where 0 is the first element in the list. Computers usually start counting from 0.
     post = posts[0]
-    
+
     # We've stored the first post from our response in a variable named "post". This variable is
     # a dictionary. This means it can have any number of values in it. We can refer to the values
     # using a name, similar to looking up definitions in a dictionary by the word.
-    
+
     # Wordpress posts have a complicated structure with lots of values within them, and even nested
     # values within those. Below we'll navigate that structure to pull out the date of our post and
-    # it's title using the ["word"] syntax – this refers to a value by it's name inside the 
+    # it's title using the ["word"] syntax – this refers to a value by it's name inside the
     # quotations. In turn, that value can be anything, maybe even another dictionary.
     # How do we know which value is what? Similar to how we knew "posts" was a list. We'll come back
     # to this shortly.
     date_posted = post["date"]
     title = post["title"]["rendered"]
-    
-    # Print out the date and title. The "format" function here replaces symbols inside text with 
+
+    # Print out the date and title. The "format" function here replaces symbols inside text with
     # values from the variables we just defined above.
     print("{0}: {1}".format(date_posted, title))
 ```
@@ -610,7 +610,7 @@ import bs4
 
 # In this program, we're going to make requests to the Wordpress API multiple times. We can start to
 # see some patterns in how we make calls to the API. Also, we want our program to easily read in
-# instructions we understand. Instead of saying "make a request to this URL with these 
+# instructions we understand. Instead of saying "make a request to this URL with these
 # parameters and parse it as JSON" multiple times, which is too detailed to repeat so often, we'd
 # like to say more clearly what we're trying to do: "list the latest blog posts". Just like if you
 # ask for a ride to school, you don't say "please let me sit in your car, put the car into gear,
@@ -624,17 +624,17 @@ import bs4
 # collection of functions and variables that we can reuse.
 
 # Start defining a class similar to how you define a function, but instead of the "def" keyword,
-# use the "class" keyword, followed by the class's name. Just like with a function, defining the 
+# use the "class" keyword, followed by the class's name. Just like with a function, defining the
 # class alone doesn't use it. It creates a template that we can reuse later.
 class Blog:
     # Now we can define functions inside the class.
     # Classes start with a special "__init__" function which is used to create a new instance of the
-    # class based on zero or more parameters. Here we have a "url" variable that remembers the URL 
+    # class based on zero or more parameters. Here we have a "url" variable that remembers the URL
     # of your blog for reuse in other functions.
     def __init__(self, url):
         self.url = url
-    
-    # In our last program, we made a request to the Wordpress API to list the latest post. Here 
+
+    # In our last program, we made a request to the Wordpress API to list the latest post. Here
     # we're defining a function inside the class, similar to the functions inside a package, that
     # will list the latest posts, so we can reuse it and more easily understand our code.
     def list_latest_posts(self, at_most):
@@ -662,17 +662,17 @@ blog_api_url="http://$username.example.com/wp-json/wp/v2"
 # we don't need to provide it ourselves when we call class functions.
 blog = Blog(blog_api_url)
 
-# Now that we have an instance of our blog, we can call "list_latest_posts" on it. This does what 
+# Now that we have an instance of our blog, we can call "list_latest_posts" on it. This does what
 # it says: lists that latest posts. We can also pass a named parameter to the function, "at_most".
-# This means we are listing "at most 1" post. We could pass other values here, like 50, 
+# This means we are listing "at most 1" post. We could pass other values here, like 50,
 # to get up to 50 posts. Since we only want the latest post, we'll just set at_most to 1.
 
 latest_posts = blog.list_latest_posts(at_most=1)
 
-if len(latest_posts) > 0: 
+if len(latest_posts) > 0:
     latest_post = latest_posts[0]
-    
-    # Now that we have that the latest post, let's get some of its comments. To do this, we use 
+
+    # Now that we have that the latest post, let's get some of its comments. To do this, we use
     # our class functions again, this time "list_latest_comments_on_post" by providing a post ID
     # and again some max number of comments we want to get back.
     latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=1)
@@ -694,8 +694,8 @@ Here's a hint:
 
 ```python
     latest_comments = blog.list_latest_comments_on_post(post_id=latest_post['id'], at_most=5)
-    
-    # Rather than manually going through all of the comments, we can use a for loop to loop 
+
+    # Rather than manually going through all of the comments, we can use a for loop to loop
     # through whatever comments there are for us:
     for comment in latest_comments:
         author = comment['author_name']
@@ -718,13 +718,13 @@ Ask your friends to get the IP of their interfaces by typing `ip a` in a termina
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
     2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
     inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link 
+    inet6 fe80::6858:c1fc:4305:6ce8/64 scope link
        valid_lft forever preferred_lft forever
 
 They are looking for the non `lo` interface that has something on the `inet` line.  Above their IP is `192.168.122.18`. Now you will add their IP address to your hosts file along with a DNS name.  For the username use first letter of their first name and their whole last name. For example
@@ -763,7 +763,7 @@ class Blog:
         # We return that here, after converting the header's value to an integer type.
         return int(response.headers['X-WP-Total'])
 
-# Add all of the blog URLs here for the blogs in your group in what's called a **dictionary**. 
+# Add all of the blog URLs here for the blogs in your group in what's called a **dictionary**.
 # This allows us to refer to the blogs later by a readable name like "Jenn's Blog".
 blog_urls = {
     "username1's blog": "http://$username1.example.com/wp-json/wp/v2",
@@ -793,13 +793,13 @@ for blog_name, blog_url in blog_urls.items():
         top_blogs.append(blog_name)
         # We don't need to adjust the top_blog_total_comments because this blog has the same number,
         # so it doesn't change.
-        
+
         # The 'continue' keyword makes us skip to the next iteration of the for loop without running
         # any other code below.
         continue
-    
+
     if total_comments > top_blog_total_comments:
-        # We found a new top blog! 
+        # We found a new top blog!
         # Replace the top_blogs list with just this blog since it has the most comments.
         top_blogs = [blog_name]
         # Replace the top_blog_total_comments with how many comments this blog has.
@@ -808,7 +808,7 @@ for blog_name, blog_url in blog_urls.items():
 # Now print out the winner. But first we have to check if there is a tie, so we print out all of the
 # winners.
 if len(top_blogs) > 1:
-    # Since we've got a tie, separate each blog title the list of top blogs with an "and" when 
+    # Since we've got a tie, separate each blog title the list of top blogs with an "and" when
     # printing it out.
     print("There is a tie for the top blog! {0} all have {1} comments.".format(
           " and ".join(top_blogs), top_blog_total_comments))
@@ -821,7 +821,7 @@ Take some time to play with this a bit:
 
 - Try commenting on each other's blogs by browsing to the URLs we added to your hosts file and commenting on them. Then, rerun your program so you can watch each others counts go up.
 - What happens if you don't put any blog urls in the `blog_urls` dictionary and then run the program?
-- Try counting comments on just the latest post. How would our blog request change? Can you add a new method to the class to help? 
+- Try counting comments on just the latest post. How would our blog request change? Can you add a new method to the class to help?
 - Try counting blog posts instead of comments. How would our blog request change? Can you add a new method to the class to help?
 
 ## Quick recap
@@ -969,7 +969,7 @@ import time
 import random
 import requests
 from luma.core.interface.serial import i2c
-from luma.core.render import canvas 
+from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont, ImageDraw
 
@@ -991,7 +991,7 @@ class Blog:
         return int(response.headers['X-WP-Total'])
 
 
-# In this program we add a Screen class. Using a device like a screen is complex, and so this class 
+# In this program we add a Screen class. Using a device like a screen is complex, and so this class
 # models our OLED screen so we can do more advanced interactions in a readable way.
 class Screen:
     def __init__(self):
@@ -1000,7 +1000,7 @@ class Screen:
         self.device = ssd1306(serial, rotate=0)
         # This time we'll also use a real font so we can write emojis on the screen
         self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
-    
+
     # This function does what it says!
     def draw_text_at_random_location(self, text, size=10):
         length = len(text)
@@ -1010,7 +1010,7 @@ class Screen:
             y = random.randint(0,60) - size / 2
             draw.text((x, y), text, font=font, fill="white")
 
-# Define some functions here to organize some simple logic around the number of comments. We'll 
+# Define some functions here to organize some simple logic around the number of comments. We'll
 # reuse these functions below.
 # The first functino returns a different emoji depending on how many comments a blog has.
 def emoji_for_comment_total(total):
@@ -1018,8 +1018,8 @@ def emoji_for_comment_total(total):
         return "😊"
 
     if total < 10:
-        return "😃" 
-    
+        return "😃"
+
     return "😎"
 
 # This function returns a font size to use depending on how many comments a blog has.
@@ -1080,10 +1080,8 @@ Need some ideas?  Here are some code samples you can play with.
 
 ```python
 # Program 4.1.1
-# we are going to use the requests package again!
 import requests
 
-# Give the class a useful, obvious name!
 # As before, we are going to interact with our blogs using the APIs that our blog
 # software makes available as part of just running.
 class Blog:
@@ -1094,61 +1092,44 @@ class Blog:
     def __init__(self, url):
         self.url = url
 
-    # This method name is descriptive, which is good. It clearly calls out what
-    # it returns (posts) and what kind (latest).
-    #
-    # If you make lots and lots of methods on a class like this, it might be good
-    # to come up with a pattern you follow so that it becomes really easy to guess
-    # what something should be named. This sort of consistency is important when you
-    # want somebody else to start using your code.
     def list_latest_posts(self, at_most):
         response = requests.get(self.url + "/posts", params={"per_page": at_most})
         return response.json()
 
-    # again, a good, descriptive name: what are getting? comments. From where?
-    # the post we pass as an argument.
     def list_comments_on_post(self, post_id, at_most):
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
-    # this might sound like it totals up the comments, but we actually return the
-    # value of the header that is already populated with the value we're looking for.
     def total_comments(self):
         response = requests.get(self.url + "/comments", params={"per_page": 1})
         return int(response.headers['X-WP-Total'])
 
-    # This is a very descriptive action-centric API name. You can guess that calling it
-    # will actually go ahead and leave a comment on the post you pass as a parameter.
-    # Our parameter name, comment_to_post, also makes the intention really clear.
     def comment_on_post(self, post_id, comment_to_post):
-        url = (self.url + '/comments') # build the request URL
+        url = (self.url + '/comments')
 
-        # construct the request body, which is filling in a form.
         data = {
             'post':post_id,
             'author_name':'Your name',
             'author_email':'YourEmail@gmail.com',
             'content':comment_to_post
         }
-        # logging that you are making a request is a good way to track if a particular
-        # command was done at all, just once, or many times.
         print("Making a POST request to URL: {}".format(url))
         response = requests.post(url, data)
-        return response.content # note, we just assume it succeeded.
+        return response.content # note, we just assume it succeeded. is this a good idea?
 
 
 blog = Blog('http://blog.example.com/wp-json/wp/v2')
 
-print('Enter your comment') # this serves both as a useful log message and a user prompt
+print('Enter your comment')
 comment_to_post = input()
 
-print('Posting your comment') # announce what we're going to do
-posts = blog.list_latest_posts(at_most=1) # look up posts
+print('Posting your comment')
+posts = blog.list_latest_posts(at_most=1)
 
-if len(posts) > 0: # if there's any posts at all . . .
-    latest_post = posts[0] # get the latest post . . .
-    posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post) # comment on it
-    print(posted) # return the response from our attempt to leave a comment.
+if len(posts) > 0:
+    latest_post = posts[0]
+    posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post)
+    print(posted)
 
 # Some food for thought:
 # - how do you detect if the comment failed to be posted?
@@ -1204,15 +1185,14 @@ blog = Blog("http://demo.wp-api.org/wp-json/wp/v2")
 last_commented_date = datetime.fromtimestamp(0)
 
 while True: # run forever until we kill the program
-    posts = blog.list_latest_posts(at_most=1) # get the latest post
+    posts = blog.list_latest_posts(at_most=1)
     if len(posts) > 0:
-        latest_post = posts[0] # if there is a post, store it
+        latest_post = posts[0]
 
-        post_date = datetime.fromisoformat(latest_post['date']) # get the date from the post
+        post_date = datetime.fromisoformat(latest_post['date'])
         if post_date > last_commented_date:
-            last_commented_date = post_date # store the post's date as the time we've last commented
+            last_commented_date = post_date
             print("a new post just came up on ", blog.url, "at ", last_commented_date)
-            # comment on the post for real
             blog.comment_on_post(latest_post['id'])
     time.sleep(3) # wait 3s before doing anything else.
 ```
@@ -1258,9 +1238,3 @@ Towards the end of the class we also spent some time preparing for our presentat
 This concludes our lab.  We've had a blast teaching and getting to know all of you.  You get to take the Raspberry Pi and LCD screen home to play with them more.
 
 Have a great rest of the year and we hope to see you at interviews or as interns in a few years!
-
-
-
-
-
-
