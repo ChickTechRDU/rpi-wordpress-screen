@@ -1015,7 +1015,9 @@ class Screen:
             y = random.randint(0,60) - size / 2
             draw.text((x, y), text, font=font, fill="white")
 
-# 
+# Define some functions here to organize some simple logic around the number of comments. We'll 
+# reuse these functions below.
+# The first functino returns a different emoji depending on how many comments a blog has.
 def emoji_for_comment_total(total):
     if total < 5:
         return "😊"
@@ -1025,12 +1027,14 @@ def emoji_for_comment_total(total):
     
     return "😎"
 
+# This function returns a font size to use depending on how many comments a blog has.
 def font_size_for_comment_total(total):
     return (total + 3) * 4
 
 blog = Blog("http://$username.example.com/wp-json/wp/v2")
 screen = Screen()
 
+# Keep checking the blog and updating the screen every second until we stop the program.
 while True:
     total_comments = blog.total_comments()
     size = font_size_for_comment_total(total_comments)
@@ -1082,6 +1086,7 @@ Need some ideas?  Here are some code samples you can play with.
 - Posting a comment via code
 
 ```python
+# Program 4.1.1
 # we are going to use the requests package again!
 import requests
 
@@ -1160,6 +1165,7 @@ if len(posts) > 0: # if there's any posts at all . . .
 - The Friend Bot
 
 ```python
+# Program 4.1.2
 # We have a few more dependencies this time, one for dates and times, and one for just time.
 from datetime import datetime
 import time
@@ -1219,8 +1225,10 @@ while True: # run forever until we kill the program
 ```
 
 
-#### Pulling weather data from the internet
+### Pulling weather data from the internet
+
 ```python
+# Program 4.1.3
 #!/usr/bin/env python3
 import requests
 import json
