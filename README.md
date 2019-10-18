@@ -11,7 +11,6 @@ To get to know each other, lets quickly go around the room.  When it is your tur
 I'll start.
 My name is Dustin.  I've been working in IT as a sysadmin for 15 years now.  I like death metal.
 
-
 ## Intros
 
 Now that the icebreaker is done, we want to tell you a bit more about ourselves and the company we work for.  We hope that this will give you a better idea about what people actually do in IT and steer you towards the person you need to talk to if a specific thing we do in our lab interests you.
@@ -24,17 +23,17 @@ My name is Dustin Minnich and I'm a Principal Systems Administrator.  As a sysad
 - Rolling out new versions of custom code to systems
 - Working closely with developers to ensure that they make good security and performance decisions
 
-
 My name is Michael White and I'm a Lead Application Integration Engineer.  As a Lead Application Integration Engineer I'm responsible for:
 
 - Making sure people don't do dumb shit or recreate the sins of their fathers.
 - TODO - miwhite
 
-
 My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a Software Engineer I'm responsible for:
 
-- Choosing techonolgy paths that will directly make or break a 34 billion dollar company on a daily basis.
-- TODO - ahenning
+- Choosing technology paths that will directly make or break a 34 billion dollar company on a daily basis.
+- Designing tools to help other teams build web servers and applications that power redhat.com and some of the world's largest organizations
+- Making these servers resilient to bugs or hardware failures so they keep running no matter what happens
+- Triaging and fixing outages at any time of day and making sure we learn from failures to always get better 
 
 My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a Software Engineer, I:
 - TODO - sgunta
@@ -48,9 +47,9 @@ My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsib
 
 We all work at a company named Red Hat.  Red Hat is an open source software company.  This means the software we develop is free for anybody to use and improve.  We believe that when people work together, instead of in competition with against one another, great things happen.
 
-Red Hats core product is a version of Linux.  Linux is an Operating System similar to macOS or Windows but is primarily used by servers and not laptops and home pcs. Most of the websites you visit are powered by Linux, Android phones are powered by Linux, nearly all super computers are powered by Linux -- our presense is everywhere, even if you haven't heard of us before today.  Red Hat also offers OpenShift which is an orchestration and management layer on top of Docker like containers and OpenStack which is an alternative to Amazon AWS could as well as tons of other things.
+Red Hats core product is a version of Linux.  Linux is an Operating System similar to macOS or Windows but is primarily used by servers and not laptops and home pcs. Most of the websites you visit are powered by Linux, Android phones are powered by Linux, nearly all super computers are powered by Linux -- our presence is everywhere, even if you haven't heard of us before today.  Red Hat also offers OpenShift which is an orchestration and management layer on top of Docker like containers and OpenStack which is an alternative to Amazon AWS could as well as tons of other things.
 
-Red Hat is a GREAT company to work for.  It is full of passonate and diverse people with all kinds of skillsets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heiarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
+Red Hat is a GREAT company to work for.  It is full of passionate and diverse people with all kinds of skillsets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heirarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
 
 ## Objective
 Have you ever been to a concert or a sporting event where they put tweets on the jumbotron(big screen)?
@@ -64,7 +63,7 @@ With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be a
 
 ## Building the stack
 
-#### What is a Raspberry Pi?
+### What is a Raspberry Pi?
 The Raspberry Pi Foundation is a dream a come true for people interested in technology. For very little money, they will sell you a 'disposable' baby computer that runs standard hardware and is extendable by all kinds of open source software.
 
 Each part of that last sentence is important.
@@ -84,11 +83,11 @@ To put in perspective how low power that is, while it isn't an apples to apples 
 Open Source software is about having the freedom to reuse and improve the applications that run on your devices.  Has Apple or Google ever pushed a software update that changed something on your phone in a way you didn't like?  Ever thought this instagram app would be better if it could also do X?  With open source software people write code to meet their needs and then put it out on the internet for anybody to use for free.  This means you can pick it up and use it as-is or if it doesn't quite meet your needs you can alter it and then even put it back out on the internet for other folks to use for free.  This culture has helped the Pi hobby scene flourish.  If you can think of something you'd like your Pi to do, chances are somebody somewhere has already done something similar and you can use their work as a launching off point to accomplish your goal.
 
 
-#### What is LAMP?
+### What is LAMP?
 Linux Operating System + Apache Web Server + Maria Database Server + the PHP programming language make up the `LAMP` web services stack.  Together they allow a computer to serve up dynamic and interactive webpages.  According to [netcraft](https://news.netcraft.com/archives/2019/06/17/june-2019-web-server-survey.html) 30% of the internet is ran off of Apache and according to [zdnet](https://www.zdnet.com/article/can-the-internet-exist-without-linux/) 96% of the internet is run on top of Linux.  Those statistics coupled with the widespread useage of things like Wordpress blogs, Drupal CMS systems, Vanilla Foums, ownCloud collaboration servers and MediaWiki systems indicate that the LAMP stack has widespread adoption on the internet.  It is also worth noting that it is one of the oldest stacks.  What these things mean to you is that as you begin to learn this stack, there will be plenty of open source code for you to sample from and plenty of places to look for and ask for help when you need it.
 
 
-##### Linux
+#### Linux
 Your Pi is already running an optimized version of Linux called Raspbian.  Raspbian is based on one of the largest distributions of Linux called [Debian](https://www.debian.org/).  If you haven't heard of either of those and have happened to heard of Ubuntu, know that Ubuntu is also based on Debian to some degree.  Backing up a bit, in case all of that was greek to you -- an Operating System is the low level software that runs on your device that determines how you intearct with it via various interfaces (touch screen, mouse, keyboard) and an operating system allows you to install other software on top of it.  Windows is an Operating System, so is iOS on your phone.  The Linux operating system is open source and flexible.  Groups of people package it in different ways (called distributions) to meet different needs.  These different distributions allow linux to power android phones, smart TVs, your Pi, and most of the servers on the internet despite the fact that they are all very different devices filling different needs.
 
 The linux operating system is very tweakable, secure and privacy oriented...
@@ -104,7 +103,7 @@ When you want to install a piece of software in linux you can run a command or c
 The fact that linux treats everything as a file allows linux users to easily string together commands for automation and scripting purposes.
 
 
-##### Apache
+#### Apache
 Apache is a flexible, well established, powerful and popular web server.  When you open up Chrome and type in `reddit.com`, Chrome is the client and the web server is what Reddit's linux servers use to send you back your memes and cat videos.
 
 Apache on its own can only serve up static content.  You can think of static content as non-interactive sites.  So if you wanted to serve up a copy of your resume and a brief page about yourself, that you write in HTML yourself, Apache alone would be enough.  If you instead wanted a site with an admin front-end that made making changes easy and allowed people to comment on articles and things like that, then you would need a dynamic language and an apache module or proxy to a server that spoke that language.  You would also likely need a datastore.  That is where Maria DB and PHP will come in later.  For the time being, lets install Apache and serve up some static content.
@@ -116,21 +115,21 @@ Install Apache
 
 Start it and tell it to startup when you Pi boots up
 
-	systemctl restart apache2
+    systemctl restart apache2
     systemctl enable apache2
 
 When accessing websites your brower makes what is called a DNS lookup.  This converts google.com to an IP address/number that the computers actually pay attention to, the words are for our simple human brains.  To simulate that we will be creating what is called a hosts file entry.
 
 Get the IP of your interface
 
-	root@raspberrypi:~/2019-chicktech/files/bin# ip a
-	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    root@raspberrypi:~/2019-chicktech/files/bin# ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
-	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
     inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
        valid_lft forever preferred_lft forever
@@ -139,25 +138,25 @@ Get the IP of your interface
 
 You are looking for the non `lo` interface that has something on the `inet` line.  Above our IP is `192.168.122.18`. Now lets add that IP address to our hosts file along with a DNS name.  For the name use first letter of your first name and your whole last name. For example
 
-	/opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
+    /opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
 
 Verify it got added
 
-	root@raspberrypi:~/2019-chicktech/files/bin# tail -n1 /etc/hosts
-	192.168.122.18    dminnich.example.com
+    root@raspberrypi:~/2019-chicktech/files/bin# tail -n1 /etc/hosts
+    192.168.122.18    dminnich.example.com
 
 What this means is now whenever my Pi tries to go to `dminnich.example.com` the content for that website will be served by the Pi itself.
 
 Lets add some static content
 
-	echo "hi chicktech" > /var/www/html/index.html
+    echo "hi chicktech" > /var/www/html/index.html
 
 View it by pulling up the browser on your Pi and going to $username.example.com.
 
 If you wanted to create a real webpage you would need to start writing HTML, CSS and javascript. [w3schools](https://www.w3schools.com/html/default.asp) have good tutorials that teach you those languages. Just keep in mind that you won't be able to create terribly interactive webpages until you start doing some of the stuff below as well.
 
 
-##### Maria DB
+#### Maria DB
 
 Maria DB is highly popular, stable, scalable and free SQL compliant database server.  If you are unfamilar with databases, you can think of them as a complex set of linked spreadsheets.  They allow you to get answers to questions like "who in my class has a name that starts with an M and was born after 1990 and has brown hair". Oh, and sort that by the youngest person first.  As websites and applications become more complex they need to be able to answer questions like that (all posts by author sorted by newest) quickly so a database is used to store the information.  The database not only can answer these questions faster than logic in code could if the web server had to crawl through a bunch of files, it also creates a useful centralization point.  If all of your content is in a database, you only need to backup the database.  Also, you can add more and more web servers as demand grows and they can all talk to the same database, whereas each of them all having the same files at the same time is a much harder problem to sovle.
 
@@ -165,95 +164,95 @@ Lets explore Maria DB.
 
 Install it
 
-	sudo su -
+    sudo su -
     apt-get install mariadb-server
 
 Start it and tell it to startup when you Pi boots up
 
-	systemctl restart mariadb
+    systemctl restart mariadb
     systemctl enable mariadb
 
 Login and create a database
 
-	root@raspberrypi:~/2019-chicktech/files/bin# mysql -uroot 
-	Welcome to the MariaDB monitor.  Commands end with ; or \g.
-	Your MariaDB connection id is 2
-	Server version: 10.1.38-MariaDB-0+deb9u1 Debian 9.8
+    root@raspberrypi:~/2019-chicktech/files/bin# mysql -uroot 
+    Welcome to the MariaDB monitor.  Commands end with ; or \g.
+    Your MariaDB connection id is 2
+    Server version: 10.1.38-MariaDB-0+deb9u1 Debian 9.8
 
-	Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+    Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
-	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-	MariaDB [(none)]> create database chicktech_test;
-	Query OK, 1 row affected (0.00 sec)
+    MariaDB [(none)]> create database chicktech_test;
+    Query OK, 1 row affected (0.00 sec)
 
 Create a table
 
-	use chicktech_test;
+    use chicktech_test;
     Database changed
     MariaDB [chicktech_test]> create table people(id INT NOT NULL AUTO_INCREMENT,name VARCHAR(100) NOT NULL,age int NOT NULL,PRIMARY KEY ( id ));
-	Query OK, 0 rows affected (0.00 sec)
+    Query OK, 0 rows affected (0.00 sec)
 
 Add some people to the table
 
-	MariaDB [chicktech_test]> insert into people (name, age) VALUES ("bill", 10), ("bobby", 11), ("samantha", 15), ("kathy", 21);
-	Query OK, 4 rows affected (0.01 sec)
-	Records: 4  Duplicates: 0  Warnings: 0
+    MariaDB [chicktech_test]> insert into people (name, age) VALUES ("bill", 10), ("bobby", 11), ("samantha", 15), ("kathy", 21);
+    Query OK, 4 rows affected (0.01 sec)
+    Records: 4  Duplicates: 0  Warnings: 0
 
 
 Show all people
 
-	MariaDB [chicktech_test]> select * from people;
-	+----+----------+-----+
-	| id | name     | age |
-	+----+----------+-----+
-	|  1 | bill     |  10 |
-	|  2 | bobby    |  11 |
-	|  3 | samantha |  15 |
-	|  4 | kathy    |  21 |
-	+----+----------+-----+
-	4 rows in set (0.00 sec)
+    MariaDB [chicktech_test]> select * from people;
+    +----+----------+-----+
+    | id | name     | age |
+    +----+----------+-----+
+    |  1 | bill     |  10 |
+    |  2 | bobby    |  11 |
+    |  3 | samantha |  15 |
+    |  4 | kathy    |  21 |
+    +----+----------+-----+
+    4 rows in set (0.00 sec)
 
 Show people whose name starts with a b and is less than 11 years old
 
-	MariaDB [chicktech_test]> select name from people WHERE name LIKE 'b%' AND age<11;
-	+------+
-	| name |
-	+------+
-	| bill |
-	+------+
-	1 row in set (0.00 sec)
+    MariaDB [chicktech_test]> select name from people WHERE name LIKE 'b%' AND age<11;
+    +------+
+    | name |
+    +------+
+    | bill |
+    +------+
+    1 row in set (0.00 sec)
 
 Create a user that can use this database
 
-	CREATE USER 'chicktech'@'localhost' IDENTIFIED BY 'chicktech';
+    CREATE USER 'chicktech'@'localhost' IDENTIFIED BY 'chicktech';
     GRANT ALL PRIVILEGES ON chicktech_test.* TO 'chicktech'@'localhost';
     FLUSH PRIVILEGES;
 
 Exit Maria DB
 
-	MariaDB [chicktech_test]> exit
-	Bye
+    MariaDB [chicktech_test]> exit
+    Bye
 
 [tutorialspoint](https://www.tutorialspoint.com/mysql/index.htm) has a good introductory Maria DB tutorial.  If you enjoy databases lots of companies hire DBAs that do nothing but database work.
 
-##### PHP
+#### PHP
 
 PHP is a well established programming language that runs on many operating systems.  It is most commonly used by web developers where it acts as an interpeted language that complies and executes on the server when called.  One of the core features of PHP is that you can easily mix PHP, Javascript and HTML in the same file.  This makes developing simple web applications easy to do as you don't have to learn or be restricted by frameworks or MVC practices.  Some of these same features are also its cons, by the way :).
 
 Lets install PHP
 
-	sudo su -
+    sudo su -
     apt-get install php-mysql php libapache2-mod-php
 
 Tell Apache to use PHP
 
-	a2enmod php7.0
+    a2enmod php7.0
     systemctl restart apache2
 
 Create a PHP diagnostics page
 
-	echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+    echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
 See if the page works.
 
@@ -262,19 +261,19 @@ See if the page works.
 
 Lets quickly look at a page that will show the results of the that query we did in the Maria DB section.
 
-	cat /var/www/html/query.php
+    cat /var/www/html/query.php
     <?php
-	$conn = new mysqli('localhost', 'chicktech', 'chicktech', 'chicktech_test');
-	if ($conn->connect_error) {
+    $conn = new mysqli('localhost', 'chicktech', 'chicktech', 'chicktech_test');
+    if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-	}
-	$sql = "select name from people WHERE name LIKE 'b%' AND age<11";
-	$result = $conn->query($sql);
-	while($row = $result->fetch_assoc()) {
-	echo $row["name"]. "<br>"; 
-	}
-	$conn->close();
-	?>
+    }
+    $sql = "select name from people WHERE name LIKE 'b%' AND age<11";
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+    echo $row["name"]. "<br>"; 
+    }
+    $conn->close();
+    ?>
 
 Now go to $username.example.com/query.php in your browser. Notice how:
 
@@ -285,7 +284,7 @@ Now go to $username.example.com/query.php in your browser. Notice how:
 [w3schools](https://www.w3schools.com/php7/) has a good introductory PHP tutorial if you are interested in learning more about PHP.
 
 
-#### What is Wordpress?
+### What is Wordpress?
 
 Wordpress is a personal and easy to use blogging plaform that runs on top of a LAMP stack.  It features an extensive plugin and template system and is backed by a large open source community.  [w3techs](https://w3techs.com/technologies/details/cm-wordpress/all/all) estimates that 34% of the internet runs on top of wordpress!
 
@@ -293,37 +292,37 @@ Now that you've seen what its like to create your own web pages and databases, l
 
 Install Wordpress
 
-	sudo su -
+    sudo su -
     apt-get install wordpress
 
 Wordpress will need a database to store its content.  The install of wordpress in the previous step also installed a script that makes creating that database easier than what we did a few sections ago.
 
 Extract and use the database creation script
 
-	gzip -d /usr/share/doc/wordpress/examples/setup-mysql.gz
+    gzip -d /usr/share/doc/wordpress/examples/setup-mysql.gz
     chmod +x /usr/share/doc/wordpress/examples/setup-mysql
     /usr/share/doc/wordpress/examples/setup-mysql -n wordpress $username.example.com
 
-	PING dminnich.example.com (192.168.122.18) 56(84) bytes of data.
-	64 bytes from dminnich.example.com (192.168.122.18): icmp_seq=1 ttl=64 time=0.013 ms
+    PING dminnich.example.com (192.168.122.18) 56(84) bytes of data.
+    64 bytes from dminnich.example.com (192.168.122.18): icmp_seq=1 ttl=64 time=0.013 ms
 
-	--- dminnich.example.com ping statistics ---
-	1 packets transmitted, 1 received, 0% packet loss, time 0ms
-	rtt min/avg/max/mdev = 0.013/0.013/0.013/0.000 ms
-	/etc/wordpress/config-dminnich.example.com.php written
-	Goto http://dminnich.example.com to setup Wordpress
+    --- dminnich.example.com ping statistics ---
+    1 packets transmitted, 1 received, 0% packet loss, time 0ms
+    rtt min/avg/max/mdev = 0.013/0.013/0.013/0.000 ms
+    /etc/wordpress/config-dminnich.example.com.php written
+    Goto http://dminnich.example.com to setup Wordpress
 
 Wordpress likes to create pretty URLs and to serve content outside of /var/www/html.  For Apache to do that we need enable a couple Apache modules
 
-	a2enmod rewrite
+    a2enmod rewrite
     a2enmod vhost_alias
 
 A single Apache install is capable of serving multiple websites.  This is called Virtual Hosting. A fresh install of Apache, however, is only configured to serve one default site.  The script we will run in a bit will create a new wordpress Apache site, enable it, and disable the default Apache site.
 
 Before we run the script lets learn about what it is doing.  Here is what an Apache site config looks like
 
-	root@raspberrypi:~/2019-chicktech/files/apache2# cat /root/2019-chicktech/files/apache2/wordpress.conf 
-	<VirtualHost *:80>
+    root@raspberrypi:~/2019-chicktech/files/apache2# cat /root/2019-chicktech/files/apache2/wordpress.conf 
+    <VirtualHost *:80>
         ServerName REPLACEME.example.com
 
         ServerAdmin webmaster@example.com
@@ -344,7 +343,7 @@ Before we run the script lets learn about what it is doing.  Here is what an Apa
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-	</VirtualHost>
+    </VirtualHost>
 
 
 `ServerName` determines what hostname to answer on and `DocumentRoot` determines what content to serve for that site.
@@ -352,7 +351,7 @@ Before we run the script lets learn about what it is doing.  Here is what an Apa
 
 The script itself contains some commands that disable and enable sites.
 
-	cat /opt/bin/wordpress_apache.sh
+    cat /opt/bin/wordpress_apache.sh
     ...
     a2dissite 000-default
     a2dissite default-ssl
@@ -365,12 +364,9 @@ The script itself contains some commands that disable and enable sites.
 
 The other stuff in that script tweaks a few Wordpress settings that are specific for our teaching environment.  Lets run the script.
 
-	/opt/bin/wordpress_apache.sh $username
+    /opt/bin/wordpress_apache.sh $username
 
 You complete the Wordpress install in your browser.  Go to $username.example.com in your browser and answer the questions the same way I demo now.
-
-
-
 
 Now that Wordpress is installed.  Watch as I demo a few things:
 
@@ -379,8 +375,7 @@ Now that Wordpress is installed.  Watch as I demo a few things:
 - Viewing the blog post
 - Navigating to the plugin and theme screens
 
-
-#### Bonuses
+### Bonuses
 
 All of the stuff we've done above are part of a system administrators job.  We built a stack and installed an application. A developer will now pick up from here and start writing custom code or changing things to meet their needs.  While they focus on that stuff the system administrators need to think about things like disaster recovery and uptime.  In the time before the next session feel free to explore simulations of those two objectives using the guidance below.
 
@@ -718,14 +713,14 @@ To interact with our friends' blogs, we'll need to get their blogs' IP addresses
 
 Ask your friends to get the IP of their interfaces by typing `ip a` in a terminal
 
-	root@raspberrypi:~/2019-chicktech/files/bin# ip a
-	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    root@raspberrypi:~/2019-chicktech/files/bin# ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
-	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 52:54:00:08:25:14 brd ff:ff:ff:ff:ff:ff
     inet 192.168.122.18/24 brd 192.168.122.255 scope global eth0
        valid_lft forever preferred_lft forever
@@ -734,7 +729,7 @@ Ask your friends to get the IP of their interfaces by typing `ip a` in a termina
 
 They are looking for the non `lo` interface that has something on the `inet` line.  Above their IP is `192.168.122.18`. Now you will add their IP address to your hosts file along with a DNS name.  For the username use first letter of their first name and their whole last name. For example
 
-	/opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
+    /opt/bin/add_hosts_line.sh 192.168.122.18 dminnich
 
 The hosts file maps hostnames in urls (like "www.google.com") to IP addresses. This means we can use those hostnames to refer to your friends' blog servers.
 
@@ -1044,8 +1039,6 @@ while True:
     time.sleep(1)
 ```
 
-
-
 ## Presentation preperation
 The ability to articulate and defend your ideas is an important skill to have no matter what field you go into.  A piece of general life advice: learn how to patiently communicate and be assertive.  Truth be told, people don't like making decisions or doing research on their own.  The more you bring to them, the more organized you are in your approach, the more passoinate you are -- the more likely they are to support your position/give you a raise/etc.
 
@@ -1053,7 +1046,7 @@ When giving a presentation:
 
 - Let your personality, body language and passion speak
 - Don't use a script
-- Focus on one narrowish topic the whole time
+- Focus on one narrow-ish topic the whole time
 - Avoid "um", "hmm" and similar filler words when possible
 - Practice.  Make sure you cover all the high level topics while finishing in your allocated time
 - Keep your slides full of figures, pictures and memes and not walls of text
@@ -1062,7 +1055,7 @@ When giving a presentation:
 - Be ready for ANY question.  Its ok to say "I don't know"
 - Describe shortcomings. Nothing is perfect and it makes you look authentic.
 - Do a practice run amongst peers and ask for feedback
-- Try not to stress it.  A lot of people will completly tune you out.  Others will have no idea what you are talking about.  People that want to challenge you may opt to do so one-on-one after the talk.
+- Try not to stress it.  A lot of people will completely tune you out.  Others will have no idea what you are talking about.  People that want to challenge you may opt to do so one-on-one after the talk.
 
 We've pre-created a slide deck for use during our upcoming presentations. It is [here](https://docs.google.com/presentation/d/1r0o8KSgATN6PC5dZ99OmBf6LwJnJ0wWyZS2qvsABIOM/edit#slide=id.p)
 
@@ -1070,7 +1063,7 @@ We need 3 volunteers.  These girls will:
 
 - Edit the slide deck to their liking
 - Practice amongst themselves and one of the volunteers
-- Do a practice run in front of the class and recieve feedback from the class
+- Do a practice run in front of the class and receive feedback from the class
 - Present to the parents
 - Present to the whole kickoff audience
 
@@ -1079,7 +1072,7 @@ Please raise your hand if you are interested.
 
 ## Exploring on your own
 
-Please use any remaining free time to be creative with anything you've leared so far.  Also feel free to ask us any questions you may have.
+Please use any remaining free time to be creative with anything you've learned so far.  Also feel free to ask us any questions you may have.
 
 Need some ideas?  Here are some code samples you can play with.
 
