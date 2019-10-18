@@ -841,7 +841,7 @@ Yesterday we covered:
 
 ### History and premise
 
-The prolilferation of technology, Moore's law and the golablization of the labor force over the last few decades has changed things in interesting ways. Devices used to be expensive and mechnical.  Now they are cheap and electronic.
+The proliferation of technology, Moore's law and the globalization of the labor force over the last few decades has changed things in interesting ways. Devices used to be expensive and mechanical.  Now they are cheap and electronic.
 
 Below is a contrived example that will help drive home the point I'm trying to make.
 
@@ -849,14 +849,14 @@ A water heater from 20 years ago:
 
 - Had one water setting: on/off
 - A bouy would float on top of water in the tank. Once it rose past a certain trip point a switch would flip and the water heater wouldn't collect anymore water.
-- Cost $1000 in todays money
+- Cost $1000 in today's money
 - A mechanic/hacker/enthusiast could replace the bouy or physically lower or higher the trip point as fixes/improvements. These would all be cost effective actions that the general public could understand.
 
 A water heater 15 years ago:
 
 - Had two simple settings
 - Was controlled by simple electronic componets (resistors, capacitors, timers, etc)
-- Cost $700 in todays money
+- Cost $700 in today's money
 - A mechanic/hacker/enthusiast could replace an electronic component by desoldering it and soldering in a new one.  They could determine which componenets were bad by using a basic multi-meter.
 
 
@@ -879,9 +879,9 @@ This commoditization of electronic components has opened up a new door for hacke
 
 Your phone knows how to work with your Bluetooth airpods and your laptop knows how to work with your USB mouse because Bluetooth and USB are standardized protocols.  I2C, SPI and UART are also standardized protocols.
 
-UART or Universal Asynchronous Reciver/Transmitter is a simple protocol for transferring data back and forth between two devices at the same time.  It uses two wires plus possible ground and power lines.  RX/TX are crossed on each side. Meaning RX on sideA goes to TX on sideB. Clocking is set in software via start/stop bits and baud rates.  In microcontroller applications UART is often used by humans for debugging purposes as they have the microcontroller print break points in the code its running to a serial console.
+UART or Universal Asynchronous Receiver/Transmitter is a simple protocol for transferring data back and forth between two devices at the same time.  It uses two wires plus possible ground and power lines.  RX/TX are crossed on each side. Meaning RX on sideA goes to TX on sideB. Clocking is set in software via start/stop bits and baud rates.  In microcontroller applications UART is often used by humans for debugging purposes as they have the microcontroller print break points in the code its running to a serial console.
 
-SPI or Serial Peripheral Interface is simple serial protocol that uses four wires plus possible ground and power lines to connect several devices that are a short distance apart together and need rapid data transfer.  Generally one device is condered the master and the rest are considered slaves.  The clock is set with the clock wire and a slave is chosen using the SS wire.  All devices are hooked up in parrallel but require their own SS wire from the master.  MOSI(master out slave in) and MISO(master in slave out) allow data to travel both directions between two devices at the same time. An SPI bus can generally support as many devices as SS pins the microcontroller has.
+SPI or Serial Peripheral Interface is simple serial protocol that uses four wires plus possible ground and power lines to connect several devices that are a short distance apart together and need rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The clock is set with the clock wire and a slave is chosen using the SS wire.  All devices are hooked up in parallel but require their own SS wire from the master.  MOSI(master out slave in) and MISO(master in slave out) allow data to travel both directions between two devices at the same time. An SPI bus can generally support as many devices as SS pins the microcontroller has.
 
 I2C (pronounced I squared C) is an advanced serial protocol that uses two wires plus possible ground and power lines to connect several devices that are a short distance apart and don't require rapid data transfer.  Generally one device is considered the master and the rest are considered slaves.  The master calls out to a slave via a specific hard coded 7bit device address.  Communications happen one direction at a time and there can be up to 127 slaves hooked up in parallel on one I2C bus.  Each device is interconnected via a serial data (SDA) and serial clock(SCL) wires.
 
@@ -902,10 +902,9 @@ Analog is more like what the ocean looks like or what a song looks like in some 
 
 For example, you could build a clap switch.  You could get a sound sensor and use it as a digital input to the Raspberry Pi.  When it hears a noise it sends a HIGH/ON signal to the Pi and at that point the Pi has a program written to send a TOGGLE to a digital output to an LED.  Noise made, light on.  Noise made, light off.
 
-With analaog in and out you could use a photoresistor(light sensor) as an input to detect the ambient light in your room and then alter the brightness of an LED via a PWM/analog output on the Pi in proportion to ambient light.
+With analaog in and out you could use a photoresistor (light sensor) as an input to detect the ambient light in your room and then alter the brightness of an LED via a PWM/analog output on the Pi in proportion to ambient light.
 
-
-If this kind of stuff interests you, you may want to explore `embedded` engineering.  The type of problems these  engineers solve and the devices they work with are often quite different from your standard software engineer.
+If this kind of stuff interests you, you may want to explore `embedded` engineering.  The type of problems these engineers solve and the devices they work with are often quite different from your standard software engineer.
 
 ### Using the screen
 
