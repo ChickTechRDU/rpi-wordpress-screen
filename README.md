@@ -288,7 +288,7 @@ Now go to $username.example.com/query.php in your browser. Notice how:
 
 Wordpress is a personal and easy to use blogging plaform that runs on top of a LAMP stack.  It features an extensive plugin and template system and is backed by a large open source community.  [w3techs](https://w3techs.com/technologies/details/cm-wordpress/all/all) estimates that 34% of the internet runs on top of wordpress!
 
-Now that you've seen what its like to create your own web pages and databases, lets have Wordpress do the heavy lifting for us.
+Now that you've seen what its like to create your own web pages and databases, let's have Wordpress do the heavy lifting for us.
 
 Install Wordpress
 
