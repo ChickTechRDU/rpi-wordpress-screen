@@ -12,4 +12,7 @@ apt-get -y install wordpress curl apache2 mariadb-server i2c-tools vim lsof pyth
 mkdir -p /opt/bin /opt/rsync_source /opt/rsync_destination
 cp -Rf /root/2019-chicktech/files/bin/* /opt/bin/
 cp -Rf /root/2019-chicktech/files/html/* /var/www/html/
-su - pi -c "pip install -r /opt/bin/requirements.txt"
+su - pi -c "pip3 install -r /opt/bin/requirements.txt"
+# Thonny reads python packages from below target. Install here as well so packages are available
+# to both Thonny and CLI.
+su - pi -c "pip3 install -t /home/pi/.local/lib/python3.7/site-packages -r /opt/bin/requirements.txt"
