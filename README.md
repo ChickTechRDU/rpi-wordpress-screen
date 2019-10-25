@@ -1017,7 +1017,7 @@ class Screen:
 
 # Define some functions here to organize some simple logic around the number of comments. We'll
 # reuse these functions below.
-# The first functino returns a different emoji depending on how many comments a blog has.
+# The first function returns a different emoji depending on how many comments a blog has.
 def emoji_for_comment_total(total):
     if total < 5:
         return "😊"
