@@ -827,14 +827,14 @@ Take some time to play with this a bit:
 ## Quick recap
 Yesterday we covered:
 
-- What various types of people in IT do
+- Different jobs/roles in IT
 - What a Raspberry Pi is
-- Installing a LAMP web server stack
-- Installing the WordPress blog platform
+- How to install a LAMP web server stack
+- How to install the WordPress blog platform
 - What an IDE, API, and a package are
-- How to do step through debugging
-- Using functions, variables, classes, dictionaries, lists, loops and conditional statements in python
-- Using the python requests module to interact with our wordpress blog and do things like print blog titles and comment counts
+- How to debug your software
+- How to use functions, variables, classes, dictionaries, lists, loops and conditional statements in python
+- How to use the python requests module to interact with our wordpress blog and do things like print blog titles and comment counts
 
 
 ## Working with hardware
