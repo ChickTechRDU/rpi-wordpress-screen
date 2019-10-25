@@ -41,7 +41,13 @@ My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a So
 My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsible for:
 
 - Herding cats and attempting to add stability to a chaotic world.
-- TODO - cvanvalk
+- Plan the roadmap
+- Engage and keep the team focused on delivering on time
+- Professional development of your associates
+- Remove roadblocks and ensure the team has everything they need to do their job (hardware, software, stuff from other teams)
+- Hire/Fire people
+- Status updates on ongoing projects, keep stakeholders informed
+
 
 
 
