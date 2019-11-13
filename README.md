@@ -1201,8 +1201,8 @@ while True: # run forever until we kill the program
     posts = blog.list_latest_posts(at_most=1)
     if len(posts) > 0:
         latest_post = posts[0]
-
-        post_date = datetime.fromisoformat(latest_post['date'])
+        latest_post_date = latest_post['date']
+        post_date = datetime.fromisoformat(latest_post_date)
         if post_date > last_commented_date:
             last_commented_date = post_date
             print("a new post just came up on ", blog.base_url, "at ", last_commented_date)
