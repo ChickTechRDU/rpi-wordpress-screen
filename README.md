@@ -249,11 +249,11 @@ PHP is a well established programming language that runs on many operating syste
 Lets install PHP
 
     sudo su -
-    apt-get install php-mysql php libapache2-mod-php
+    apt-get install php-mysql php7.3 libapache2-mod-php
 
 Tell Apache to use PHP
 
-    a2enmod php7.0
+    a2enmod php7.3
     systemctl restart apache2
 
 Create a PHP diagnostics page
@@ -303,9 +303,8 @@ Install Wordpress
 
 Wordpress will need a database to store its content.  The install of wordpress in the previous step also installed a script that makes creating that database easier than what we did a few sections ago.
 
-Extract and use the database creation script
+Use the database creation script
 
-    gzip -d /usr/share/doc/wordpress/examples/setup-mysql.gz
     chmod +x /usr/share/doc/wordpress/examples/setup-mysql
     /usr/share/doc/wordpress/examples/setup-mysql -n wordpress $username.example.com
 
@@ -374,12 +373,21 @@ The other stuff in that script tweaks a few Wordpress settings that are specific
 
 You complete the Wordpress install in your browser.  Go to $username.example.com in your browser and answer the questions the same way I demo now.
 
+Our lab will involve posting lots of comments to blogs. Since Wordpress might detect this as "spam", we are going to turn off some of its anti-spam features.
+
+Make sure all options with red boxes next to them in the below screenshot are unchecked under `Settings > Discussion`
+
+![antispam.png](/docs/antispam.png)
+
+
 Now that Wordpress is installed.  Watch as I demo a few things:
 
 - Logging in
 - Creating a blog post
 - Viewing the blog post
 - Navigating to the plugin and theme screens
+
+
 
 ### Bonuses
 
