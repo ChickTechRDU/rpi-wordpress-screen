@@ -673,7 +673,7 @@ def html_to_text(html):
     return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
 
 # This is the API of your blog.
-blog_api_url="http://dminnich.example.com/wp-json/wp/v2"
+blog_api_url="http://$username.example.com/wp-json/wp/v2"
 
 # Now, we can use our class, and our tasks are easier to write and understand.
 # First, create an instance of our blog by calling our class like we would call a function.
@@ -701,7 +701,7 @@ if len(latest_posts) > 0:
     date = latest_comment['date']
     comment_text = html_to_text(latest_comment['content']['rendered'])
     words = len(comment_text.split())
-    print("{0} commented on your post at {1} and wrote {2} words! :-)".format(author, date, words))
+    print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
@@ -722,7 +722,7 @@ Here's a hint:
         date = comment['date']
         comment_text = html_to_text(latest_comment['content']['rendered'])
         words = len(comment_text.split())
-        print("{0} commented on your post at {1} and wrote {2} words! :-)".format(author, date, words))
+        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
 ```
 
 ### Using your friends' blogs
@@ -790,12 +790,12 @@ blog_urls = {
     "username2's blog": "http://$username2.example.com/wp-json/wp/v2"
 }
 
-# As we go through the blogs, we need to track which ones have the most comments. We store the
-# top blogs in a variable that we'll overwrite each time we find a new blog that matches or exceeds
-# our current top blog.
+# We need to figure out which blog(s) have the most comments.  We will store the results of
+# our investigation in a list. As we process each blog we will either replace the list with a new
+# winnig blog or append to the list if a tie is found.
+
 top_blogs = []
-# For each of the blogs with the most comments, we'll track the number of comments that is with
-# another variable.
+# Store how many comments this blog has in a variable
 top_blog_total_comments = 0
 
 # Again we'll use a for loop to get the total comments for each blog in the blog_urls dictionary.
@@ -1034,12 +1034,12 @@ class Screen:
 # The first function returns a different emoji depending on how many comments a blog has.
 def emoji_for_comment_total(total):
     if total < 5:
-        return ":-)"
+        return "😊"
 
     if total < 10:
-        return ":-)"
+        return "😃"
 
-    return "B-)"
+    return "😎"
 
 # This function returns a font size to use depending on how many comments a blog has.
 def font_size_for_comment_total(total):
