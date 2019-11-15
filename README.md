@@ -1188,14 +1188,11 @@ class Blog:
         return response.content
 
 
-blog = Blog("http://demo.wp-api.org/wp-json/wp/v2")
-# This is a programming trick that is pretty handy. It turns out that most
-# machines increment time forward from a 0-point, and that 0-point is not too far
-# in the past, by and large.
-#
-# So here, we're asking for the timestamp for 0, which happens to be:
-# datetime.datetime(1969, 12, 31, 19, 0) - that's right, 7PM on December 31st, 1969.
-last_commented_date = datetime.fromtimestamp(0)
+blog = Blog("http://dminnich.example.com/wp-json/wp/v2")
+# We are assuming the value the current time as the date we last commented on a post
+# This helps us to use a time value as a starting point to compare our date calculations with
+# We will use utc time because UTC is a global time and helps stay consistent across timezones and daylight savings time
+last_commented_date = datetime.utcnow()
 
 while True: # run forever until we kill the program
     posts = blog.list_latest_posts(at_most=1)
@@ -1206,7 +1203,7 @@ while True: # run forever until we kill the program
         if post_date > last_commented_date:
             last_commented_date = post_date
             print("a new post just came up on ", blog.base_url, "at ", last_commented_date)
-            blog.comment_on_post(latest_post['id'])
+            blog.comment_on_post(latest_post['id'],"Hello there, do you want to be my friend!")
     time.sleep(3) # wait 3s before doing anything else.
 ```
 
