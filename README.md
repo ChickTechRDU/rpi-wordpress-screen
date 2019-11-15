@@ -705,6 +705,27 @@ if len(latest_posts) > 0:
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
+Notice what happens when there are no comments on the blog. You will see that the latest_comments array is empty.
+![empty-array-no-comments](/docs/empty-array-no-comments.png)
+
+Now if you try to retrieve the 0th element of latest_comments, it throws an error
+![error-message-because-no-comments](/docs/error-message-because-no-comments.png)
+
+Can you modify the program to not throw this error?
+
+Here's a hint:
+
+```python
+    if len(latest_comments) > 0:
+            latest_comment = latest_comments[0]
+            author = latest_comment['author_name']
+            date = latest_comment['date']
+            comment_text = html_to_text(latest_comment['content']['rendered'])
+            words = len(comment_text.split())
+            print("{0} commented on your post at {1} and wrote {2} words! :-)".format(author, date, words))
+    else:
+        print("No comments found! ")
+```
 
 Try commenting on your latest post and rerun your program. Each time the program runs it'll reflect the latest comment.
 
