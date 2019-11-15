@@ -706,9 +706,11 @@ else:
     print("No blog posts found. You should post something on your blog first!")
 ```
 Notice what happens when there are no comments on the blog. You will see that the latest_comments array is empty.
+
 ![empty-array-no-comments](/docs/empty-array-no-comments.png)
 
 Now if you try to retrieve the 0th element of latest_comments, it throws an error
+
 ![error-message-because-no-comments](/docs/error-message-because-no-comments.png)
 
 Can you modify the program to not throw this error?
