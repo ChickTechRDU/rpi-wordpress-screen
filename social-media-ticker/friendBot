@@ -24,7 +24,7 @@ class Blog:
         data = {
             'post': post_id,
             'author_name': 'Your name',
-            'author_email': 'YourEmail@gmail.com',
+            'author_email': 'nobody@example.com',
             'content': comment_to_post
         }
         print("Making a POST request to URL: {}".format(url))
@@ -33,10 +33,9 @@ class Blog:
 
 
 blog = Blog("http://dminnich.example.com/wp-json/wp/v2")
-# This is a programming trick that is pretty handy. It turns out that most
-# machines increment time forward from a 0-point, and that 0-point is not too far
-# in the past, by and large.
-#
+# We are assuming the value the current time as the date we last commented on a post
+# This helps us to use a time value as a starting point to compare our date calculations with
+# We will use utc time because UTC is a global time and helps stay consistent across timezones and daylight savings time
 last_commented_date = datetime.utcnow()
 
 while True: # run forever until we kill the program

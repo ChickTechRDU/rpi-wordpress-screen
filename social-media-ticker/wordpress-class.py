@@ -34,7 +34,7 @@ class Blog:
         return response.content
 
 
-blog = Blog('http://blog.example.com/wp-json/wp/v2')
+blog = Blog('http://dminnich.example.com/wp-json/wp/v2')
 
 print('Enter your comment')
 comment_to_post = input()

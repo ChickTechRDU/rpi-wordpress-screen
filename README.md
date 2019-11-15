@@ -667,7 +667,7 @@ def html_to_text(html):
     return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
 
 # This is the API of your blog.
-blog_api_url="http://$username.example.com/wp-json/wp/v2"
+blog_api_url="http://dminnich.example.com/wp-json/wp/v2"
 
 # Now, we can use our class, and our tasks are easier to write and understand.
 # First, create an instance of our blog by calling our class like we would call a function.
@@ -695,7 +695,7 @@ if len(latest_posts) > 0:
     date = latest_comment['date']
     comment_text = html_to_text(latest_comment['content']['rendered'])
     words = len(comment_text.split())
-    print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+    print("{0} commented on your post at {1} and wrote {2} words! :-)".format(author, date, words))
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
@@ -716,7 +716,7 @@ Here's a hint:
         date = comment['date']
         comment_text = html_to_text(latest_comment['content']['rendered'])
         words = len(comment_text.split())
-        print("{0} commented on your post at {1} and wrote {2} words! 😃".format(author, date, words))
+        print("{0} commented on your post at {1} and wrote {2} words! :-)".format(author, date, words))
 ```
 
 ### Using your friends' blogs
@@ -1028,12 +1028,12 @@ class Screen:
 # The first function returns a different emoji depending on how many comments a blog has.
 def emoji_for_comment_total(total):
     if total < 5:
-        return "😊"
+        return ":-)"
 
     if total < 10:
-        return "😃"
+        return ":-)"
 
-    return "😎"
+    return "B-)"
 
 # This function returns a font size to use depending on how many comments a blog has.
 def font_size_for_comment_total(total):
