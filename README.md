@@ -811,12 +811,12 @@ blog_urls = {
     "username2's blog": "http://$username2.example.com/wp-json/wp/v2"
 }
 
-# As we go through the blogs, we need to track which ones have the most comments. We store the
-# top blogs in a variable that we'll overwrite each time we find a new blog that matches or exceeds
-# our current top blog.
+# We need to figure out which blog(s) have the most comments.  We will store the results of
+# our investigation in a list. As we process each blog we will either replace the list with a new
+# winnig blog or append to the list if a tie is found.
 top_blogs = []
-# For each of the blogs with the most comments, we'll track the number of comments that is with
-# another variable.
+
+# Store how many comments this blog has in a variable
 top_blog_total_comments = 0
 
 # Again we'll use a for loop to get the total comments for each blog in the blog_urls dictionary.
