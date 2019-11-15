@@ -432,7 +432,13 @@ Writing programs, like playing music or building a house, requires tools. A comm
 
 ![thonny.png](/docs/thonny.png)
 
-In Thonny, type `print("Hello Chicktech!")` into the top window pane.
+Before we start coding, lets turn up the verbosity of Thonny's debugger to make troubleshooting code in the future easier.
+
+![thonnya.png](/docs/thonnya.png)
+
+![thonnyb.png](/docs/thonnyb.png)
+
+Now, in Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
 ![first-statement.png](/docs/first-statement.png)
 
