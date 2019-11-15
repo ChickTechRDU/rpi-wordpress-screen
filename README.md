@@ -537,6 +537,17 @@ print(add(first_number, another_number))
 
 So far we've written some small, simple programs. Writing something like a multiplayer game at this rate would take a really long time! Fortunately, when somebody solves a generic problem and is feeling generous they will round up all of their code and let others download it via what are called **packages**.
 
+Lets take a minute to install all of the packages we will use going forward:
+
+     sudo su -
+     pip install --exists-action i requests
+     pip install --exists-action i RPi.GPIO
+     pip install --exists-action i beautifulsoup4
+     pip install --exists-action i Pillow
+     pip install --exists-action i luma.core
+     pip install --exists-action i luma.oled
+
+
 Let's use one of those packages.  The "requests" package will allow us to communicate with websites, like the blog you're running on your Pi.
 
 > For full documentation of the "requests" package, see: https://requests.readthedocs.io/en/master/
