@@ -1180,7 +1180,7 @@ class Blog:
         data = {
             'post': post_id,
             'author_name': 'Your name',
-            'author_email': 'YourEmail@gmail.com',
+            'author_email': 'nobody@example.com',
             'content': comment_to_post
         }
         print("Making a POST request to URL: {}".format(url))
