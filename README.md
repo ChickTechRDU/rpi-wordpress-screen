@@ -1236,6 +1236,10 @@ while True: # run forever until we kill the program
     time.sleep(3) # wait 3s before doing anything else.
 ```
 
+Some things that you can try:
+
+- Find the name of the author of the post from the rest api and use that in your program to post a personalized comment.
+- Right now, your bot only posts a hardcoded comment. Modify your program to take an input from you for a comment and post that to your friend's blog.
 
 ### Pulling weather data from the internet
 
