@@ -497,7 +497,7 @@ We can write our own functions, too. Try this program for example:
 ```python
 # Program 1.3.1
 def greet(who):
-    print("😎 Hello {}! 😎".format(who))
+    print("B-) Hello {}! B-)".format(who))
 
 greet("Chicktech")    
 greet("World")
