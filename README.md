@@ -511,7 +511,13 @@ Defining a function works like this:
 2. Then write the function's name next to `def` separated by a space. We'll use the functions name to call it later.
 3. Then we have a **parameter list**, surrounded by parenthesis. Parameters allow us to reuse a function with different values. In our `greet` function, the `who` parameter allowed us to print several different greetings reusing the same function. We can refer to that parameter's value by its name inside of the function.
 
-Let's write another function that adds two numbers.
+Something that's worth mentioning here is the tab before the `print`. Programming languages use something to group statements together to form a block of code. C, C++, Java use `{}`. Python uses indentation.
+
+A code block (body of a function, loop etc.) starts with indentation and ends with the first unindented line. The amount of indentation is up to you, but it must be consistent throughout that block.
+
+Generally four whitespaces are used for indentation and is preferred over tabs.
+
+Now let's write another function that adds two numbers.
 
 ```python
 # Program 1.3.2
