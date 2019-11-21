@@ -1019,7 +1019,6 @@ Raise your hand if this didn't work for you and a volunteer will come around and
 
 Now lets do something really cool! Lets have the screen print a different emoji based on how many comments your blog has.
 
-TODO: Walk through set up of these packages / necessary drivers
 
 ```python
 # Program 3.1.2
