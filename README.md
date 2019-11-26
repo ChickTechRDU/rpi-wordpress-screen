@@ -432,9 +432,17 @@ Writing programs, like playing music or building a house, requires tools. A comm
 
 ![thonny.png](docs/thonny.png)
 
-Before we start coding, lets turn up the verbosity of Thonny's debugger to make troubleshooting code in the future easier.
+Before we start coding, let's tweak some settings to make troubleshooting and understanding our code a little easier.
+
+First, switch to "regular" mode by clicking "Switch to regular mode" in the upper right as seen below:
+
+![thonny_regular_mode](docs/thonny_regular_mode.png)
+
+Then, we're going to switch a "nicer" debugger. We'll use the debugger later. Go to Tools -> Options...
 
 ![thonnya.png](docs/thonnya.png)
+
+Then the "Run & Debug" tab. Next to "Preferred debugger", click the dropdown to select "nicer".
 
 ![thonnyb.png](docs/thonnyb.png)
 
@@ -486,7 +494,6 @@ This time, let's use the "step into" button, instead of "step over". "Step into"
 6. Now notice `print` has turned into a green `None`. The `print` instruction itself is an expression, but it doesn't evaluate to anything. `None` is python's value that represents nothing.
    ![step-in-5-print-expression.png](docs/step-in-5-print-expression.png)
 7. Click "Step into" **one** more time and the debugger will jump to the next line.
-
 
 ### Functions and variables
 
