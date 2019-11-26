@@ -5,7 +5,6 @@ To get to know each other, lets quickly go around the room.  When it is your tur
 
 - Your name
 - School you go to
-- What your programming and sysadmin excerince is
 - Something you like that starts with the first letter of your first name
 
 I'll start.
@@ -448,7 +447,13 @@ Then the "Run & Debug" tab. Next to "Preferred debugger", click the dropdown to 
 
 ![thonnyb.png](docs/thonnyb.png)
 
-Now, in Thonny, type `print("Hello Chicktech!")` into the top window pane.
+Lastly, we're going to open some additional panes that we'll use later while debugging. Go to the View menu and click "Object Inspector". Then, open the view menu again and select "Variables":
+
+![thonny_vars1.png](docs/thonny_vars1.png)
+
+![thonny_vars1.png](docs/thonny_vars2.png)
+
+Finally, copy `print("Hello Chicktech!")` into the top window pane.
 
 ![first-statement.png](docs/first-statement.png)
 
@@ -538,7 +543,7 @@ another_number = add(5, 10)
 print(add(first_number, another_number))
 ```
 
-Parameters are very similar to **variables**. You're probably already familiar with variables from algebra. Variables remember a value for later reuse. The above program adds numbers, remembers those results, and then adds those results.
+Parameters are very similar to **variables**. You're probably already familiar with variables from algebra. Variables remember a value for later reuse. The above program adds numbers, remembers those results, and then adds those results. Step through it to see how it works.
 
 ## Interacting with Wordpress via code
 
@@ -635,7 +640,7 @@ We can do this because of something called **application programming interfaces*
 
 ![iot.jpg](docs/iot.jpg)
 
-Different APIs come in different flavors. When talking to a website server, like the Wordpress blog from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for different parties to communicate or accomplish some task together. Think of snail mail: when you send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way,we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what serves websites over the internet.
+Different APIs come in different flavors. When talking to a website server, like the Wordpress blog from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for different parties to communicate or accomplish some task together. Think of snail mail: when you send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way, we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what serves websites over the internet.
 
 ![HTTP_Steps.png](docs/HTTP_Steps.png)
 
@@ -726,11 +731,11 @@ if len(latest_posts) > 0:
 else:
     print("No blog posts found. You should post something on your blog first!")
 ```
-Notice what happens when there are no comments on the blog. You will see that the latest_comments array is empty.
+Notice what happens when there are no comments on the blog. You will see that the `latest_comments` array is empty.
 
 ![empty-array-no-comments](docs/empty-array-no-comments.png)
 
-Now if you try to retrieve the 0th element of latest_comments, it throws an error
+Now if you try to retrieve the 0th element of `latest_comments`, it throws an error
 
 ![error-message-because-no-comments](docs/error-message-because-no-comments.png)
 
