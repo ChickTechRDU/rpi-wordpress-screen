@@ -1062,7 +1062,7 @@ class Screen:
         # Initialize the screen like we did before.
         serial = i2c(port=1, address=0x3c)
         self.device = ssd1306(serial, rotate=0)
-        # This time we'll also use a real font so we can write emojis on the screen
+        # This time we'll also use a real font so the text looks nicer
         self.font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
 
     # This function does what it says!
