@@ -561,7 +561,7 @@ Let's use one of those packages.  The "requests" package will allow us to commun
 
 > For full documentation of the "requests" package, see: https://requests.readthedocs.io/en/master/
 
-Copy the above program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
+Copy the below program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
 
 ```python
 # Program 2.1.1
