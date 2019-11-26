@@ -379,7 +379,7 @@ Our lab will involve posting lots of comments to blogs. Since Wordpress might de
 
 Make sure all options with red boxes next to them in the below screenshot are unchecked under `Settings > Discussion`
 
-![antispam.png](/docs/antispam.png)
+![antispam.png](docs/antispam.png)
 
 
 Now that Wordpress is installed.  Watch as I demo a few things:
@@ -432,21 +432,29 @@ Let's try it out!
 
 Writing programs, like playing music or building a house, requires tools. A common tool is an "integrated development environment" or IDE for short. We'll use the **Thonny** IDE today.
 
-![thonny.png](/docs/thonny.png)
+![thonny.png](docs/thonny.png)
 
-Before we start coding, lets turn up the verbosity of Thonny's debugger to make troubleshooting code in the future easier.
+Before we start coding, let's tweak some settings to make troubleshooting and understanding our code a little easier.
 
-![thonnya.png](/docs/thonnya.png)
+First, switch to "regular" mode by clicking "Switch to regular mode" in the upper right as seen below:
 
-![thonnyb.png](/docs/thonnyb.png)
+![thonny_regular_mode](docs/thonny_regular_mode.png)
+
+Then, we're going to switch a "nicer" debugger. We'll use the debugger later. Go to Tools -> Options...
+
+![thonnya.png](docs/thonnya.png)
+
+Then the "Run & Debug" tab. Next to "Preferred debugger", click the dropdown to select "nicer".
+
+![thonnyb.png](docs/thonnyb.png)
 
 Now, in Thonny, type `print("Hello Chicktech!")` into the top window pane.
 
-![first-statement.png](/docs/first-statement.png)
+![first-statement.png](docs/first-statement.png)
 
 Now click the green run button above.
 
-![run-program.png](/docs/run-program.png)
+![run-program.png](docs/run-program.png)
 
 Congrats! You've got a working program!
 
@@ -465,11 +473,11 @@ Our second line also included a **comment**, which started with the `#`. Comment
 
 One neat feature of IDEs is that they have **debuggers**. These are tools which allow us to watch a program run, pause it mid-execution, and inspect what its doing as it does it. We can trigger pauses by adding **breakpoints** on the lines that we want to pause on. Add breakpoints by double clicking on the first line's line number on the left ("1"). Then click the green debug button above.
 
-![debugging.png](/docs/debugging.png)
+![debugging.png](docs/debugging.png)
 
 When you click debug, notice you do not immediately see "Hello Chicktech!". Instead, execution is paused at the first line (where you added a breakpoint), which is also highlighted in yellow. To execute this first line, press the "step over" button above, which "steps over" and executes the current line.
 
-![step.png](/docs/step.png)
+![step.png](docs/step.png)
 
 Now you see "Hello Chicktech!" output on the bottom pane. Press it again to see "Hello World!".
 
@@ -478,17 +486,16 @@ To remove a breakpoint, double click the breakpoint icon (the red circle next to
 This time, let's use the "step into" button, instead of "step over". "Step into" allows us to see more deeply into what our program is doing, which is useful when we start to define more complex programs. "Step over" is useful when we want an overview, and don't want to get bogged down with the details.
 
 1. Click "Step into" **once**.
-   ![step-debug-before-step-in.png](/docs/start-debug-before-step-in.png)
+   ![step-debug-before-step-in.png](docs/start-debug-before-step-in.png)
 2. Notice that our IDE has popped out the current line and highlighted it, executing it and moving to the next line.
-   ![step-in-1](/docs/step-in-1.png)
+   ![step-in-1](docs/step-in-1.png)
 3. Click "Step into" **two** more times.
 4. Now notice the text `"Hello Chicktech!"` changed color. The IDE **evaluated** our **expression** and is showing the result. Our expression, `"Hello Chicktech!"` was very simple, so it evaluated to the same thing, but all kinds of expressions exist in python as a way to compute more interesting values.
-   ![step-in-3-string-expression.png](/docs/step-in-3-string-expression.png)
+   ![step-in-3-string-expression.png](docs/step-in-3-string-expression.png)
 5. Click "Step into" **two** more times.
 6. Now notice `print` has turned into a green `None`. The `print` instruction itself is an expression, but it doesn't evaluate to anything. `None` is python's value that represents nothing.
-   ![step-in-5-print-expression.png](/docs/step-in-5-print-expression.png)
+   ![step-in-5-print-expression.png](docs/step-in-5-print-expression.png)
 7. Click "Step into" **one** more time and the debugger will jump to the next line.
-
 
 ### Functions and variables
 
@@ -526,20 +533,12 @@ Now let's write another function that adds two numbers.
 def add(x, y):
     return x + y
 
-print(add(2, 2))
-```
-
-Parameters are very similar to **variables**. You're probably already familiar with variables from algebra. Variables remember a value for later reuse. For example, the below program adds numbers, remembers those results, and then adds those results.
-
-```python
-# Program 1.3.3
-def add(x, y):
-    return x + y
-
 first_number = add(2, 2)
 another_number = add(5, 10)
 print(add(first_number, another_number))
 ```
+
+Parameters are very similar to **variables**. You're probably already familiar with variables from algebra. Variables remember a value for later reuse. The above program adds numbers, remembers those results, and then adds those results.
 
 ## Interacting with Wordpress via code
 
@@ -554,6 +553,8 @@ Lets take a minute to install all of the packages we will use going forward:
      pip install --exists-action i Pillow
      pip install --exists-action i luma.core
      pip install --exists-action i luma.oled
+
+**Note**:  The above installs packages to your system globally and is what you would generally run.  Thonny manages packages a bit differently.  To install packages in Thonny go to `Tools > Manage Packages`. Your pi's are already ready for this workshop, so you don't have to do this step now, but it is good to know for when you are doing more learning at home.
 
 
 Let's use one of those packages.  The "requests" package will allow us to communicate with websites, like the blog you're running on your Pi.
@@ -616,13 +617,13 @@ Try debugging your program to watch and inspect the instructions and variables.
 
 Now lets look at the list and dictionary the code used during execution in the debugger.  A list looks like this:
 
-![211-posts-list.png](/docs/211-posts-list.png)
+![211-posts-list.png](docs/211-posts-list.png)
 
 Lists in python are always encompassed inside of square brackets.  The `0` is the first element in the **list**.  Its value is a **dictionary** of **key** **value** pairs.  If we would have asked for `per_page>1` there would have been a `1` second element whose value would have been a dictionary as well --and so on--.
 
 Dictionaries in python are encompassed inside of curly braces.  The dictionary from above comes from the JSON representation of the blog post.  Lets look at it:
 
-![211-post.png](/docs/211-post.png)
+![211-post.png](docs/211-post.png)
 
 You use the "word" syntax like `post["title"]["rendered"]` to get the values from this dictionary and the display the results.
 
@@ -632,11 +633,11 @@ In the above example, we not only pulled code from another package, we also used
 
 We can do this because of something called **application programming interfaces**, or **APIs** for short. APIs define a kind of simple language, specific to a certain area–like math, or blogs, or weather, or tweets–that can hide a limitless amount of code underneath it. When we use packages or other servers, all we need are their APIs. Then, the rest of the implementation is hidden to us, and can change and improve without us knowing. We don't need to know or learn all of that code. APIs make us incredibly productive and allow us to create amazing things relatively quickly.
 
-![iot.jpg](/docs/iot.jpg)
+![iot.jpg](docs/iot.jpg)
 
 Different APIs come in different flavors. When talking to a website server, like the Wordpress blog from our python script, we interact using the HTTP protocol. A protocol is just an agreed way for different parties to communicate or accomplish some task together. Think of snail mail: when you send a letter, we have a protocol that says we use envelopes, we write our addresses a certain way,we put it in a mailbox, and letters get sent back to us in a similar way. The HTTP protocol is what serves websites over the internet.
 
-![HTTP_Steps.png](/docs/HTTP_Steps.png)
+![HTTP_Steps.png](docs/HTTP_Steps.png)
 
 > For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
 
@@ -687,12 +688,13 @@ class Blog:
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+
 # We'll use this later to display comment text.
 def html_to_text(html):
-    return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
+    return bs4.BeautifulSoup(html, 'html.parser').get_text()
 
 # This is the API of your blog.
-blog_api_url="http://dminnich.example.com/wp-json/wp/v2"
+blog_api_url="http://$username.example.com/wp-json/wp/v2"
 
 # Now, we can use our class, and our tasks are easier to write and understand.
 # First, create an instance of our blog by calling our class like we would call a function.
@@ -726,11 +728,11 @@ else:
 ```
 Notice what happens when there are no comments on the blog. You will see that the latest_comments array is empty.
 
-![empty-array-no-comments](/docs/empty-array-no-comments.png)
+![empty-array-no-comments](docs/empty-array-no-comments.png)
 
 Now if you try to retrieve the 0th element of latest_comments, it throws an error
 
-![error-message-because-no-comments](/docs/error-message-because-no-comments.png)
+![error-message-because-no-comments](docs/error-message-because-no-comments.png)
 
 Can you modify the program to not throw this error?
 
@@ -951,11 +953,11 @@ The Raspberry Pi can interact with devices that speak these protocols by using s
 
 The Raspberry Pi 3 B+ has 40 GPIO (general purpose input/output pins). The pinout looks like
 
-![pinout](/docs/pi-pinout-diagram-01.png)
+![pinout](docs/pi-pinout-diagram-01.png)
 
 And the pins are counted like this
 
-![pincount](/docs/RPi-Pinout.jpg)
+![pincount](docs/RPi-Pinout.jpg)
 
 Additionally, the Pi can interact with devices in generic ways using any of its exposed pins. When working in generic mode, signals can either be `digtal` or `analog` and  the data can flow either `in` or `out`.
 
@@ -986,9 +988,9 @@ The pins on the screen are labelled.
 | SCL    | Pin 5 / SCL |
 | SDA    | Pin 3 / SDA |
 
-![hookup1](/docs/hookup1.jpg)
+![hookup1](docs/hookup1.jpg)
 
-![hookup2](/docs/hookup2.jpg)
+![hookup2](docs/hookup2.jpg)
 
 
 - Boot the Pi back up
@@ -1021,7 +1023,6 @@ Raise your hand if this didn't work for you and a volunteer will come around and
 
 Now lets do something really cool! Lets have the screen print a different emoji based on how many comments your blog has.
 
-TODO: Walk through set up of these packages / necessary drivers
 
 ```python
 # Program 3.1.2
@@ -1079,7 +1080,7 @@ def emoji_for_comment_total(total):
         return ":-)"
 
     if total < 10:
-        return ":-)"
+        return ":D"
 
     return "B-)"
 
@@ -1100,7 +1101,7 @@ while True:
     time.sleep(1)
 ```
 
-## Presentation preperation
+## Presentation preparation
 The ability to articulate and defend your ideas is an important skill to have no matter what field you go into.  A piece of general life advice: learn how to patiently communicate and be assertive.  Truth be told, people don't like making decisions or doing research on their own.  The more you bring to them, the more organized you are in your approach, the more passoinate you are -- the more likely they are to support your position/give you a raise/etc.
 
 When giving a presentation:
@@ -1171,7 +1172,7 @@ class Blog:
         data = {
             'post':post_id,
             'author_name':'Your name',
-            'author_email':'YourEmail@gmail.com',
+            'author_email':'nobody@example.com',
             'content':comment_to_post
         }
         print("Making a POST request to URL: {}".format(url))
@@ -1179,7 +1180,7 @@ class Blog:
         return response.content # note, we just assume it succeeded. is this a good idea?
 
 
-blog = Blog('http://blog.example.com/wp-json/wp/v2')
+blog = Blog('http://$username.example.com/wp-json/wp/v2')
 
 print('Enter your comment')
 comment_to_post = input()
@@ -1236,7 +1237,7 @@ class Blog:
         return response.content
 
 
-blog = Blog("http://dminnich.example.com/wp-json/wp/v2")
+blog = Blog("http://$username.example.com/wp-json/wp/v2")
 # We are assuming the value the current time as the date we last commented on a post
 # This helps us to use a time value as a starting point to compare our date calculations with
 # We will use utc time because UTC is a global time and helps stay consistent across timezones and daylight savings time
