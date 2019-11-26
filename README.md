@@ -553,6 +553,8 @@ Lets take a minute to install all of the packages we will use going forward:
      pip install --exists-action i luma.core
      pip install --exists-action i luma.oled
 
+**Note**:  The above installs packages to your system globally and is what you would generally run.  Thonny manages packages a bit differently.  To install packages in Thonny go to `Tools > Manage Packages`. Your pi's are already ready for this workshop, so you don't have to do this step now, but it is good to know for when you are doing more learning at home.
+
 
 Let's use one of those packages.  The "requests" package will allow us to communicate with websites, like the blog you're running on your Pi.
 
