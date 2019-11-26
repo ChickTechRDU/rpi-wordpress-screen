@@ -36,8 +36,10 @@ My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a
 
 My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a Software Engineer, I:
 
-- Fixing the world's problems one line of code at a time :)
-- On a serious note, I
+- Fix the world's problems one line of code at a time :)
+- On a serious note, I work on applications that help Red Hat sell the products we make.
+- I write code to add features and make enhancements to these applications that help make working with them easier
+- I also work on fixing bugs that make it better for our users to use our applications
 
 My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsible for:
 
