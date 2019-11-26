@@ -685,9 +685,10 @@ class Blog:
         response = requests.get(self.url + "/comments", params={"post": post_id, "per_page": at_most})
         return response.json()
 
+
 # We'll use this later to display comment text.
 def html_to_text(html):
-    return bs4.BeautifulSoup((latest_comment['content']['rendered']), 'html.parser').get_text()
+    return bs4.BeautifulSoup(html, 'html.parser').get_text()
 
 # This is the API of your blog.
 blog_api_url="http://dminnich.example.com/wp-json/wp/v2"
@@ -1076,7 +1077,7 @@ def emoji_for_comment_total(total):
         return ":-)"
 
     if total < 10:
-        return ":-)"
+        return ":D"
 
     return "B-)"
 
@@ -1097,7 +1098,7 @@ while True:
     time.sleep(1)
 ```
 
-## Presentation preperation
+## Presentation preparation
 The ability to articulate and defend your ideas is an important skill to have no matter what field you go into.  A piece of general life advice: learn how to patiently communicate and be assertive.  Truth be told, people don't like making decisions or doing research on their own.  The more you bring to them, the more organized you are in your approach, the more passoinate you are -- the more likely they are to support your position/give you a raise/etc.
 
 When giving a presentation:
