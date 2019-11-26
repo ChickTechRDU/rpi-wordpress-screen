@@ -36,7 +36,9 @@ My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a
 - Triaging and fixing outages at any time of day and making sure we learn from failures to always get better
 
 My name is Sneha Gunta and I'm a Senior Software Applications Engineer.  As a Software Engineer, I:
-- TODO - sgunta
+
+- Fixing the world's problems one line of code at a time :)
+- On a serious note, I
 
 My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsible for:
 
@@ -53,9 +55,9 @@ My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsib
 
 We all work at a company named Red Hat.  Red Hat is an open source software company.  This means the software we develop is free for anybody to use and improve.  We believe that when people work together, instead of in competition with against one another, great things happen.
 
-Red Hats core product is a version of Linux.  Linux is an Operating System similar to macOS or Windows but is primarily used by servers and not laptops and home pcs. Most of the websites you visit are powered by Linux, Android phones are powered by Linux, nearly all super computers are powered by Linux -- our presence is everywhere, even if you haven't heard of us before today.  Red Hat also offers OpenShift which is an orchestration and management layer on top of Docker like containers and OpenStack which is an alternative to Amazon AWS could as well as tons of other things.
+Red Hat's core product is a version of Linux.  Linux is an Operating System similar to macOS or Windows but is primarily used by servers and not laptops and home pcs. Most of the websites you visit are powered by Linux, Android phones are powered by Linux, nearly all super computers are powered by Linux -- our presence is everywhere, even if you haven't heard of us before today.  Red Hat also offers OpenShift which is an orchestration and management layer on top of Docker like containers and OpenStack which is an alternative to Amazon AWS, as well as tons of other things.
 
-Red Hat is a GREAT company to work for.  It is full of passionate and diverse people with all kinds of skillsets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heirarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
+Red Hat is a GREAT company to work for.  It is full of passionate and diverse people with all kinds of skill sets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heirarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
 
 ## Objective
 Have you ever been to a concert or a sporting event where they put tweets on the jumbotron(big screen)?
@@ -558,6 +560,8 @@ Let's use one of those packages.  The "requests" package will allow us to commun
 
 > For full documentation of the "requests" package, see: https://requests.readthedocs.io/en/master/
 
+Copy the above program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
+
 ```python
 # Program 2.1.1
 # Load the package named "requests"
@@ -607,8 +611,6 @@ else:
     # values from the variables we just defined above.
     print("{0}: {1}".format(date_posted, title))
 ```
-
-Copy the above program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
 
 Try debugging your program to watch and inspect the instructions and variables.
 
