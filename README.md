@@ -64,7 +64,7 @@ What about watched the news or a TV show where they are displaying a facebook po
 
 Over the next two days we will be building something similar!
 
-With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be able to post to your blog and write code to see information about it on your screen.
+With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be able to post to your blog and then you will write code to see information about your blog on your screen.
 
 ## Building the stack
 
