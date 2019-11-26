@@ -691,7 +691,7 @@ def html_to_text(html):
     return bs4.BeautifulSoup(html, 'html.parser').get_text()
 
 # This is the API of your blog.
-blog_api_url="http://dminnich.example.com/wp-json/wp/v2"
+blog_api_url="http://$username.example.com/wp-json/wp/v2"
 
 # Now, we can use our class, and our tasks are easier to write and understand.
 # First, create an instance of our blog by calling our class like we would call a function.
@@ -1234,7 +1234,7 @@ class Blog:
         return response.content
 
 
-blog = Blog("http://dminnich.example.com/wp-json/wp/v2")
+blog = Blog("http://$username.example.com/wp-json/wp/v2")
 # We are assuming the value the current time as the date we last commented on a post
 # This helps us to use a time value as a starting point to compare our date calculations with
 # We will use utc time because UTC is a global time and helps stay consistent across timezones and daylight savings time
