@@ -1169,7 +1169,7 @@ class Blog:
         data = {
             'post':post_id,
             'author_name':'Your name',
-            'author_email':'YourEmail@gmail.com',
+            'author_email':'nobody@example.com',
             'content':comment_to_post
         }
         print("Making a POST request to URL: {}".format(url))
@@ -1177,7 +1177,7 @@ class Blog:
         return response.content # note, we just assume it succeeded. is this a good idea?
 
 
-blog = Blog('http://blog.example.com/wp-json/wp/v2')
+blog = Blog('http://$username.example.com/wp-json/wp/v2')
 
 print('Enter your comment')
 comment_to_post = input()
