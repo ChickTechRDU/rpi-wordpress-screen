@@ -50,8 +50,6 @@ My name is Claudia Van Valkenhoef and I'm a Manager.  As a Manager I'm responsib
 - Status updates on ongoing projects, keep stakeholders informed
 
 
-
-
 We all work at a company named Red Hat.  Red Hat is an open source software company.  This means the software we develop is free for anybody to use and improve.  We believe that when people work together, instead of in competition with against one another, great things happen.
 
 Red Hat's core product is a version of Linux.  Linux is an Operating System similar to macOS or Windows but is primarily used by servers and not laptops and home pcs. Most of the websites you visit are powered by Linux, Android phones are powered by Linux, nearly all super computers are powered by Linux -- our presence is everywhere, even if you haven't heard of us before today.  Red Hat also offers OpenShift which is an orchestration and management layer on top of Docker like containers and OpenStack which is an alternative to Amazon AWS, as well as tons of other things.
@@ -59,6 +57,7 @@ Red Hat's core product is a version of Linux.  Linux is an Operating System simi
 Red Hat is a GREAT company to work for.  It is full of passionate and diverse people with all kinds of skill sets.  Everybody is always willing to pitch in and help in anyway they can despite any formal job duties like those listed above.  The work environment is casual (no fancy clothes, heirarchy means nothing) and fun. There are meetup style groups and events happening on a regular basis.
 
 ## Objective
+
 Have you ever been to a concert or a sporting event where they put tweets on the jumbotron(big screen)?
 
 What about watched the news or a TV show where they are displaying a facebook post and are discussing it?
@@ -66,7 +65,6 @@ What about watched the news or a TV show where they are displaying a facebook po
 Over the next two days we will be building something similar!
 
 With a Raspberry Pi, Wordpress, some python code and an LCD screen you will be able to post to your blog and see it on your screen.
-
 
 ## Building the stack
 
@@ -832,6 +830,7 @@ class Blog:
         # We return that here, after converting the header's value to an integer type.
         return int(response.headers['X-WP-Total'])
 
+
 # Add all of the blog URLs here for the blogs in your group in what's called a **dictionary**.
 # This allows us to refer to the blogs later by a readable name like "Jenn's Blog".
 blog_urls = {
@@ -841,7 +840,7 @@ blog_urls = {
 
 # We need to figure out which blog(s) have the most comments.  We will store the results of
 # our investigation in a list. As we process each blog we will either replace the list with a new
-# winnig blog or append to the list if a tie is found.
+# winning blog or append to the list if a tie is found.
 top_blogs = []
 
 # Store how many comments this blog has in a variable
@@ -860,6 +859,7 @@ for blog_name, blog_url in blog_urls.items():
     if total_comments == top_blog_total_comments:
         # Tie for top blog!.  Add the tied blog to the list.
         top_blogs.append(blog_name)
+
         # We don't need to adjust the top_blog_total_comments because this blog has the same number,
         # so it doesn't change.
 
@@ -871,6 +871,7 @@ for blog_name, blog_url in blog_urls.items():
         # We found a new top blog!
         # Replace the top_blogs list with just this blog since it has the most comments.
         top_blogs = [blog_name]
+
         # Replace the top_blog_total_comments with how many comments this blog has.
         top_blog_total_comments = total_comments
 
@@ -928,7 +929,6 @@ A water heater 15 years ago:
 - Cost $700 in today's money
 - A mechanic/hacker/enthusiast could replace an electronic component by desoldering it and soldering in a new one.  They could determine which componenets were bad by using a basic multi-meter.
 
-
 A water heater today:
 
 - Can use a calendar schedule
@@ -938,11 +938,9 @@ A water heater today:
 - Cost $300
 - A mechanic/hacker/enthusiast just sees a bunch of chips when the open up the water heater.  They don't know how it works.  Calling a repair person isn't worth the money because replacing the whole device will likely be cheaper.
 
-
 As devices have gotten "SMART"er more and more electronic components have been needed.  In the past a TV brand would partner with a microcontroller or processor manufacturer and something custom would be fabricated for their use case. This took a long time and cost a considerable amount of money.  And while that still happens, now days extremely common electronic components are mass produced and sold on the open market for cheap.  Component vendors now compete to document their components and make them as generic and easy to get and use as possible.
 
 This commoditization of electronic components has opened up a new door for hackers.  They can now build their own simplistic SMART devices using off the shelf parts and open source IDEs.  Today we will be hooking up a $8 LCD screen to our Raspberry Pi's and using open source libraries to play with it.
-
 
 ### A word on protocols
 
@@ -996,7 +994,6 @@ The pins on the screen are labelled.
 ![hookup1](docs/hookup1.jpg)
 
 ![hookup2](docs/hookup2.jpg)
-
 
 - Boot the Pi back up
 
@@ -1135,7 +1132,6 @@ We need 3 volunteers.  These girls will:
 - Present to the whole kickoff audience
 
 Please raise your hand if you are interested.
-
 
 ## Exploring on your own
 
