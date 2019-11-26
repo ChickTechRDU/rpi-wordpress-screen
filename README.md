@@ -566,6 +566,8 @@ Let's use one of those packages.  The "requests" package will allow us to commun
 
 Copy the below program into your IDE and run it. If you've written any posts in your blog, you should see the latest post and it's title. In a few lines of code (ignoring comments), we've constructed a request from our program, sent it to the blog server, and parsed its response. Cool!
 
+Make sure you have replaced $username with your username
+
 ```python
 # Program 2.1.1
 # Load the package named "requests"
@@ -645,6 +647,8 @@ Different APIs come in different flavors. When talking to a website server, like
 > For full documentation of the Wordpress API, see: https://developer.wordpress.org/rest-api/
 
 The Wordpress API can do just about anything we want with our blog. Let's explore!
+
+Copy the below program in your IDE. Make sure you replace the $username variable with your own username
 
 ```python
 # Program 2.2.1
@@ -801,6 +805,8 @@ They are looking for the non `lo` interface that has something on the `inet` lin
 Now we can access their blogs by their usernames just like our own.
 
 Let's use those hosts in the program below to look at the comments from all of our friends blogs and see who has the most. For fun you can try commenting on each other's blogs to see the results change.
+
+After you copy the below program to your IDE, replace the $username variables with some of your friends' usernames
 
 ```python
 # Program 2.3.1
@@ -1025,6 +1031,8 @@ Raise your hand if this didn't work for you and a volunteer will come around and
 
 Now lets do something really cool! Lets have the screen print a different emoji based on how many comments your blog has.
 
+Make sure you replace $username with your own username
+
 
 ```python
 # Program 3.1.2
@@ -1133,20 +1141,23 @@ We need 3 volunteers.  These girls will:
 
 Please raise your hand if you are interested.
 
-## Exploring on your own
+## Let's get creative!
 
-Please use any remaining free time to be creative with anything you've learned so far.  Also feel free to ask us any questions you may have.
+Now that we've learnt about all these interesting things, let's get creative with our knowledge.  Also feel free to ask us any questions you may have.
 
-Need some ideas?  Here are some code samples you can play with.
+So far, you have been commenting on your friend's blogs from the UI. Now we'll learn how to post a comment from code, using the Wordpress API.
 
-- Posting a comment via code
+We will not only use some of the functions that we already learned about, but we will also write a brand new function to post the comment.
+
+### Posting a comment via code
 
 ```python
 # Program 4.1.1
 import requests
 
-# As before, we are going to interact with our blogs using the APIs that our blog
-# software makes available as part of just running.
+
+# We will reuse our Blog class that has all the functions that we wrote so far.
+# As before, let's start by stepping through our code, using the debugger. Before that let's make sure we replace the $username variable with your username.
 class Blog:
     """
     Simple Wordpress blog client.
@@ -1167,18 +1178,32 @@ class Blog:
         response = requests.get(self.url + "/comments", params={"per_page": 1})
         return int(response.headers['X-WP-Total'])
 
+    # We will now define a new function, comment_on_post, that will take as inputs two parameters
+    # 1. the id of the post that you want to comment on 2. The comment text you want to post.
+    # Up until now, we've only been making simple requests to the Wordpress blog to get some information back.
+    # Every HTTP request has what's called a "method". To get information, we use the "GET" method. But to send
+    # information, we need to use the "POST" method. Here, we want to send information; we want send our comment.
+    # So, instead of using the .get function from requests, we'll use the .post function and pass our comment data to
+    # it.
     def comment_on_post(self, post_id, comment_to_post):
         url = (self.url + '/comments')
 
+        # Next, we will build the data that we want to post. How will you know what the data should look like? This is
+        # provided to us in the instructions that Wordpress API gives us. It will tell us what all information we need
+        # to add a comment.
+        # Here, we will provide it with a post_id, our name, a valid email (let's use yourname@example.com) and the
+        # content that we need to post on the blog.
         data = {
-            'post':post_id,
-            'author_name':'Your name',
-            'author_email':'nobody@example.com',
-            'content':comment_to_post
+            'post': post_id,
+            'author_name': 'Chicktech Python Workshop',
+            'author_email': 'workshop@example.com',
+            'content': comment_to_post
         }
-        print("Making a POST request to URL: {}".format(url))
+
+        # Now, we make the request.
         response = requests.post(url, data)
-        return response.content # note, we just assume it succeeded. is this a good idea?
+
+        return response.content
 
 
 blog = Blog('http://$username.example.com/wp-json/wp/v2')
@@ -1186,28 +1211,44 @@ blog = Blog('http://$username.example.com/wp-json/wp/v2')
 print('Enter your comment')
 comment_to_post = input()
 
-print('Posting your comment')
+print('Posting your comment to the latest post')
 posts = blog.list_latest_posts(at_most=1)
 
 if len(posts) > 0:
     latest_post = posts[0]
     posted = blog.comment_on_post(post_id=latest_post['id'],comment_to_post=comment_to_post)
     print(posted)
-
-# Some food for thought:
-# - how do you detect if the comment failed to be posted?
-# - what should you print if there are no posts to comment on?
 ```
 
-- The Friend Bot
+Some food for thought:
+
+- How do you detect if the comment failed to be posted?
+- What should you print if there are no posts to comment on?
+
+### Let's continue building on our Blog class to make it do something fun!
+
+Let's call it The Friend Bot!
+
+Now I want to make sure I'm on top of my social media game and that I don't miss any of my friend's posts and that no post escapes my attention.
+
+I mean I could forget about sleep and all and just spend all day watching for my friends to post stuff and then comment, so they know I care about them,
+
+Or, I could use all these neat skills I learned today to write myself a bot and make it do all the work :)
+
+Who wants to be a volunteer to have their blog watched?
+
+Let's get your ip address and edit our host files, just like before, to make sure we can all hit your blog.
+
+Now everyone else, copy the below program to your IDE. This time make sure that you replace $username with her username and $myname with your name.
 
 ```python
 # Program 4.1.2
-# We have a few more dependencies this time, one for dates and times, and one for just time.
+# We are going to use another package called datetime in addition to the one's we already have.
 from datetime import datetime
 import time
 import requests
 
+# Same Blog class, but this time it's equipped with all the functions that we wrote. Now we'll use them.
 class Blog:
 
     def __init__(self, url):
@@ -1229,22 +1270,27 @@ class Blog:
         url = (self.base_url + '/comments')
         data = {
             'post': post_id,
-            'author_name': 'Your name',
-            'author_email': 'nobody@example.com',
+            'author_name': 'Chicktech Python Workshop',
+            'author_email': 'workshop@example.com',
             'content': comment_to_post
         }
-        print("Making a POST request to URL: {}".format(url))
+
         response = requests.post(url, data)
         return response.content
 
-
+# We are going to check our friend's blog to see if we've already made a comment on their latest post.
+# If we have, then we don't need our bot to do anything.
+# If not, then we can make it post a comment.
+# But how do we know if we've already commented on a blog?
+# We can do that by keeping track of the last time we posted a comment.
+# And if the last time we posted a comment is before the time that the latest post came up, we will make our code post a comment.
+# But if it's after the time the latest post came up, we'll do nothing.
 blog = Blog("http://$username.example.com/wp-json/wp/v2")
-# We are assuming the value the current time as the date we last commented on a post
-# This helps us to use a time value as a starting point to compare our date calculations with
-# We will use utc time because UTC is a global time and helps stay consistent across timezones and daylight savings time
+# And for the first time when we start the program, we will make that time equal to now, because we haven't posted anything as of now.
 last_commented_date = datetime.utcnow()
 
-while True: # run forever until we kill the program
+# run forever until we kill the program
+while True:
     posts = blog.list_latest_posts(at_most=1)
     if len(posts) > 0:
         latest_post = posts[0]
@@ -1253,14 +1299,14 @@ while True: # run forever until we kill the program
         if post_date > last_commented_date:
             last_commented_date = post_date
             print("a new post just came up on ", blog.base_url, "at ", last_commented_date)
-            blog.comment_on_post(latest_post['id'],"Hello there, do you want to be my friend!")
-    time.sleep(3) # wait 3s before doing anything else.
+            blog.comment_on_post(latest_post['id'],"Hello there, this is $myname, do you want to be my friend!")
+    time.sleep(3)
 ```
 
 Some things that you can try:
 
 - Find the name of the author of the post from the rest api and use that in your program to post a personalized comment.
-- Right now, your bot only posts a hardcoded comment. Modify your program to take an input from you for a comment and post that to your friend's blog.
+- Right now, your bot only posts the same comment every time. Modify your program to take an input from you and post that to your friend's blog.
 
 ### Pulling weather data from the internet
 
