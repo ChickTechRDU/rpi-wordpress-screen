@@ -1149,15 +1149,16 @@ So far, you have been commenting on your friend's blogs from the UI. Now we'll l
 
 We will not only use some of the functions that we already learned about, but we will also write a brand new function to post the comment.
 
+We will reuse our Blog class that has all the functions that we wrote so far.
+
+As before, let's start by stepping through our code, using the debugger. Before that let's make sure we replace the $username variable with your username.
+
 ### Posting a comment via code
 
 ```python
 # Program 4.1.1
 import requests
 
-
-# We will reuse our Blog class that has all the functions that we wrote so far.
-# As before, let's start by stepping through our code, using the debugger. Before that let's make sure we replace the $username variable with your username.
 class Blog:
     """
     Simple Wordpress blog client.
