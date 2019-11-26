@@ -1233,10 +1233,8 @@ Some food for thought:
 Let's call it The Friend Bot!
 
 Now I want to make sure I'm on top of my social media game and that I don't miss any of my friend's posts and that no post escapes my attention.
-
-I mean I could forget about sleep and all and just spend all day watching for my friends to post stuff and then comment, so they know I care about them,
-
-Or, I could use all these neat skills I learned today to write myself a bot and make it do all the work :)
+I mean I could forget about sleep and all that and just spend all day watching for my friends to post stuff and then comment immediately, so they know I care about them.
+Or, I could use all these neat skills I learned today to write myself a bot and make it do all the work. :)
 
 Who wants to be a volunteer to have their blog watched?
 
@@ -1284,12 +1282,12 @@ class Blog:
 # We are going to check our friend's blog to see if we've already made a comment on their latest post.
 # If we have, then we don't need our bot to do anything.
 # If not, then we can make it post a comment.
-# But how do we know if we've already commented on a blog?
+# But how do we know if we've already commented on a post?
 # We can do that by keeping track of the last time we posted a comment.
 # And if the last time we posted a comment is before the time that the latest post came up, we will make our code post a comment.
 # But if it's after the time the latest post came up, we'll do nothing.
 blog = Blog("http://$username.example.com/wp-json/wp/v2")
-# And for the first time when we start the program, we will make that time equal to now, because we haven't posted anything as of now.
+# And for the first time when we start the program, we'll pretend we've already commented on everything, so set the last comment time to now.
 last_commented_date = datetime.utcnow()
 
 # run forever until we kill the program
@@ -1301,7 +1299,7 @@ while True:
         post_date = datetime.fromisoformat(latest_post_date)
         if post_date > last_commented_date:
             last_commented_date = post_date
-            print("a new post just came up on ", blog.base_url, "at ", last_commented_date)
+            print("A new post just came up on", blog.base_url, "at", last_commented_date)
             blog.comment_on_post(latest_post['id'],"Hello there, this is $myname, do you want to be my friend!")
     time.sleep(3)
 ```
