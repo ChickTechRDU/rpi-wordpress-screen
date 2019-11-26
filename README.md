@@ -5,7 +5,6 @@ To get to know each other, lets quickly go around the room.  When it is your tur
 
 - Your name
 - School you go to
-- What your programming and sysadmin excerince is
 - Something you like that starts with the first letter of your first name
 
 I'll start.
