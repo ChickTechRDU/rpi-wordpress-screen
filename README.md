@@ -24,8 +24,7 @@ My name is Dustin Minnich and I'm a Principal Systems Administrator.  As a sysad
 
 My name is Michael White and I'm a Lead Application Integration Engineer, which is just a fancy way to say Senior Software Engineer.  As a Lead Application Integration Engineer I'm responsible for:
 
-- Making sure people don't do dumb shit or recreate the sins of their fathers.
-- TODO - miwhite
+- Making sure people don't do dumb stuff or recreate the sins of their fathers.
 
 My name is Alec Henninger and I'm a Senior Software Applications Engineer.  As a Software Engineer I'm responsible for:
 
